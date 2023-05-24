@@ -1,8 +1,0 @@
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\bin\Debug\ConsoleApp13.exe.config
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\bin\Debug\ConsoleApp13.exe
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\bin\Debug\ConsoleApp13.pdb
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\obj\Debug\ConsoleApp13.csproj.AssemblyReference.cache
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\obj\Debug\ConsoleApp13.csproj.SuggestedBindingRedirects.cache
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\obj\Debug\ConsoleApp13.csproj.CoreCompileInputs.cache
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\obj\Debug\ConsoleApp13.exe
-C:\Users\Anusha Yadav\source\repos\ConsoleApp13\ConsoleApp13\obj\Debug\ConsoleApp13.pdb
