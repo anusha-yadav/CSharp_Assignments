@@ -1,0 +1,20 @@
+﻿TestCase #1
+
+Description: Checking with valid number
+Type - Positive
+
+TestCase #2 
+
+Description: Checking with invalid number
+Type - Positive
+
+TestCase #3
+
+Description: Checking with negative numbers
+Type - Positive
+
+TestCase #4
+
+Description: Checking with size of 4 characters of a negative number
+Type - Positive
+
