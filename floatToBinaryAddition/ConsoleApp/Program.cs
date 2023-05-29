@@ -1,42 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*
+ To convert float inputs to binary and perform addition and convert 
+ the result back to float.
+*/
 
+using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp
 {
+    /// <summary>
+    /// Main class of a program which creates different objects to implement the program
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Main method of a program
+        /// </summary>
         static void Main()
         {
-            Console.Write("Enter first float: ");
-            string FirstString = Console.ReadLine();
-            Console.Write("Enter second float: ");
-            string SecondString = Console.ReadLine();
-            float FirstFloat = float.Parse(FirstString);
-            float SecondFloat = float.Parse(SecondString);
+            Console.Write("Enter first float : ");
+            float firstNum = float.Parse(Console.ReadLine());
+            Console.Write("Enter second float : ");
+            float secondNum = float.Parse(Console.ReadLine());
             ToFloatBinary obj = new ToFloatBinary();
-            string s1 = obj.RevString(obj.ToBinary(FirstFloat));
-            string s2 = obj.RevString(obj.ToDecimal(FirstFloat));
-            string str = obj.getTotal(s1, s2);
-            //Console.WriteLine(obj.getTotal(s1, s2));
-            Tuple<string, int> tp = obj.PointAdjustment(str);
-            string s3 = obj.RevString(obj.ToBinary(SecondFloat));
-            string s4 = obj.RevString(obj.ToDecimal(SecondFloat));
-            string str1 = obj.getTotal(s3, s4);
-            //Console.WriteLine(obj.getTotal(s1, s2));
-            Tuple<string, int> tp1 = obj.PointAdjustment(str1);
+            string firstFloatBinary = obj.getTotal(obj.RevString(obj.ToBinary(firstNum)), obj.RevString(obj.ToDecimal(firstNum)));
+            //Tuple to store string binary and exponent value
+            Tuple<string, int> firstTuple = obj.PointAdjustment(firstFloatBinary);
+            string secondFloatBinary = obj.getTotal(obj.RevString(obj.ToBinary(secondNum)), obj.RevString(obj.ToDecimal(secondNum)));
+            Tuple<string, int> secondTuple = obj.PointAdjustment(secondFloatBinary);
             BinaryAddition add = new BinaryAddition();
-            if(tp1.Item2 > tp.Item2)
+            if(secondTuple.Item2 > firstTuple.Item2)
             {
-                string s5 = add.AdjustDecimalPoint(tp, tp1.Item2,tp1.Item1.Length);
-                string s6 = add.AddBinary(s5, tp1.Item1);
-                float s7 = add.BinaryToFloat(s6, tp1.Item2);
-                Console.WriteLine(s7);
+                string strAdjustDecimal = add.AdjustDecimalPoint(firstTuple, secondTuple.Item2, secondTuple.Item1.Length);
+                string strFloatToBinary = add.AddBinary(strAdjustDecimal,secondTuple.Item1);
+                float outputResult = add.BinaryToFloat(strFloatToBinary,secondTuple.Item2); 
+                Console.WriteLine("Resultant of binary addition in float is "+outputResult);
             }
             else
             {
-                string s6 = add.AdjustDecimalPoint(tp1, tp.Item2,tp.Item1.Length);
-                Console.WriteLine(s6);
+                string strAdjustDecimal = add.AdjustDecimalPoint(secondTuple, firstTuple.Item2, firstTuple.Item1.Length);
+                string strFloatToBinary = add.AddBinary(strAdjustDecimal, firstTuple.Item1);
+                float outputResult = add.BinaryToFloat(strFloatToBinary, firstTuple.Item2);
+                Console.WriteLine("Resultant of binary addition in float is "+outputResult);
             }
         }
     }

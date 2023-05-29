@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿The following code works for non-recurring decimal numbers
 
-namespace ConsoleApp
-{
-    class testcases
-    {
-    }
-}
+#TestCase 1:
+Description - If two decimal numbers are multiples of 5
+Type - Pass
+
+#TestCse 2:
+Description - If any of the input is integer
+Type - Pass
+
+#TestCase 3:
+Description - If any of the input is negative
+Type - Fail 
+
+#TestCase 3:
+Description - If the input is recurring decimal
+Type - Fail 
+

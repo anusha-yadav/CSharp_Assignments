@@ -1,159 +1,175 @@
 ﻿using System;
-using System.Linq;
 using System.Text;
 
-namespace ConsoleApp
+/// <summary>
+/// Binary Addition class will binary additions and converts the resultant to float
+/// </summary>
+class BinaryAddition
 {
-    class BinaryAddition
+    /// <summary>
+    /// AdjustDecimalPoint method will adjust the decimal point in a string
+    /// </summary>
+    /// <param name="tp"></param>
+    /// <param name="x"></param>
+    /// <param name="len"></param>
+    /// <returns></returns>
+    public string AdjustDecimalPoint(Tuple<string, int> tp, int x, int len)
     {
-        public string AdjustDecimalPoint(Tuple<string,int>tp,int x,int len)
+        int diff = x - tp.Item2;
+        string padStr = tp.Item1.PadLeft(diff + tp.Item1.Length, '0');
+        int idx = 0;
+        for (int i = 0; i < padStr.Length; i++)
         {
-            int diff = x - tp.Item2;
-            string s5;
-            string s2 = tp.Item1.PadLeft(diff+tp.Item1.Length,'0');
-            int idx = 0;
-            for(int i = 0; i < s2.Length; i++)
+            if (padStr[i] == '.')
             {
-                if (s2[i] == '.')
-                {
-                    idx = i;
-                }
+                idx = i;
             }
-            string s3 = s2.Remove(idx, 1);
-            string s4 = s3.Insert(diff, ".");
-            int lendiff = len - s4.Length;
-            if (lendiff > 0)
-            {
-                s5=s4.PadRight(len, '0');
-                return s5;
-            }
-            return s4;
         }
+        string remStr = padStr.Remove(idx, 1);
+        string insPointStr = remStr.Insert(diff, ".");
+        int lendiff = len - insPointStr.Length;
+        if (lendiff > 0)
+        {
+            string res = insPointStr.PadRight(len, '0');
+            return res;
+        }
+        return insPointStr;
+    }
 
-        public string AddBinary(string s1, string s2)
+    /// <summary>
+    /// AddBinary method will do addition of two binaries
+    /// </summary>
+    /// <param name="firstBinary"></param>
+    /// <param name="secondBinary"></param>
+    /// <returns></returns>
+    public string AddBinary(string firstBinary, string secondBinary)
+    {
+        string a = firstBinary.Substring(2);
+        string b = secondBinary.Substring(2);
+        string c = firstBinary.Substring(0, 1);
+        string d = secondBinary.Substring(0, 1);
+        string result = string.Empty;
+        string s = string.Empty;
+        StringBuilder res = new StringBuilder(s);
+        char carry = '0';
+        for (int i = a.Length - 1; i >= 0; i--)
         {
-            string a = s1.Substring(2);
-            string b = s2.Substring(2);
-            string c = s1.Substring(0, 1);
-            string d = s2.Substring(0, 1);
-            string result = string.Empty;
-            //Console.Write(a + " " + b);
-            string s = string.Empty;
-            StringBuilder res = new StringBuilder(s);
-            char carry = '0';
-            for(int i = a.Length-1; i >= 0; i--)
-            {
-                if (a[i] == '1' && b[i] == '1')
-                {
-                    if (carry == '1')
-                    {
-                        res.Append('1');
-                        carry = '1';
-                    }
-                    else
-                    {
-                        res.Append('0');
-                        carry = '1';
-                    }
-                }
-                else if (a[i]=='0' && b[i] == '0')
-                {
-                    if (carry == '1')
-                    {
-                        res.Append('1');
-                        carry = '0';
-                    }
-                    else
-                    {
-                        res.Append('0');
-                        carry = '0';
-                    }
-                }
-                else if (a[i] != b[i])
-                {
-                    if (carry == '1')
-                    {
-                        res.Append('0');
-                        carry = '1';
-                    }
-                    else
-                    {
-                        res.Append('1');
-                        carry = '0';
-                    }
-                }
-            }
-            s = res.ToString();
-            string revStr = string.Empty;
-            for(int i = s.Length - 1; i >= 0; i--)
-            {
-                revStr += s[i];
-            }
-            if(c=="0" && d == "0")
+            if (a[i] == '1' && b[i] == '1')
             {
                 if (carry == '1')
                 {
-                    result = carry + "." + revStr;
+                    res.Append('1');
+                    carry = '1';
                 }
                 else
                 {
-                    result = "0" + "." + revStr;
+                    res.Append('0');
+                    carry = '1';
                 }
             }
-            else if(c!=d)
+            else if (a[i] == '0' && b[i] == '0')
             {
                 if (carry == '1')
                 {
-                    result = "10" + "." + revStr;
+                    res.Append('1');
+                    carry = '0';
                 }
                 else
                 {
-                    result = "1" + "." + revStr;
+                    res.Append('0');
+                    carry = '0';
                 }
             }
-            else if(c=="1"&& d == "1")
+            else if (a[i] != b[i])
             {
                 if (carry == '1')
                 {
-                    result = "11" + "." + revStr;
+                    res.Append('0');
+                    carry = '1';
                 }
                 else
                 {
-                    result = "10" + "." + revStr;
+                    res.Append('1');
+                    carry = '0';
                 }
             }
-            return result;
         }
+        s = res.ToString();
+        string revStr = string.Empty;
+        for (int i = s.Length - 1; i >= 0; i--)
+        {
+            revStr += s[i];
+        }
+        if (c == "0" && d == "0")
+        {
+            if (carry == '1')
+            {
+                result = carry + "." + revStr;
+            }
+            else
+            {
+                result = "0" + "." + revStr;
+            }
+        }
+        else if (c != d)
+        {
+            if (carry == '1')
+            {
+                result = "10" + "." + revStr;
+            }
+            else
+            {
+                result = "1" + "." + revStr;
+            }
+        }
+        else if (c == "1" && d == "1")
+        {
+            if (carry == '1')
+            {
+                result = "11" + "." + revStr;
+            }
+            else
+            {
+                result = "10" + "." + revStr;
+            }
+        }
+        return result;
+    }
 
-        public float BinaryToFloat(string s,int x)
+    /// <summary>
+    /// BinaryToFloat method will convert final binary string to float
+    /// </summary>
+    /// <param name="s"></param>
+    /// <param name="x"></param>
+    /// <returns></returns>
+    public float BinaryToFloat(string s, int x)
+    {
+        int index = 0;
+        for (int i = 0; i < s.Length; i++)
         {
-            string res;
-            int index = 0;
-            for(int i = 0; i < s.Length; i++)
+            if (s[i] == '.')
             {
-                if (s[i] == '.')
-                {
-                    index = i;
-                }
+                index = i;
             }
-            string s1 = s.Insert(index + 1 + x, ".");
-            string s2 = s1.Remove(index, 1);
-            string a = s2.Substring(0, s2.IndexOf('.'));
-            int ans=0;
-            float result = 0f;
-            int power1 = 0, power2 = -1;
-            for(int i = a.Length - 1; i >= 0; i--)
-            {
-                ans += (a[i] - '0') * (int)Math.Pow(2, power1);
-                power1++;
-            }
-            for(int i = a.Length + 1; i < s2.Length; i++)
-            {
-                result += (s2[i] - '0') * (float)Math.Pow(2, power2);
-                power2--;
-                
-            }
-            return ans + result;
         }
+        string insStr = s.Insert(index + 1 + x, ".");
+        string remStr = insStr.Remove(index, 1);
+        string finalStr = remStr.Substring(0, remStr.IndexOf('.'));
+        int ans = 0;
+        float result = 0f;
+        int power1 = 0, power2 = -1;
+        for (int i = finalStr.Length - 1; i >= 0; i--)
+        {
+            ans += (finalStr[i] - '0') * (int)Math.Pow(2, power1);
+            power1++;
+        }
+        for (int i = finalStr.Length + 1; i < remStr.Length; i++)
+        {
+            result += (remStr[i] - '0') * (float)Math.Pow(2, power2);
+            power2--;
+
+        }
+        return ans + result;
     }
 }
+
