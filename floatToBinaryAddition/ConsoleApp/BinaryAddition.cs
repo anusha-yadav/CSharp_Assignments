@@ -26,7 +26,7 @@ class BinaryAddition
             }
         }
         string remStr = padStr.Remove(idx, 1);
-        string insPointStr = remStr.Insert(diff, ".");
+        string insPointStr = remStr.Insert(1, ".");
         int lendiff = len - insPointStr.Length;
         if (lendiff > 0)
         {
@@ -44,6 +44,14 @@ class BinaryAddition
     /// <returns></returns>
     public string AddBinary(string firstBinary, string secondBinary)
     {
+        if (firstBinary.Length > secondBinary.Length)
+        {
+            secondBinary = secondBinary.PadRight(firstBinary.Length, '0');
+        }
+        if (firstBinary.Length < secondBinary.Length)
+        {
+            firstBinary = firstBinary.PadRight(secondBinary.Length, '0');
+        }
         string a = firstBinary.Substring(2);
         string b = secondBinary.Substring(2);
         string c = firstBinary.Substring(0, 1);

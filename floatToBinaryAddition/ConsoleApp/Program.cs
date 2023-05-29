@@ -23,10 +23,10 @@ namespace ConsoleApp
             Console.Write("Enter second float : ");
             float secondNum = float.Parse(Console.ReadLine());
             ToFloatBinary obj = new ToFloatBinary();
-            string firstFloatBinary = obj.getTotal(obj.RevString(obj.ToBinary(firstNum)), obj.RevString(obj.ToDecimal(firstNum)));
+            string firstFloatBinary = obj.getTotal(obj.RevString(obj.ToBinary(firstNum)), obj.ToDecimal(firstNum));
             //Tuple to store string binary and exponent value
             Tuple<string, int> firstTuple = obj.PointAdjustment(firstFloatBinary);
-            string secondFloatBinary = obj.getTotal(obj.RevString(obj.ToBinary(secondNum)), obj.RevString(obj.ToDecimal(secondNum)));
+            string secondFloatBinary = obj.getTotal(obj.RevString(obj.ToBinary(secondNum)), obj.ToDecimal(secondNum));
             Tuple<string, int> secondTuple = obj.PointAdjustment(secondFloatBinary);
             BinaryAddition add = new BinaryAddition();
             if(secondTuple.Item2 > firstTuple.Item2)
