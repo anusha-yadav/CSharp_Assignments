@@ -39,11 +39,11 @@ class ToFloatBinary
     }
 
     /// <summary>
-    /// ToDecimal will convert the fractional part of a number to binary
+    /// ToDecimalBinary method will convert the fractional part of a number to binary
     /// </summary>
     /// <param name="m"></param>
     /// <returns></returns>
-    public string ToDecimal(float m)
+    public string ToDecimalBinary(float m)
     {
         string getDecimal = string.Empty;
         double n = m - (int)m;
@@ -70,7 +70,7 @@ class ToFloatBinary
     /// <param name="s1"></param>
     /// <param name="s2"></param>
     /// <returns></returns>
-    public string getTotal(string s1, string s2)
+    public string GetTotal(string s1, string s2)
     {
         string total = s1 + "." + s2;
         return total;

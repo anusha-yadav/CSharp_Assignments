@@ -2,7 +2,7 @@
 using System.Text;
 
 /// <summary>
-/// Binary Addition class will binary additions and converts the resultant to float
+/// BinaryAddition class will perform binary additions and converts the resultant to float
 /// </summary>
 class BinaryAddition
 {
@@ -52,6 +52,8 @@ class BinaryAddition
         {
             firstBinary = firstBinary.PadRight(secondBinary.Length, '0');
         }
+
+
         string a = firstBinary.Substring(2);
         string b = secondBinary.Substring(2);
         string c = firstBinary.Substring(0, 1);
