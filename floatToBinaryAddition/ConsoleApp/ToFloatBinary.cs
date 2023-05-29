@@ -29,13 +29,20 @@ class ToFloatBinary
     public string ToBinary(float m)
     {
         int n = (int)m;
-        string getBinary = string.Empty;
-        while (n != 0)
+        if (n == 0)
         {
-            getBinary += (char)n % 2;
-            n /= 2;
+            return "0";
         }
-        return getBinary;
+        else
+        {
+            string getBinary = string.Empty;
+            while (n != 0)
+            {
+                getBinary += (char)n % 2;
+                n /= 2;
+            }
+            return getBinary;
+        }
     }
 
     /// <summary>

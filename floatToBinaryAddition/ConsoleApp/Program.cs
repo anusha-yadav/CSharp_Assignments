@@ -33,15 +33,15 @@ namespace ConsoleApp
             {
                 string strAdjustDecimal = add.AdjustDecimalPoint(firstTuple, secondTuple.Item2, secondTuple.Item1.Length);
                 string strFloatToBinary = add.AddBinary(strAdjustDecimal, secondTuple.Item1);
-                float outputResult = add.BinaryToFloat(strFloatToBinary, secondTuple.Item2);
-                Console.WriteLine("Resultant of binary addition in float is " + outputResult);
+                Tuple<string, float> outputResult = add.BinaryToFloat(strFloatToBinary, secondTuple.Item2);
+                Console.WriteLine("Resultant of binary addition in float is " + outputResult.Item2 + " and in binary is " + outputResult.Item1);
             }
             else
             {
                 string strAdjustDecimal = add.AdjustDecimalPoint(secondTuple, firstTuple.Item2, firstTuple.Item1.Length);
                 string strFloatToBinary = add.AddBinary(strAdjustDecimal, firstTuple.Item1);
-                float outputResult = add.BinaryToFloat(strFloatToBinary, firstTuple.Item2);
-                Console.WriteLine("Resultant of binary addition in float is " + outputResult);
+                Tuple<string, float> outputResult = add.BinaryToFloat(strFloatToBinary, firstTuple.Item2);
+                Console.WriteLine("Resultant of binary addition in float is " + outputResult.Item2 + " and in binary is " + outputResult.Item1);
             }
         }
     }

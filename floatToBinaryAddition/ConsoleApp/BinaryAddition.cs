@@ -15,7 +15,7 @@ class BinaryAddition
     /// <returns></returns>
     public string AdjustDecimalPoint(Tuple<string, int> tp, int x, int len)
     {
-        int diff = x - tp.Item2;
+        int diff = Math.Abs(x - tp.Item2);
         string padStr = tp.Item1.PadLeft(diff + tp.Item1.Length, '0');
         int idx = 0;
         for (int i = 0; i < padStr.Length; i++)
@@ -52,8 +52,6 @@ class BinaryAddition
         {
             firstBinary = firstBinary.PadRight(secondBinary.Length, '0');
         }
-
-
         string a = firstBinary.Substring(2);
         string b = secondBinary.Substring(2);
         string c = firstBinary.Substring(0, 1);
@@ -152,7 +150,7 @@ class BinaryAddition
     /// <param name="s"></param>
     /// <param name="x"></param>
     /// <returns></returns>
-    public float BinaryToFloat(string s, int x)
+    public Tuple<string,float> BinaryToFloat(string s, int x)
     {
         int index = 0;
         for (int i = 0; i < s.Length; i++)
@@ -179,7 +177,8 @@ class BinaryAddition
             power2--;
 
         }
-        return ans + result;
+        Tuple<string,float> t = new Tuple<string,float>(remStr, ans + result);
+        return t;
     }
 }
 
