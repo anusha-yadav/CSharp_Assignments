@@ -1,0 +1,15 @@
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.exe
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.deps.json
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.runtimeconfig.json
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.dll
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.pdb
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.AssemblyReference.cache
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.dll
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\refint\ConsoleApp.dll
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.pdb
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ref\ConsoleApp.dll
