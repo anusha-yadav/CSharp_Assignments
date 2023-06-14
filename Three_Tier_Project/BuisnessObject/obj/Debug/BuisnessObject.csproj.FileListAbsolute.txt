@@ -1,6 +1,0 @@
-C:\Users\anush\source\repos\Three_Tier_Project\BuisnessObject\bin\Debug\BuisnessObject.dll
-C:\Users\anush\source\repos\Three_Tier_Project\BuisnessObject\bin\Debug\BuisnessObject.pdb
-C:\Users\anush\source\repos\Three_Tier_Project\BuisnessObject\obj\Debug\BuisnessObject.csproj.AssemblyReference.cache
-C:\Users\anush\source\repos\Three_Tier_Project\BuisnessObject\obj\Debug\BuisnessObject.csproj.CoreCompileInputs.cache
-C:\Users\anush\source\repos\Three_Tier_Project\BuisnessObject\obj\Debug\BuisnessObject.dll
-C:\Users\anush\source\repos\Three_Tier_Project\BuisnessObject\obj\Debug\BuisnessObject.pdb

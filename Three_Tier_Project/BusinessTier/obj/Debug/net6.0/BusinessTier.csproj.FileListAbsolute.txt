@@ -1,0 +1,15 @@
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\bin\Debug\net6.0\BusinessTier.deps.json
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\bin\Debug\net6.0\BusinessTier.dll
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\bin\Debug\net6.0\BusinessTier.pdb
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\bin\Debug\net6.0\DataLayer.dll
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\bin\Debug\net6.0\DataLayer.pdb
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.csproj.AssemblyReference.cache
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.AssemblyInfoInputs.cache
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.AssemblyInfo.cs
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.csproj.CoreCompileInputs.cache
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.csproj.CopyComplete
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.dll
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\refint\BusinessTier.dll
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\BusinessTier.pdb
+C:\Users\anush\source\repos\Three_Tier_Project\BusinessTier\obj\Debug\net6.0\ref\BusinessTier.dll
