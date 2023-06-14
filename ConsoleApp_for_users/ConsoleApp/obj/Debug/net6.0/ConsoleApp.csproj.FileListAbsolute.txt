@@ -13,3 +13,18 @@ C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net
 C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.pdb
 C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.genruntimeconfig.cache
 C:\Users\Anusha Yadav\source\repos\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ref\ConsoleApp.dll
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.exe
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.deps.json
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.runtimeconfig.json
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.dll
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\bin\Debug\net6.0\ConsoleApp.pdb
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.AssemblyReference.cache
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfoInputs.cache
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.AssemblyInfo.cs
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.csproj.CoreCompileInputs.cache
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.dll
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\refint\ConsoleApp.dll
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.pdb
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ConsoleApp.genruntimeconfig.cache
+\\wsl.localhost\Debian\home\anusha\CSharp_Assignments\ConsoleApp_for_users\ConsoleApp\obj\Debug\net6.0\ref\ConsoleApp.dll

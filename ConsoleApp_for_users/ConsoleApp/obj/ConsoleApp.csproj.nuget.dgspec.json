@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anusha Yadav\\source\\repos\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj": {}
+    "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anusha Yadav\\source\\repos\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj": {
+    "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\source\\repos\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj",
+        "projectUniqueName": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj",
         "projectName": "ConsoleApp",
-        "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj",
-        "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\source\\repos\\ConsoleApp_for_users\\ConsoleApp\\obj\\",
+        "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\ConsoleApp_for_users\\ConsoleApp\\ConsoleApp.csproj",
+        "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\ConsoleApp_for_users\\ConsoleApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Anusha Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
