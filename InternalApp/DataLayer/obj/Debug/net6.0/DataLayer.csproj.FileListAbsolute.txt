@@ -1,0 +1,15 @@
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\bin\Debug\net6.0\DataLayer.deps.json
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\bin\Debug\net6.0\DataLayer.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\bin\Debug\net6.0\DataLayer.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\bin\Debug\net6.0\BusinessModels.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\bin\Debug\net6.0\BusinessModels.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.csproj.AssemblyReference.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.AssemblyInfoInputs.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.AssemblyInfo.cs
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.csproj.CoreCompileInputs.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.csproj.CopyComplete
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\refint\DataLayer.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\DataLayer.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\DataLayer\obj\Debug\net6.0\ref\DataLayer.dll

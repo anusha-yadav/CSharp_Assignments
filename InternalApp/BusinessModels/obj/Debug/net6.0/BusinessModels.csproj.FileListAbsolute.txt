@@ -1,0 +1,12 @@
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\bin\Debug\net6.0\BusinessModels.deps.json
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\bin\Debug\net6.0\BusinessModels.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\bin\Debug\net6.0\BusinessModels.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\BusinessModels.csproj.AssemblyReference.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\BusinessModels.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\BusinessModels.AssemblyInfoInputs.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\BusinessModels.AssemblyInfo.cs
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\BusinessModels.csproj.CoreCompileInputs.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\BusinessModels.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\refint\BusinessModels.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\BusinessModels.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessModels\obj\Debug\net6.0\ref\BusinessModels.dll

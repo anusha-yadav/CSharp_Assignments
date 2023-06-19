@@ -1,0 +1,17 @@
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.AssemblyReference.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.AssemblyInfoInputs.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.AssemblyInfo.cs
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.CoreCompileInputs.cache
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\bin\Debug\net6.0\BusinessLayer.deps.json
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\bin\Debug\net6.0\BusinessLayer.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\bin\Debug\net6.0\BusinessLayer.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\bin\Debug\net6.0\BusinessModels.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\bin\Debug\net6.0\DataLayer.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\bin\Debug\net6.0\BusinessModels.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\bin\Debug\net6.0\DataLayer.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.CopyComplete
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\refint\BusinessLayer.dll
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\BusinessLayer.pdb
+\\wsl.localhost\Debian\home\anusha\InternalApp-Factory-designpattern\BusinessLayer\obj\Debug\net6.0\ref\BusinessLayer.dll
