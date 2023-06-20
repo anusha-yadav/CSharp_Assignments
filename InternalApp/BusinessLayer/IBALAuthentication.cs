@@ -9,6 +9,6 @@ namespace BusinessLayer
     {
         public bool IsLogin(User user);
         public bool IsRegistered(User user);
-        public bool IsCorrectPasswd(User user);
+        public bool IsValidPasswd(User user);
     }
 }

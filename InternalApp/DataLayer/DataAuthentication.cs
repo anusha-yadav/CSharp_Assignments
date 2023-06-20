@@ -14,48 +14,56 @@ namespace DataLayer
         /// <returns></returns>
         public bool IsValidLogin(User user)
         {
-            for(int i = 0; i < DataSource.dataBase.Count; i++)
+            User validUser = DataSource.dataBase.Find(userObj => userObj.username.Equals(user.username) && userObj.password.Equals(user.password));
+            if(validUser == null)
             {
-                if (DataSource.dataBase[i].username == user.username && DataSource.dataBase[i].password==user.password)
-                {
-                    return true;
-                }
+                return false;
             }
-            return false;
+            return true;
         }
 
         /// <summary>
         /// Validating new password
         /// </summary>
         /// <param name="user"></param>
-        public void CorrectPasswd(User user) 
+        public void ValidPasswd(User user) 
         { 
-            for(int i=0;i<DataSource.dataBase.Count;i++)
+            User validPasswd = DataSource.dataBase.Find(userObj => userObj.username.Equals(user.username, StringComparison.Ordinal));
+            if( validPasswd != null)
             {
-                if (DataSource.dataBase[i].username == user.username)
-                {
-                    DataSource.dataBase[i].password = user.new_passwd;
-                }
+                validPasswd.password = user.new_passwd;
             }
         }
 
         /// <summary>
-        /// Validating if user is present already in the database
+        /// Adding details to database
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
         public bool IsRegistered(User user)
         {
-            for (int i = 0; i < DataSource.dataBase.Count; i++)
+            if(!IsValidRegister(user))
             {
-                if (DataSource.dataBase[i].username == user.username && DataSource.dataBase[i].phoneNumber == user.phoneNumber && DataSource.dataBase[i].email == user.email)
-                {
-                    return false;
-                }
+                DataSource dataSource = new DataSource();
+                dataSource.AddDetails(user);
+                return true;
             }
-            DataSource dataSource = new DataSource();
-            dataSource.AddDetails(user);
-            return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Validating if user is already present in database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public bool IsValidRegister(User user)
+        {
+            User validRegister = DataSource.dataBase.Find(userObj=>userObj.username.Equals(user.username) && userObj.phoneNumber.Equals(user.phoneNumber, StringComparison.Ordinal) && userObj.email.Equals(user.email, StringComparison.Ordinal));
+            if( validRegister != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

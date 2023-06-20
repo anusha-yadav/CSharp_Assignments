@@ -3,45 +3,42 @@
  */
 using ConsoleApplication;
 using BusinessModels;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// Presentation layer of application
 /// </summary>
-class Program
+class Program 
 {
-    /// <summary>
-    /// enum Option set for login and sigup cases
-    /// </summary>
-    public enum Option
-    {
-        LOGIN = 1 , SIGNUP
-    }
-
     public static void Main()
     { 
-        LogMessages log = new LogMessages();
-        int flag = 0;
+        Authentication auth = new Authentication();
         while (true)
         {
             Console.WriteLine(Literals.input);
             Console.WriteLine(Literals.pattern);
-            int choice = int.Parse(Console.ReadLine());
-            switch (choice)
+
+            string choice = Console.ReadLine();
+
+            if (!Regex.IsMatch(choice, "[1-2]"))
             {
-                case (int)Option.LOGIN:
-                    if (flag == 0)
-                    {
-                    Console.WriteLine(Literals.noDatabase);
+                Console.WriteLine(Literals.invalidOption);
+            }
+            else
+            {
+                int option = Int32.Parse(choice);
+                switch (option)
+                {
+                    case (int)Option.LOGIN:
+                        auth.Login();
                         break;
-                    }
-                    log.Login();
-                    break;
-                case (int)Option.SIGNUP:
-                    flag = log.Register();
-                    break;
-                default:
-                    Console.WriteLine(Literals.invalidOption);
-                    break;
+                    case (int)Option.REGISTER:
+                        auth.Register();
+                        break;
+                    default:
+                        Console.WriteLine(Literals.invalidOption);
+                        break;
+                }
             }
         }
     }

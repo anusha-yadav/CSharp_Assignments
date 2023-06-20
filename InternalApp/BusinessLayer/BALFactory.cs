@@ -9,7 +9,7 @@
         /// Returning object for IBALAuthentication interface
         /// </summary>
         /// <returns></returns>
-        public IBALAuthentication GetBALAuthenticationObj()
+        public IBALAuthentication GetBALAuthObj()
         {
             return new BALAuthentication();
         }
@@ -18,7 +18,7 @@
         /// Returning object for IBALValidation interface
         /// </summary>
         /// <returns></returns>
-        public IBALValidation GetBALValidationObj()
+        public IBALValidation GetBALValidObj()
         {
             return new BALValidation();
         }

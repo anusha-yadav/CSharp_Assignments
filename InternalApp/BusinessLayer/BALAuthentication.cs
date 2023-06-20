@@ -6,7 +6,7 @@ namespace BusinessLayer
     /// <summary>
     /// BAL Authentication class which inherits the IBALAuthentication interface
     /// </summary>
-    public class BALAuthentication : IBALAuthentication
+    internal class BALAuthentication : IBALAuthentication
     {
         /// <summary>
         /// Authenticating login user
@@ -15,11 +15,12 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsLogin(User user)
         {
-            DataFactory dataFactory = new();
-            IDataAuthentication dataAuthentication = dataFactory.GetDataObj();
+            DALFactory dataFactory = new();
+            IDataAuthentication dataAuth = dataFactory.GetDataAuthObj();
+
             if (user.username != null && user.password != null)
             {
-                return dataAuthentication.IsValidLogin(user);
+                return dataAuth.IsValidLogin(user);
             }
             return false;
         }
@@ -31,8 +32,9 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsRegistered(User user)
         {
-            DataFactory dataFactory = new DataFactory();
-            IDataAuthentication dataAuth = dataFactory.GetDataObj();
+            DALFactory dataFactory = new DALFactory();
+            IDataAuthentication dataAuth = dataFactory.GetDataAuthObj();
+
             if (user!=null)
             {
                 return dataAuth.IsRegistered(user);
@@ -45,13 +47,14 @@ namespace BusinessLayer
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool IsCorrectPasswd(User user)
+        public bool IsValidPasswd(User user)
         {
-            DataFactory dataFactory = new DataFactory();
-            IDataAuthentication dataAuthentication = dataFactory.GetDataObj();
+            DALFactory dataFactory = new DALFactory();
+            IDataAuthentication dataAuth = dataFactory.GetDataAuthObj();
+
             if(user.confirm_passwd == user.new_passwd)
             {
-                dataAuthentication.CorrectPasswd(user);
+                dataAuth.ValidPasswd(user);
                 return true;
             }
             return false;

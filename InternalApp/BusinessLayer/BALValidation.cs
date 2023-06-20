@@ -1,11 +1,12 @@
-﻿using System.Text.RegularExpressions;
+﻿using BusinessModels;
+using System.Text.RegularExpressions;
 
 namespace BusinessLayer
 {
     /// <summary>
     /// Validation class for BAL
     /// </summary>
-    public class BALValidation : IBALValidation
+    internal class BALValidation : IBALValidation
     {
         /// <summary>
         /// Validating username 
@@ -14,12 +15,13 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsValidUsername(string username)
         {
-            if(username.Length <=6 || !Regex.IsMatch(username,"[a-z]"))
+            if(Regex.IsMatch(username,@"^(?=.*[A-Z])(?=.*?[a-z]).{6,8}"))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
+
         /// <summary>
         /// Validating password
         /// </summary>
@@ -27,11 +29,11 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsValidPasswd(string passwd)
         {
-            if (passwd.Length <= 8 || !Regex.IsMatch(passwd, "[A-Z]"))
+            if (Regex.IsMatch(passwd,@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}"))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -41,11 +43,7 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsValidPhoneNo(string phoneNumber)
         {
-            if (phoneNumber.Length < 10 && !Regex.IsMatch(phoneNumber, "[0-9]"))
-            {
-                return false;
-            }
-            else if (phoneNumber.Length == 10 && Regex.IsMatch(phoneNumber, "[0-9]"))
+            if(Regex.IsMatch(phoneNumber,"[0-9]{10}"))
             {
                 return true;
             }

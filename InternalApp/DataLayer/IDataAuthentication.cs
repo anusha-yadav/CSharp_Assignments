@@ -8,7 +8,7 @@ namespace DataLayer
     public interface IDataAuthentication
     {
         public bool IsValidLogin(User user);
-        public void CorrectPasswd(User user);
+        public void ValidPasswd(User user);
         public bool IsRegistered(User user);
     }
 }
