@@ -34,7 +34,7 @@ namespace ConsoleApp
                 string strAdjustDecimal = add.AdjustDecimalPoint(firstTuple, secondTuple.Item2, secondTuple.Item1.Length);
                 string strFloatToBinary = add.AddBinary(strAdjustDecimal, secondTuple.Item1);
                 Tuple<string, float> outputResult = add.BinaryToFloat(strFloatToBinary, secondTuple.Item2);
-                Console.WriteLine("Resultant of binary addition in float is " + outputResult.Item2 + " and in binary is " + outputResult.Item1);
+                Console.WriteLine("Resultant of binary addition in float is  " + outputResult.Item2 + " and in binary is " + outputResult.Item1);
             }
             else
             {
