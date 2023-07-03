@@ -52,11 +52,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\ConsoleApplication\\ConsoleApplication.csproj",
+      "projectUniqueName": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\ConsoleApplication\\ConsoleApplication.csproj",
       "projectName": "ConsoleApplication",
-      "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\ConsoleApplication\\ConsoleApplication.csproj",
+      "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\ConsoleApplication\\ConsoleApplication.csproj",
       "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\ConsoleApplication\\obj\\",
+      "outputPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\ConsoleApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -78,11 +78,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj"
+            "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessLayer\\BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessLayer\\BusinessLayer.csproj"
             },
-            "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
-              "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj"
+            "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
+              "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj"
             }
           }
         }

@@ -1,15 +1,15 @@
 ﻿namespace DataLayer
 {
     /// <summary>
-    /// DataFactory class which implements factory pattern
+    /// DataFactory class
     /// </summary>
-    public class DALFactory
+    public class DataFactory
     {
         /// <summary>
-        /// Creating object for DataAuthentication classes
+        /// Creating objects for DataAuthentication classes
         /// </summary>
         /// <returns></returns>
-        public IDataAuthentication GetDataAuthObj()
+        public IDataAuthentication GetDataObj()
         {
             return new DataAuthentication();    
         }

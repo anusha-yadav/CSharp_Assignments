@@ -1,4 +1,4 @@
-﻿using BusinessModels;
+﻿using BM = BusinessModels.User;
 
 namespace DataLayer
 {
@@ -12,58 +12,65 @@ namespace DataLayer
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool IsValidLogin(User user)
+        public bool IsValidLogin(BM user)
         {
-            User validUser = DataSource.dataBase.Find(userObj => userObj.username.Equals(user.username) && userObj.password.Equals(user.password));
-            if(validUser == null)
+            for(int i = 0; i < DataSource.dataBase.Count; i++)
             {
-                return false;
+                if (DataSource.dataBase[i].username == user.username && DataSource.dataBase[i].password==user.password)
+                {
+                    return true;
+                }
             }
-            return true;
+            return false;
         }
 
         /// <summary>
         /// Validating new password
         /// </summary>
         /// <param name="user"></param>
-        public void ValidPasswd(User user) 
+        public void CorrectPasswd(BM user) 
         { 
-            User validPasswd = DataSource.dataBase.Find(userObj => userObj.username.Equals(user.username, StringComparison.Ordinal));
-            if( validPasswd != null)
+            for(int i=0;i<DataSource.dataBase.Count;i++)
             {
-                validPasswd.password = user.new_passwd;
+                if (DataSource.dataBase[i].username == user.username)
+                {
+                    DataSource.dataBase[i].password = user.new_passwd;
+                }
             }
         }
 
         /// <summary>
-        /// Adding details to database
+        /// Validating if user is present already in the database
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool IsRegistered(User user)
+        public bool IsRegistered(BM user)
         {
-            if(!IsValidRegister(user))
+            for (int i = 0; i < DataSource.dataBase.Count; i++)
             {
-                DataSource dataSource = new DataSource();
-                dataSource.AddDetails(user);
-                return true;
+                if (DataSource.dataBase[i].username == user.username && DataSource.dataBase[i].phoneNumber == user.phoneNumber && DataSource.dataBase[i].email == user.email)
+                {
+                    return false;
+                }
             }
-            return false;
+            DataSource dataSource = new DataSource();
+            dataSource.AddDetails(ConvertObj(user));
+            return true;
         }
 
         /// <summary>
-        /// Validating if user is already present in database
+        /// Converting business model user object to data model user object
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool IsValidRegister(User user)
+        public DataModels.User ConvertObj(BM user)
         {
-            User validRegister = DataSource.dataBase.Find(userObj=>userObj.username.Equals(user.username) && userObj.phoneNumber.Equals(user.phoneNumber, StringComparison.Ordinal) && userObj.email.Equals(user.email, StringComparison.Ordinal));
-            if( validRegister != null)
-            {
-                return true;
-            }
-            return false;
+            DataModels.User obj = new DataModels.User();
+            obj.username = user.username;
+            obj.password = user.password;
+            obj.phoneNumber = user.phoneNumber;
+            obj.email = user.email;
+            return obj;
         }
     }
 }

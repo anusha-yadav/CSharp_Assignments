@@ -1,4 +1,4 @@
-﻿using BusinessModels;
+﻿using DataModels;
 
 namespace DataLayer
 { 
@@ -7,7 +7,9 @@ namespace DataLayer
     /// </summary>
     internal class DataSource 
     {
-        //Dtabase for application 
+        /// <summary>
+        /// Database for application
+        /// </summary>
         public static List<User> dataBase = new List<User>();
 
         /// <summary>
@@ -17,17 +19,6 @@ namespace DataLayer
         public void AddDetails(User user)
         {
             dataBase.Add(user);
-        }
-
-        /// <summary>
-        /// GetDetails fetches the details 
-        /// </summary>
-        public void GetDetails()
-        {
-            for (int i = 0; i < dataBase.Count; i++)
-            {
-                Literals.DisplayObjDetails(dataBase[i]);
-            }
         }
     }
 }

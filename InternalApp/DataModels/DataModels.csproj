@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessModels\BusinessModels.csproj" />
-    <ProjectReference Include="..\DataModels\DataModels.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -3,42 +3,40 @@
  */
 using ConsoleApplication;
 using BusinessModels;
-using System.Text.RegularExpressions;
 
 /// <summary>
 /// Presentation layer of application
 /// </summary>
-class Program 
+class Program
 {
+    /// <summary>
+    /// Main method of the class
+    /// </summary>
     public static void Main()
     { 
-        Authentication auth = new Authentication();
+        LogMessages log = new LogMessages();
+        int flag = 0;
         while (true)
         {
-            Console.WriteLine(Literals.input);
-            Console.WriteLine(Literals.pattern);
-
+            Literals.DisplayWriteLine((Literals.input));
+            Literals.DisplayWriteLine((Literals.pattern));
             string choice = Console.ReadLine();
-
-            if (!Regex.IsMatch(choice, "[1-2]"))
+            switch (choice)
             {
-                Console.WriteLine(Literals.invalidOption);
-            }
-            else
-            {
-                int option = Int32.Parse(choice);
-                switch (option)
-                {
-                    case (int)Option.LOGIN:
-                        auth.Login();
+                case "1":
+                    if (flag == 0)
+                    {
+                    Literals.DisplayWriteLine((Literals.noDB));
                         break;
-                    case (int)Option.REGISTER:
-                        auth.Register();
-                        break;
-                    default:
-                        Console.WriteLine(Literals.invalidOption);
-                        break;
-                }
+                    }
+                    log.Login();
+                    break;
+                case "2":
+                    flag = log.Register();
+                    break;
+                default:
+                    Literals.DisplayWriteLine((Literals.invalidOption));
+                    break;
             }
         }
     }

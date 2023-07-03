@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
+      "projectUniqueName": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj",
       "projectName": "BusinessModels",
-      "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
+      "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj",
       "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\obj\\",
+      "outputPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

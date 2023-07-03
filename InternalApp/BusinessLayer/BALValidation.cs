@@ -1,27 +1,12 @@
-﻿using BusinessModels;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace BusinessLayer
 {
     /// <summary>
     /// Validation class for BAL
     /// </summary>
-    internal class BALValidation : IBALValidation
+    public class BALValidation
     {
-        /// <summary>
-        /// Validating username 
-        /// </summary>
-        /// <param name="username"></param>
-        /// <returns></returns>
-        public bool IsValidUsername(string username)
-        {
-            if(Regex.IsMatch(username,@"^(?=.*[A-Z])(?=.*?[a-z]).{6,8}"))
-            {
-                return true;
-            }
-            return false;
-        }
-
         /// <summary>
         /// Validating password
         /// </summary>
@@ -29,11 +14,11 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsValidPasswd(string passwd)
         {
-            if (Regex.IsMatch(passwd,@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}"))
+            if (passwd.Length <= 8 || !Regex.IsMatch(passwd, "[A-Z]"))
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -43,7 +28,11 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsValidPhoneNo(string phoneNumber)
         {
-            if(Regex.IsMatch(phoneNumber,"[0-9]{10}"))
+            if (phoneNumber.Length < 10 && !Regex.IsMatch(phoneNumber, "[0-9]"))
+            {
+                return false;
+            }
+            else if (phoneNumber.Length == 10 && Regex.IsMatch(phoneNumber, "[0-9]"))
             {
                 return true;
             }
@@ -57,7 +46,7 @@ namespace BusinessLayer
         /// <returns></returns>
         public bool IsValidEmail(string email)
         {
-            if (email.EndsWith(".com") == false )
+            if (email.EndsWith("@gmail.com") == false)
             {
                 return false;
             }

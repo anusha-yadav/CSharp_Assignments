@@ -22,10 +22,16 @@
       },
       "DataLayer/1.0.0": {
         "dependencies": {
-          "BusinessModels": "1.0.0"
+          "BusinessModels": "1.0.0",
+          "DataModels": "1.0.0"
         },
         "runtime": {
           "DataLayer.dll": {}
+        }
+      },
+      "DataModels/1.0.0": {
+        "runtime": {
+          "DataModels.dll": {}
         }
       }
     }
@@ -42,6 +48,11 @@
       "sha512": ""
     },
     "DataLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
