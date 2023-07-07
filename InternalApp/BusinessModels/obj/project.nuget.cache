@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Ufam5DwS76SoxaG+So3Eqzp+jjM1Hf+p7aAhx2q4RqkMj21Fcunubzxf3BcPeIq+exBJQ3iTTyLRd+W8SgfQxw==",
+  "dgSpecHash": "BmDE8yI63q+X0+C0VNRuRg5GQ5Ubh2VnvHcih1Oyxre48lnt18wHe2C6QE5yvvNl49dX7/jwgWZcptGXAMCvGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Anusha Yadav\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Anusha Yadav\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataLayer\\DataLayer.csproj": {}
+    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
+    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj",
+        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
         "projectName": "BusinessModels",
-        "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj",
+        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
         "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\obj\\",
+        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -64,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataLayer\\DataLayer.csproj": {
+    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataLayer\\DataLayer.csproj",
+        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
         "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataLayer\\obj\\",
+        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -93,11 +99,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
-                "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\BusinessModels\\BusinessModels.csproj"
+              "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
+                "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj"
               },
-              "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataModels\\DataModels.csproj": {
-                "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataModels\\DataModels.csproj"
+              "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj": {
+                "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj"
               }
             }
           }
@@ -111,6 +117,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -131,14 +147,14 @@
         }
       }
     },
-    "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataModels\\DataModels.csproj": {
+    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataModels\\DataModels.csproj",
+        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj",
         "projectName": "DataModels",
-        "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataModels\\DataModels.csproj",
+        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj",
         "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\source\\repos\\InternalApp\\DataModels\\obj\\",
+        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -171,6 +187,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
