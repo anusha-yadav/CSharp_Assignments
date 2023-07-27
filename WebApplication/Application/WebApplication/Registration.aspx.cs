@@ -4,6 +4,9 @@ using BusinessLayer;
 
 namespace WebApplication
 {
+    /// <summary>
+    /// Partial Class for Registration
+    /// </summary>
     public partial class Registration : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -11,21 +14,11 @@ namespace WebApplication
 
         }
 
-        public static string EncodePasswordToBase64(string password)
-        {
-            try
-            {
-                byte[] encData_byte = new byte[password.Length];
-                encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
-                string encodedData = Convert.ToBase64String(encData_byte);
-                return encodedData;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error in base64Encode" + ex.Message);
-            }
-        }
-
+        /// <summary>
+        /// RegisterUser Button Method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void RegisterUser(object sender, EventArgs e)
         {
             User user = new User();
@@ -34,7 +27,7 @@ namespace WebApplication
             user.email = txtEmail.Text;
             user.mobile = txtmobile.Text;
             BALFactory factory = new BALFactory();
-            IBALAuthentication authentication = new BALAuthentication();
+            IBALAuthentication authentication = factory.GetBALAuthenticationObj();
             int flag = authentication.RegisterUser(user);
             string message = string.Empty;
             switch (flag)
@@ -52,6 +45,11 @@ namespace WebApplication
             ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
         }
 
+        /// <summary>
+        /// LoginUser Button Method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void LoginUser(object sender, EventArgs e)
         {
             Response.Redirect("LoginPage.aspx");

@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataLayer
+﻿namespace DataLayer
 {
+    /// <summary>
+    /// DAL Factory Class 
+    /// </summary>
     public class DALFactory
     {
+        /// <summary>
+        /// Creating Objects for DAL Authentication
+        /// </summary>
+        /// <returns></returns>
         public IDALAuthentication GetDALObject()
         {
             return new DALAuthentication();

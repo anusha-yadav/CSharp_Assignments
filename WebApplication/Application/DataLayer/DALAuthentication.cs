@@ -6,23 +6,17 @@ using BusinessModels;
 
 namespace DataLayer
 {
-    public class DALAuthentication : IDALAuthentication
+    /// <summary>
+    /// DAL Authentication Class
+    /// </summary>
+    internal class DALAuthentication : IDALAuthentication
     {
-        public string EncodePasswordToBase64(string password)
-        {
-            try
-            {
-                byte[] encData_byte = new byte[password.Length];
-                encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
-                string encodedData = Convert.ToBase64String(encData_byte);
-                return encodedData;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(Literals.encodeMsg + ex.Message);
-            }
-        }
-
+        /// <summary>
+        /// Checking if user exists in the database
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool IsUserExists(string username)
         {
             string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
@@ -55,6 +49,12 @@ namespace DataLayer
             }
         }
 
+        /// <summary>
+        /// Authenticating ForgotPassword Method
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public int ForgotPassword(User user)
         {
             string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
@@ -67,7 +67,7 @@ namespace DataLayer
                     if (IsUserExists(user.username))
                     {
                         SqlCommand command = new SqlCommand(Literals.updatePasswdQuery, conn);
-                        command.Parameters.AddWithValue("@newpasswd", EncodePasswordToBase64(user.new_passwd));
+                        command.Parameters.AddWithValue("@newpasswd", user.new_passwd);
                         command.Parameters.AddWithValue("@username", user.username);
                         flag = command.ExecuteNonQuery();
                     }
@@ -84,6 +84,12 @@ namespace DataLayer
             }
         }
 
+        /// <summary>
+        /// Authenticating User for registration
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public int RegisterUser(User user)
         {
             int flag = 0;
@@ -99,7 +105,7 @@ namespace DataLayer
                         {
                             cmd.CommandType = System.Data.CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("@Username", user.username);
-                            cmd.Parameters.AddWithValue("@Password", EncodePasswordToBase64(user.password));
+                            cmd.Parameters.AddWithValue("@Password", user.password);
                             cmd.Parameters.AddWithValue("@Email", user.email);
                             cmd.Parameters.AddWithValue("@Mobile", user.mobile);
                             cmd.Connection = con;
@@ -120,6 +126,12 @@ namespace DataLayer
             }
         }
 
+        /// <summary>
+        /// Authenticating login for user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public bool LoginUser(User user)
         {
             string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
@@ -131,7 +143,7 @@ namespace DataLayer
                     sqlcon.Open();
                     SqlCommand cmd = new SqlCommand(query, sqlcon);
                     cmd.Parameters.AddWithValue("username", user.username);
-                    cmd.Parameters.AddWithValue("password", EncodePasswordToBase64(user.password));
+                    cmd.Parameters.AddWithValue("password", user.password);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);

@@ -9,9 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h2 style="font:bold;text-align:center">User Registration Form</h2>
-            <table cellpadding="0" cellspacing="0" style="margin-left: auto; margin-right: auto;border-collapse: separate;
-        border-spacing: 0 15px;align-items:center;padding:15px;border-spacing:20px">
+            <h2 style="font: bold; text-align: center">User Registration Form</h2>
+            <table cellpadding="0" cellspacing="0" style="margin-left: auto; margin-right: auto; border-collapse: separate; border-spacing: 0 15px; align-items: center; padding: 15px; border-spacing: 20px">
                 <tr>
                     <td>
                         <asp:Label ID="Label5" runat="server" Text="Username  "></asp:Label>

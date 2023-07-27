@@ -4,6 +4,9 @@ using BusinessModels;
 
 namespace WebApplication
 {
+    /// <summary>
+    /// ForgotPassword Partial Class for WebForm
+    /// </summary>
     public partial class ForgotPassword : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -11,6 +14,11 @@ namespace WebApplication
 
         }
 
+        /// <summary>
+        /// ForgotPassword_Button Method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ForgotPassword_Button(object sender, EventArgs e)
         {
             User user = new User();
@@ -29,6 +37,11 @@ namespace WebApplication
             }
         }
 
+        /// <summary>
+        /// LoginUser Button Method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void LoginUser(object sender, EventArgs e)
         {
             Response.Redirect("LoginPage.aspx");

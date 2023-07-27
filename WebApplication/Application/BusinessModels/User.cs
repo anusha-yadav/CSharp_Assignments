@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BusinessModels
+﻿namespace BusinessModels
 {
+    /// <summary>
+    /// User class which has properties
+    /// </summary>
     public class User
     {
         public string name { get; set; }

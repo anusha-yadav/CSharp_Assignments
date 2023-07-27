@@ -54,6 +54,7 @@
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{baf3f8b8-f9d1-49ba-9b7b-8cec48e56b0e}</Project>
       <Name>DataLayer</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
