@@ -10,3 +10,9 @@ C:\Users\Anusha Yadav\CSharp_Assignments\WebApplication\Application\BusinessMode
 C:\Users\Anusha Yadav\CSharp_Assignments\WebApplication\Application\BusinessModels\obj\Debug\BusinessModels.csproj.CoreCompileInputs.cache
 C:\Users\Anusha Yadav\CSharp_Assignments\WebApplication\Application\BusinessModels\obj\Debug\BusinessModels.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\WebApplication\Application\BusinessModels\obj\Debug\BusinessModels.pdb
+C:\Users\Anusha Yadav\CSharp_Assignments\Application\BusinessModels\bin\Debug\BusinessModels.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\Application\BusinessModels\bin\Debug\BusinessModels.pdb
+C:\Users\Anusha Yadav\CSharp_Assignments\Application\BusinessModels\obj\Debug\BusinessModels.csproj.AssemblyReference.cache
+C:\Users\Anusha Yadav\CSharp_Assignments\Application\BusinessModels\obj\Debug\BusinessModels.csproj.CoreCompileInputs.cache
+C:\Users\Anusha Yadav\CSharp_Assignments\Application\BusinessModels\obj\Debug\BusinessModels.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\Application\BusinessModels\obj\Debug\BusinessModels.pdb

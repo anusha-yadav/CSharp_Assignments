@@ -17,8 +17,7 @@
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtUsername" runat="server" />
-                    </td>
-                    <td>
+
                         <asp:RequiredFieldValidator ErrorMessage="Required" ForeColor="Red" ControlToValidate="txtUsername"
                             runat="server" />
                     </td>
@@ -29,8 +28,7 @@
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
-                    </td>
-                    <td>
+
                         <asp:RequiredFieldValidator ErrorMessage="Required" ForeColor="Red" ControlToValidate="txtPassword"
                             runat="server" />
                     </td>
@@ -41,8 +39,7 @@
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" />
-                    </td>
-                    <td>
+
                         <asp:CompareValidator ErrorMessage="Passwords do not match." ForeColor="Red" ControlToCompare="txtPassword"
                             ControlToValidate="txtConfirmPassword" runat="server" />
                     </td>
@@ -53,8 +50,7 @@
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtEmail" runat="server" />
-                    </td>
-                    <td>
+
                         <asp:RequiredFieldValidator ErrorMessage="Required" Display="Dynamic" ForeColor="Red"
                             ControlToValidate="txtEmail" runat="server" />
                         <asp:RegularExpressionValidator runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
@@ -67,6 +63,9 @@
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtmobile" runat="server" />
+                        <asp:RegularExpressionValidator ID="revMobNo" runat="server" ErrorMessage="Invalid Mobile Number."
+                            ValidationExpression="^([0-9]{10})$" ControlToValidate="txtMobile" ValidationGroup="Validate"
+                            ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>

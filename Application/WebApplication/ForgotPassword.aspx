@@ -17,8 +17,8 @@
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtuname" runat="server"></asp:TextBox>
-                        <!--<asp:RequiredFieldValidator ID="reqName" ControlToValidate="txtuname" runat="server" ErrorMessage="Please enter valid username"
-                            ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>-->
+                        <asp:RequiredFieldValidator ID="reqName" ControlToValidate="txtuname" runat="server" ErrorMessage="Please enter valid username"
+                            ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr></tr>
@@ -30,8 +30,8 @@
                     <td colspan="2">
                         <asp:TextBox ID="txtnewpasswd" runat="server" TextMode="Password"></asp:TextBox>
 
-                        <!--<asp:RequiredFieldValidator ID="reqpasswd" ControlToValidate="txtnewpasswd" runat="server" ErrorMessage="Please enter new password"
-                            ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>-->
+                        <asp:RequiredFieldValidator ID="reqpasswd" ControlToValidate="txtnewpasswd" runat="server" ErrorMessage="Please enter new password"
+                            ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr></tr>
@@ -42,13 +42,11 @@
                     </td>
                     <td colspan="2">
                         <asp:TextBox ID="txtconfirmpasswd" runat="server" TextMode="Password"></asp:TextBox>
-                        <!--<asp:RequiredFieldValidator ID="reqconfirmpasswd" ControlToValidate="txtconfirmpasswd" runat="server" ErrorMessage="Please enter confirm password"
-                            ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>-->
-                    </td>
-                    <td>
-                            <!--<asp:CompareValidator ID="Compare" runat="server"
+                        <asp:RequiredFieldValidator ID="reqconfirmpasswd" ControlToValidate="txtconfirmpasswd" runat="server" ErrorMessage="Please enter confirm password"
+                            ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="Compare" runat="server"
                             ControlToCompare="txtnewpasswd" ControlToValidate="txtconfirmpasswd"
-                            ErrorMessage="Password Mismatch" ForeColor="Red" Display="Dynamic"></asp:CompareValidator>-->
+                            ErrorMessage="Password Mismatch" ForeColor="Red" Display="Dynamic"></asp:CompareValidator>
                     </td>
                 </tr>
                 <tr></tr>
