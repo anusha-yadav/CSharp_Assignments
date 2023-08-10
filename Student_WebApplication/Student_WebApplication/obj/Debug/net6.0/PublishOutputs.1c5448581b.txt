@@ -1,0 +1,7 @@
+C:\Users\Anusha Yadav\source\repos\Student_WebApplication\Student_WebApplication\obj\Debug\net6.0\PubTmp\Out\Student_WebApplication.exe
+C:\Users\Anusha Yadav\source\repos\Student_WebApplication\Student_WebApplication\obj\Debug\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\Anusha Yadav\source\repos\Student_WebApplication\Student_WebApplication\obj\Debug\net6.0\PubTmp\Out\appsettings.json
+C:\Users\Anusha Yadav\source\repos\Student_WebApplication\Student_WebApplication\obj\Debug\net6.0\PubTmp\Out\Student_WebApplication.dll
+C:\Users\Anusha Yadav\source\repos\Student_WebApplication\Student_WebApplication\obj\Debug\net6.0\PubTmp\Out\Student_WebApplication.deps.json
+C:\Users\Anusha Yadav\source\repos\Student_WebApplication\Student_WebApplication\obj\Debug\net6.0\PubTmp\Out\Student_WebApplication.runtimeconfig.json
+C:\Users\Anusha Yadav\source\repos\Student_WebApplication\Student_WebApplication\obj\Debug\net6.0\PubTmp\Out\Student_WebApplication.pdb
