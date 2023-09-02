@@ -1,0 +1,34 @@
+﻿@model Web_App.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6" style="padding-top:50px;">
+                <button type="submit" class="btn btn-success btn-lg col-12"><i class="fa-regular fa-floppy-disk fs-4"></i> Save</button>
+            </div>
+        </form>
+        <div class="col-md-12 d-flex justify-content-lg-start mt-3">
+            <a href="@Url.Action("Index", "Dashboard")" class="btn btn-danger btn-sm fs-4"><i class="fa-regular fa-hand-back-point-left"></i> Back to the list</a>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
