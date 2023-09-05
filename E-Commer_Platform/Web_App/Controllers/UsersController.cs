@@ -174,17 +174,24 @@ namespace Web_App.Controllers
         public async Task<IActionResult>Login(User user)
         {
             
-                var cust =  (from m in _context.Users
-                            where (m.username == user.username && m.password == user.password)
-                            select m).SingleOrDefault();
+                var cust =  (from userObj in _context.Users
+                            where (userObj.username == user.username && userObj.password == user.password)
+                            select userObj).SingleOrDefault();
 
                 if (cust != null)
                 {
-                    //TempShpData.UserID = cust.Id;
+                //TempShpData.UserID = cust.Id;
+                    TempData["username"] = cust.username;
                     HttpContext.Session.SetString("Username", cust.username);
                     return RedirectToAction("Index", "Home");
                 }
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            TempData.Remove("username");
+            return RedirectToAction("Index","Home");
         }
     }
 }

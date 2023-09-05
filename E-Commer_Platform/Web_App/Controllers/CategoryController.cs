@@ -44,7 +44,7 @@ namespace Web_App.Controllers
             return View();
         }
 
-        public async IActionResult Delete(int? CategoryID) 
+        /*public async IActionResult Delete(int? CategoryID) 
         { 
             if(CategoryID == null || _context.)
             {
@@ -52,7 +52,7 @@ namespace Web_App.Controllers
             }
 
             var category = await _context.Categories.
-        }
+        }*/
 
     }
 }

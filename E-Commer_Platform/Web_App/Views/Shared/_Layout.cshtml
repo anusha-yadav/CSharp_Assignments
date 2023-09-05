@@ -3,16 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Web_App</title>
+    <title>@ViewData["Title"] - E-Commerce Site</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Web_App.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Web_App</a>
+                <a class="navbar-brand text-white text-dark" asp-area="" asp-controller="Home" asp-action="Index">Web_App</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,13 +23,85 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                    </ul>
+                    <div class="navbar-left" style="margin-top:8px;margin-left:28px;">
+                        @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                            {
+                                <ul class="nav navbar-nav">
+                                <li>@Html.TextBox("id", ViewBag.CurrentFilter as string)</li>
+                                <li><input type="submit" value="Search" /></li>
+                                </ul>
+                            }
+                    </div>
+                    <ul class="navbar-nav m-lg-auto">
+                    @if (TempData.ContainsKey("username"))
+                    {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                           <span class="nav-link text-white text-dark">Hello, @TempData["username"]!</span>
                         </li>
+                        <li class="nav-item">
+                           <a class="nav-link text-white text-dark " asp-area="" asp-controller="Users" asp-action="Logout">Log out</a>
+                        </li>
+                    }
+                    else
+                    {
+                       <li class="nav-item">
+                          <a class="nav-link text-white text-dark " asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link text-white text-dark " asp-area="" asp-controller="Home" asp-action="Register">Sign up</a>
+                       </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link text-white text-dark" href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                           Cart
+                        </a>
+                    </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link dropdown" href="#">
+                            <i class="fas fa-shopping-cart"></i>
+                            Grocery
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button">
+                            <i class="fas fa-laptop"></i>
+                            Electronics
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button">
+                            <i class="fas fa-tshirt"></i>
+                            Fashion
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button">
+                            <i class="fas fa-plane"></i>
+                            Travel
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button">
+                            <i class="fas fa-cubes"></i>
+                            Toys
+                        </a>
+                    </li>
+                </ul>
+             </div>
+        </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fzKNF1KmqonakiNQwDt5GKWOcJmO1P2xhBsNBbovgWk6V4e/DUIUkEwSDhkDKKT/iXz6w0FsK//ukf18UHg7gg==",
+  "dgSpecHash": "21lqnGGNN4P89ICqn8v5H49sh8FxhPcmrJjOC+UlyGlAXgj6VJKPQJQ5NCFVtEi92+0kkjtf1Ic3+hLb+91oDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\Web_App.csproj",
+  "projectFilePath": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Anusha Yadav\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Anusha Yadav\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

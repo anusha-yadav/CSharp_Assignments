@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Web_App.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Web_App.bundle.scp.css"
+      "Id": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ECommerceWebApplication.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ECommerceWebApplication.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\wwwroot\\css\\site.css",
@@ -245,20 +245,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Web_App.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ECommerceWebApplication.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Web_App.props",
-      "PackagePath": "build\\Web_App.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.ECommerceWebApplication.props",
+      "PackagePath": "build\\ECommerceWebApplication.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Web_App.props",
-      "PackagePath": "buildMultiTargeting\\Web_App.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.ECommerceWebApplication.props",
+      "PackagePath": "buildMultiTargeting\\ECommerceWebApplication.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Web_App.props",
-      "PackagePath": "buildTransitive\\Web_App.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.ECommerceWebApplication.props",
+      "PackagePath": "buildTransitive\\ECommerceWebApplication.props"
     }
   ],
   "ElementsToRemove": []

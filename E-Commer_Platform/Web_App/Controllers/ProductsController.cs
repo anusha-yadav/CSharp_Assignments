@@ -51,6 +51,7 @@ namespace Web_App.Controllers
         {
             ViewData["CategoryID"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
             ViewData["SubCategoryID"] = new SelectList(_context.SubCategories, "SubCategoryID", "SubCategoryID");
+            ViewData["SubCaregoryName"] = new SelectList(_context.SubCategories, "Name", "Name");
             return View();
         }
 
@@ -61,7 +62,7 @@ namespace Web_App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductID,Name,Quantity,Price,PicturePath,Description,CategoryID,SubCategoryID")] Product product)
         {
-            if (ModelState.IsValid)
+            if (product!=null)
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
@@ -161,14 +162,20 @@ namespace Web_App.Controllers
             {
                 _context.Products.Remove(product);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-          return (_context.Products?.Any(e => e.ProductID == id)).GetValueOrDefault();
+            return (_context.Products?.Any(e => e.ProductID == id)).GetValueOrDefault();
+        }
+
+        public IActionResult RenderSubCategory()
+        {
+            ViewData["SubCategoryName"] = new SelectList(_context.SubCategories, "Name", "Name");
+            return PartialView("_SubCategory");
         }
     }
 }

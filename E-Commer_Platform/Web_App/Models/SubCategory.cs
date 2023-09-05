@@ -16,7 +16,6 @@ namespace Web_App.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<bool> isActive { get; set; }
-        [ForeignKey(nameof(CategoryID))]
         public virtual Category Category { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
