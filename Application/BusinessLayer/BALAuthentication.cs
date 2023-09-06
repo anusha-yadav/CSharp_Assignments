@@ -31,6 +31,34 @@ namespace BusinessLayer
         }
 
         /// <summary>
+        /// Converting to base64 string method
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static byte[] DecodeUrlBase64(string s)
+        {
+            s = s.Replace('-', '+').Replace('_', '/').PadRight(4 * ((s.Length + 3) / 4), '=');
+            return Convert.FromBase64String(s);
+        }
+
+        /// <summary>
+        /// Decryption method
+        /// </summary>
+        /// <param name="encodedData"></param>
+        /// <returns></returns>
+        public string DecodeFrom64(string encodedData)
+        {
+            System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
+            System.Text.Decoder utf8Decode = encoder.GetDecoder();
+            byte[] todecode_byte = DecodeUrlBase64(encodedData);
+            int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
+            char[] decoded_char = new char[charCount];
+            utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+            string result = new String(decoded_char);
+            return result;
+        }
+
+        /// <summary>
         /// Authenticating forgot password method
         /// </summary>
         /// <param name="user"></param>
@@ -68,7 +96,7 @@ namespace BusinessLayer
             DALFactory dALFactory = new DALFactory();
             IDALAuthentication authentication = dALFactory.GetDALObject();
             User userObj = user;
-            userObj.password = EncodePasswordToBase64(user.password);
+            userObj.password = user.password;
             return authentication.LoginUser(userObj);
         }
     }

@@ -12,6 +12,6 @@
         public static string userExistsQuery = "Select username from Info_DB where username = @username";
         public static string updatePasswdQuery = "UPDATE Info_DB SET Password = @newpasswd WHERE Username = @username";
         public static string databaseError = "database authentication problem ";
-        public static string loginUserQuery = "select * from Info_DB where Username = @username and Password = @password";
+        public static string loginUserQuery = "select Password from Info_DB where Username = @username and Password = @password";
     } 
 }

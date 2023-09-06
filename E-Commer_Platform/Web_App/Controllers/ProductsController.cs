@@ -13,10 +13,12 @@ namespace Web_App.Controllers
     public class ProductsController : Controller
     {
         private readonly ECommerceContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public ProductsController(ECommerceContext context)
+        public ProductsController(ECommerceContext context,IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _environment = hostEnvironment;
         }
 
         // GET: Products
@@ -60,11 +62,29 @@ namespace Web_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductID,Name,Quantity,Price,PicturePath,Description,CategoryID,SubCategoryID")] Product product)
+        public async Task<IActionResult> Create(Product product)
         {
-            if (product!=null)
+            string uniqueFileName = null;
+            if (product.ImageFile!=null)
             {
-                _context.Add(product);
+                string ImageFile = Path.Combine(_environment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + product.ImageFile.FileName;
+                string filepath = Path.Combine(ImageFile, uniqueFileName);
+
+
+                /*string wwwRoothPath = _environment.WebRootPath;
+                string filename = Path.GetFileNameWithoutExtension(product.ImageFile.FileName);
+                string extension = Path.GetExtension(product.ImageFile.FileName);
+                product.PicturePath = filename + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRoothPath + "/images/", filename);*/
+                using(var fileStream = new FileStream(filepath, FileMode.Create))
+                {
+                    await product.ImageFile.CopyToAsync(fileStream);
+                }
+
+                //product.PicturePath = "~/wwwroot/images";
+                product.PicturePath = uniqueFileName;
+                _context.Products.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

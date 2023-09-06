@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj": {}
+    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj": {
+    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj",
         "projectName": "ECommerceWebApplication",
-        "projectPath": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj",
+        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commer_Platform\\Web_App\\ECommerceWebApplication.csproj",
         "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\source\\repos\\E-Commer_Platform\\Web_App\\obj\\",
+        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commer_Platform\\Web_App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

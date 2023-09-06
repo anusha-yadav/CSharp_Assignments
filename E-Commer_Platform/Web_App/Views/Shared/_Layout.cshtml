@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - E-Commerce Site</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Web_App.styles.css" asp-append-version="true" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
@@ -21,10 +22,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
-                    <div class="navbar-left" style="margin-top:8px;margin-left:28px;">
+                    @*<div class="navbar-left" style="margin-top:8px;margin-left:28px;justify-content:center">
                         @using (Html.BeginForm("Index", "Search", FormMethod.Get))
                             {
                                 <ul class="nav navbar-nav">
@@ -32,7 +33,7 @@
                                 <li><input type="submit" value="Search" /></li>
                                 </ul>
                             }
-                    </div>
+                    </div>*@
                     <ul class="navbar-nav m-lg-auto">
                     @if (TempData.ContainsKey("username"))
                     {
@@ -103,6 +104,19 @@
         </nav>
 
     </header>
+@*    <div class="sliders">
+    <div class="slider">
+        <div class="slide">
+            <img src="~/images/slider2.png" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="~/images/slider1.png" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="~/images/slider3.png" alt="Image 3">
+        </div>
+    </div>
+    </div>*@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

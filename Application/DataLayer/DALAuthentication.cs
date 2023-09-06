@@ -142,6 +142,7 @@ namespace DataLayer
                     string query = Literals.loginUserQuery;
                     sqlcon.Open();
                     SqlCommand cmd = new SqlCommand(query, sqlcon);
+                    
                     cmd.Parameters.AddWithValue("username", user.username);
                     cmd.Parameters.AddWithValue("password", user.password);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);

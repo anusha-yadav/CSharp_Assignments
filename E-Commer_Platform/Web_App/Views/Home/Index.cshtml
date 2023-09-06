@@ -1,84 +1,151 @@
-﻿@{
+﻿@model Product
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<link rel="stylesheet" href="css/site.css" />
-
-<div id="themeSlider" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
-        <li data-target="#themeSlider" data-slide-to="1"></li>
-        <li data-target="#themeSlider" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="item active">
-            <div class="imgOverlay"></div>
-            <img style="height:320px;width:100%" src="~/images/slider1.png" alt="First slide">
-            <div class="carousel-caption">
-                <h3>New</h3>
-
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 3 Image Slider</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <!-- Add Bootstrap 3 CSS -->
+</head>
+<body>
+    <div class="slider">
+        <div class="slide">
+            <img src="~/images/slider2.png" alt="Image 1">
         </div>
-        <div class="item">
-            <div class="imgOverlay"></div>
-            <img style="height:320px;width:100%" src="~/images/slider2.png" alt="Second slide">
-            <div class="carousel-caption">
-                <h3>My Phone</h3>
-
-            </div>
+        <div class="slide">
+            <img src="~/images/slider1.png" alt="Image 2">
         </div>
-        <div class="item">
-            <div class="imgOverlay"></div>
-            <img style="height:320px;width:100%" src="~/images/slider3.png" alt="Third slide">
-            <div class="carousel-caption">
-                <h3>Latest</h3>
-
-            </div>
+        <div class="slide">
+            <img src="~/images/slider3.png" alt="Image 3">
         </div>
     </div>
-    <a class="left carousel-control" href="#themeSlider" data-slide="prev">
-        <span class="fa fa-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#themeSlider" data-slide="next">
-        <span class="fa fa-chevron-right"></span>
-    </a>
+</body>
+</html>
 
-</div>
+<!-- Carousel wrapper -->
 <div class="olContent f1"><h2 style="color:black">Search Product/Category</h2></div>
 <div class="olSearch fr">
     <input type="text" placeholder="Enter Keyword" name="searchKey" class="inputComn houseText form-control" />
     <div class="searchIcon">
         <button type="button" class="searchBtn">
-            <img src="~/Images/searchIcon.png" />
+            <img src="~/images/Screenshot 2023-09-06 111802.png" style="height:20px;width:20px;display:flex;" />
         </button>
     </div>
-
-
 </div>
 
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
-            <h2>Our Producrs <small>trends products</small></h2>
+            <h2>Our Products <small>trending products</small></h2>
         </div>
     </div>
 </div>
+@*
+<section id="aa-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="aa-product-area">
+                        <div class="aa-product-inner">
+                            <!-- start prduct navigation -->
+                            <ul class="nav nav-tabs aa-products-tab">
+                                <li class="active"><a href="#men" data-toggle="tab">Men</a></li>
+                                <li><a href="#women" data-toggle="tab">Women</a></li>
+                                <li><a href="#accessories" data-toggle="tab">Accessories</a></li>
+                                <li><a href="#electronics" data-toggle="tab">Electronic</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <!-- Start men product category -->
+                                <div class="tab-pane fade in active" id="men">
+                                    <ul class="aa-product-catg">
+                                        <!-- start single product item -->
+                                        @foreach (var item in (List<Web_App.Models.Product>)@ViewBag.MenProduct)
+                                        {
+                                            { Html.RenderPartial("_Product", item); }
+                                        }
+                                        <!-- end start single product item -->
+
+                                    </ul>
+                                    <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                                </div>
+
+                                <!-- start women product category -->
+                                <div class="tab-pane fade" id="women">
+                                    <ul class="aa-product-catg">
+                                        <!-- start single product item -->
+                                        @foreach (var item in (List<Web_App.Models.Product>)@ViewBag.WomenProduct)
+                                        {
+                                            { Html.RenderPartial("_Product", item); }
+                                        }
+                                        <!-- end start single product item -->
+
+                                    </ul>
+                                    <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                                </div>
+
+                                <!-- start Accessories product category -->
+                                <div class="tab-pane fade" id="accessories">
+                                    <ul class="aa-product-catg">
+                                        <!-- start single product item -->
+                                        @foreach (var item in (List<Web_App.Models.Product>)@ViewBag.AccessoriesProduct)
+                                        {
+                                            { Html.RenderPartial("_Product", item); }
+                                        }
+                                        <!-- end start single product item -->
+
+                                    </ul>
+                                    <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+
+                                </div>
+
+                                <!-- start electronic product category -->
+                                <div class="tab-pane fade" id="electronics">
+                                    <ul class="aa-product-catg">
+                                        <!-- start single product item -->
+                                        @foreach (var item in (List<Web_App.Models.Product>)@ViewBag.ElectronicsProduct)
+                                        {
+                                            { Html.RenderPartial("_Product", item); }
+                                        }
+                                        <!-- end start single product item -->
+
+                                    </ul>
+                                    <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                                </div>
+                                <!-- / electronic product category -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+*@
 
 <div class="row product-container">
-
+    @foreach(var item in Model)
+    {
     <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
         <div class="thumbnail product-item" style="height:300px">
-
             <img class="img-responsive" title="Click to View Product detail"
                  style="cursor:pointer;height:160px;width:100%"
-                 src="~/Images/81_12_24_2017_10_26_28.jpg" />
+                 src="~/images/samsungs23.png" />
 
-            <div class="caption">
-                <h5>Product Name</h5>
-                <p>500.00 ৳.</p>
+            <div class="Samsung S23">
+                <h5>@item.Name</h5>
+                <p>@item.Price</p>
                 <p>Available</p>
                 <div class="product-item-badge">New</div>
             </div>
         </div>
     </div>
+    }
 </div>
