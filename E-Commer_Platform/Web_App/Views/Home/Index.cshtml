@@ -1,6 +1,7 @@
-﻿@model Product
+﻿@model IEnumerable<Web_App.Models.Product>
+
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Product";
 }
 
 <!DOCTYPE html>
@@ -8,7 +9,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap 3 Image Slider</title>
     <link rel="stylesheet" href="~/css/style.css" />
     <!-- Add Bootstrap 3 CSS -->
 </head>
@@ -135,17 +135,23 @@
     {
     <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
         <div class="thumbnail product-item" style="height:300px">
-            <img class="img-responsive" title="Click to View Product detail"
+                <div style="display:none;">
+                ViewBag.ImagePath = @item.PicturePath
+                ViewBag.Des = @item.Description
+                </div>
+                <a href="@Url.Action("GetProductDescription", "Products",new { id = @item.ProductID,picturePath = @item.PicturePath, description = @item.Description})">
+                 <img class="img-responsive" title="Click to View Product detail"
                  style="cursor:pointer;height:160px;width:100%"
-                 src="~/images/samsungs23.png" />
-
-            <div class="Samsung S23">
+                 src=@Html.DisplayFor(modelItem=> item.PicturePath) alt="Image" /></a>
+                <div class="Samsung S23">
                 <h5>@item.Name</h5>
                 <p>@item.Price</p>
                 <p>Available</p>
                 <div class="product-item-badge">New</div>
             </div>
         </div>
-    </div>
+        </div>
     }
 </div>
+
+

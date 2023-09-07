@@ -181,6 +181,7 @@ namespace Web_App.Controllers
                 if (cust != null)
                 {
                 //TempShpData.UserID = cust.Id;
+                    TempData["userid"] = cust.Id;
                     TempData["username"] = cust.username;
                     HttpContext.Session.SetString("Username", cust.username);
                     return RedirectToAction("Index", "Home");

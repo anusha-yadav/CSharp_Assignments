@@ -1,0 +1,27 @@
+﻿@model Web_App.Models.Product
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "GetProductDescription";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <!-- Add Bootstrap 3 CSS -->
+</head>
+<body>
+    <div class="col-md-3" style="display:flex;">
+        <img src=@ViewBag.pic alt="image" />
+        <p>@ViewBag.Des</p>
+     </div>
+     <a href="@Url.Action("AddToCart", "Cart", new { productId = Model.ProductID, quantity = 1 })" class="btn btn-primary">Add to Cart</a>
+</body>
+</html>
+</div>

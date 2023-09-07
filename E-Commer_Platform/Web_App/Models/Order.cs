@@ -18,6 +18,5 @@ namespace Web_App.Models
         public virtual User User { get; set; }
         public virtual Address Address { get; set; }
         public virtual ICollection<OrderItems> OrderItems { get; set; }
-
     }
 }

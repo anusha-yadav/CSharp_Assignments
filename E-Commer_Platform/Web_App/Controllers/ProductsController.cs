@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Web_App.Data;
@@ -62,14 +58,19 @@ namespace Web_App.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product)
+        public async Task<IActionResult> Create(IFormFile ImageFile, Product product)
         {
             string uniqueFileName = null;
-            if (product.ImageFile!=null)
+            if (ImageFile!=null)
             {
-                string ImageFile = Path.Combine(_environment.WebRootPath, "images");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + product.ImageFile.FileName;
-                string filepath = Path.Combine(ImageFile, uniqueFileName);
+                var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwRoot/images");
+                if(uploadDirectory == null)
+                {
+                    Directory.CreateDirectory(uploadDirectory);
+                }
+                string _ImageFile = Path.Combine(_environment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + ImageFile.FileName;
+                string filepath = Path.Combine(uploadDirectory, uniqueFileName);
 
 
                 /*string wwwRoothPath = _environment.WebRootPath;
@@ -79,11 +80,11 @@ namespace Web_App.Controllers
                 string path = Path.Combine(wwwRoothPath + "/images/", filename);*/
                 using(var fileStream = new FileStream(filepath, FileMode.Create))
                 {
-                    await product.ImageFile.CopyToAsync(fileStream);
+                    await ImageFile.CopyToAsync(fileStream);
                 }
 
                 //product.PicturePath = "~/wwwroot/images";
-                product.PicturePath = uniqueFileName;
+                product.PicturePath = "/images/"+ uniqueFileName;
                 _context.Products.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -197,5 +198,13 @@ namespace Web_App.Controllers
             ViewData["SubCategoryName"] = new SelectList(_context.SubCategories, "Name", "Name");
             return PartialView("_SubCategory");
         }
+
+        public IActionResult GetProductDescription(int id,string picturePath, string description)
+        {
+            ViewBag.pic = picturePath;
+            ViewBag.Des = description;
+            Product product = _context.Products.FirstOrDefault(u => u.ProductID == id);
+            return View(product);
+        } 
     }
 }

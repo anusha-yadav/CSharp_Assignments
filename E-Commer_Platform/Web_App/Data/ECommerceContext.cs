@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ECommerceWebApplication.Models;
+using Microsoft.EntityFrameworkCore;
 using Web_App.Models;
 
 namespace Web_App.Data
@@ -16,5 +17,7 @@ namespace Web_App.Data
         public DbSet<OrderItems>OrdersItems { get; set; }
         public DbSet<Payment>Payments { get; set; }
         public DbSet<Review> Reviews { get; set; }  
+        public DbSet<Cart>Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
     }
 }
