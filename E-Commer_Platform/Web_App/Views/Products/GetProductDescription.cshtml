@@ -21,7 +21,42 @@
         <img src=@ViewBag.pic alt="image" />
         <p>@ViewBag.Des</p>
      </div>
-     <a href="@Url.Action("AddToCart", "Cart", new { productId = Model.ProductID, quantity = 1 })" class="btn btn-primary">Add to Cart</a>
+     <button onclick="addToCartClicked()">Add to Cart</button>
+     <a href="@Url.Action("AddToCart", "Cart", new { productId = Model.ProductID})" class="btn btn-primary">Buy Now</a>
+
+
+    <!-- Add this at the end of your HTML page -->
+    <div id="addToCartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Product Added to Cart</h2>
+            <p>Your item has been added to the cart.</p>
+            <!-- Add "Go to Bag" button with an onclick event to close the modal -->
+            <button onclick="closeModal()">Close</button>
+            <a href="@Url.Action("AddToCart", "Cart", new {productId = Model.ProductID})" class="btn btn-primary">Go to Bag</a>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle the "Add to Cart" button click
+        function addToCartClicked() {
+            // You can perform any cart-related logic here
+            // Show the modal when the item is added to the cart
+            showModal();
+        }
+
+        // JavaScript for showing the modal
+        function showModal() {
+            var modal = document.getElementById("addToCartModal");
+            modal.style.display = "block";
+        }
+
+        // JavaScript for closing the modal
+        function closeModal() {
+            var modal = document.getElementById("addToCartModal");
+            modal.style.display = "none";
+        }
+    </script>
 </body>
 </html>
-</div>
+

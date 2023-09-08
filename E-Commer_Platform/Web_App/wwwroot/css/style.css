@@ -46,3 +46,29 @@
         transform: translateX(0);
     }
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height:100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-self:center;
+    padding-left:350px;
+}
+
+/* CSS for the modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Center horizontally and vertically */
+    border: 1px solid #888;
+    margin-left: 20%;
+    width:30%;
+    margin-top: 50px;
+    margin-right:20%;
+}
+

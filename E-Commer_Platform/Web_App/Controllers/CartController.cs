@@ -3,6 +3,9 @@ using Web_App.Data;
 using ECommerceWebApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using Web_App.Models;
+using Web_App.Migrations;
+using Cart = ECommerceWebApplication.Models.Cart;
 
 namespace ECommerceWebApplication.Controllers
 {
@@ -16,12 +19,18 @@ namespace ECommerceWebApplication.Controllers
 
         public Cart GetCartFromCurrentUser(int userId)
         {
-            var userCart = _context.Carts.FirstOrDefault(obj => obj.UserId == userId);
+/*            var userCart = (from id in _context.Carts
+                            where id.UserId == userId
+                            select id).SingleOrDefault();
+*/
+            var userCart = _context.Carts.Include("CartItems.Product").FirstOrDefault(c => c.UserId == userId);
             return userCart;
         }
+
         public IActionResult Index()
         {
             int userid = (int)TempData["userid"];
+            //int userid = 1;
             Debug.WriteLine("In Index Action" + userid);
             Cart userCart = GetCartFromCurrentUser(userid);
             if (userCart == null)
@@ -34,41 +43,35 @@ namespace ECommerceWebApplication.Controllers
                 _context.Carts.Add(userCart);
                 _context.SaveChanges();
             }
+            ViewBag.CartItemCount = userCart.CartItems.Count;
             return View(userCart);
         }
 
         // POST : Cart/AddToCart
         //[HttpPost]
-        public IActionResult AddToCart(int productId, int quantity)
+        public IActionResult AddToCart(int productId)
         {
             Debug.WriteLine("In Add to Cart Action");
-            //int userid = (int)TempData["userid"];
-            int userid = 1;
+            int userid = (int)TempData["userid"];
+            //int userid = 1;
             Cart cart = _context.Carts.Include(item => item.CartItems).FirstOrDefault(user => user.UserId == userid);
             if (cart == null)
             {
                 Debug.WriteLine("Cart is null");
                 cart = new Cart { UserId = userid, CartItems = new List<CartItem>() };
                 _context.Carts.Add(cart);
-                return View(@"\Views\Home\Index.cshtml");
             }
             CartItem existingCartItem = cart.CartItems.FirstOrDefault(item => item.ProductID == productId);
             if (existingCartItem == null)
             {
                 Debug.WriteLine("existing cart item is null");
-                existingCartItem.Quantity += quantity;
-                return View(@"\Views\Home\Index.cshtml");
-            }
-            else
-            {
-                CartItem newCartItem = new CartItem
+                existingCartItem = new CartItem
                 {
-                    ProductID = productId,
-                    Quantity = quantity,
+                    ProductID = productId
                 };
-                cart.CartItems.Add(newCartItem);
+                cart.CartItems.Add(existingCartItem);
             }
-            //_context.SaveChanges();
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,6 +122,28 @@ namespace ECommerceWebApplication.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public IActionResult GetCartItemCount(int userid)
+        {
+            int cartID = _context.Carts.Where(obj=>obj.UserId  == userid).Select(obj => obj.Id).FirstOrDefault();
+            int itemsCount = _context.CartItems.Where(obj=>obj.CartID==cartID).Count();
+            return Json(new { count = itemsCount });
+        }
+
+/*        public IActionResult BuyNow(int productID)
+        {
+            int userid = (int)TempData["userid"];
+            Order order = _context.Orders.Include(item=>item.OrderItems).FirstOrDefault(o=>o.UserID==userid);
+            if (order == null)
+            {
+                order = new Order
+                {
+                    UserID = userid,
+                    OrderItems = IList<OrderItems>()
+                };
+            }
+        }
+*/
     }
 }
 

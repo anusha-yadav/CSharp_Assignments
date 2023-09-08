@@ -76,12 +76,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcR2V0UHJvZHVjdERlc2NyaXB0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Anusha Yadav/CSharp_Assignments/E-Commer_Platform/Web_App/Views/Products/GetProductOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcR2V0UHJvZHVjdE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Anusha Yadav/CSharp_Assignments/E-Commer_Platform/Web_App/Views/Products/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Anusha Yadav/CSharp_Assignments/E-Commer_Platform/Web_App/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Anusha Yadav/CSharp_Assignments/E-Commer_Platform/Web_App/Views/Shared/_GetCartItemCountPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9HZXRDYXJ0SXRlbUNvdW50UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Anusha Yadav/CSharp_Assignments/E-Commer_Platform/Web_App/Views/Shared/_Product.cshtml]

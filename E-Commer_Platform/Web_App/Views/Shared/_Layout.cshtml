@@ -35,10 +35,10 @@
                             }
                     </div>*@
                     <ul class="navbar-nav m-lg-auto">
-                    @if (TempData.ContainsKey("username"))
+                    @if(Context.Session.GetString("user")!=null)
                     {
                         <li class="nav-item">
-                           <span class="nav-link text-white text-dark">Hello, @TempData["username"]!</span>
+                           <span class="nav-link text-white text-dark">Hello, @Context.Session.GetString("user")!</span>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link text-white text-dark " asp-area="" asp-controller="Users" asp-action="Logout">Log out</a>
@@ -50,13 +50,13 @@
                           <a class="nav-link text-white text-dark " asp-area="" asp-controller="Users" asp-action="Login">Login</a>
                        </li>
                        <li class="nav-item">
-                          <a class="nav-link text-white text-dark " asp-area="" asp-controller="Home" asp-action="Register">Sign up</a>
+                          <a class="nav-link text-white text-dark " asp-area="" asp-controller="Users" asp-action="Create">Sign up</a>
                        </li>
                     }
                     <li class="nav-item">
                         <a class="nav-link text-white text-dark" href="#">
                         <i class="fas fa-shopping-cart"></i>
-                           Cart
+                           Cart <span id="cartItemCount">0</span>
                         </a>
                     </li>
                     </ul>
@@ -102,6 +102,32 @@
                 </ul>
              </div>
         </nav>
+        <script>
+            // Function to update the cart item count
+            function updateCartItemCount(userId) {
+                // Send an AJAX request to your controller to get the count
+                $.ajax({
+                    url: '/Cart/GetCartItemCount',
+                    type: 'GET',
+                    data: { userId: userId }, // Pass the userId as a query parameter
+                    dataType: 'json',
+                    success: function (data) {
+                        // Update the item count in the HTML
+                        $('#cartItemCount').text(data.count);
+                    },
+                    error: function () {
+                        // Handle errors if necessary
+                    }
+                });
+            }
+
+            // Call the function initially to set the initial count
+            var userId = 1// Retrieve the current user's ID (e.g., from a cookie or session)
+            updateCartItemCount(userId);
+
+            setInterval(updateCartItemCount, 60000);
+            </script>
+
 
     </header>
 @*    <div class="sliders">

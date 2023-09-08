@@ -182,6 +182,7 @@ namespace Web_App.Controllers
                 {
                 //TempShpData.UserID = cust.Id;
                     TempData["userid"] = cust.Id;
+                    HttpContext.Session.SetString("user", cust.username);
                     TempData["username"] = cust.username;
                     HttpContext.Session.SetString("Username", cust.username);
                     return RedirectToAction("Index", "Home");
@@ -191,7 +192,7 @@ namespace Web_App.Controllers
 
         public IActionResult Logout()
         {
-            TempData.Remove("username");
+            HttpContext.Session.Remove("user");
             return RedirectToAction("Index","Home");
         }
     }

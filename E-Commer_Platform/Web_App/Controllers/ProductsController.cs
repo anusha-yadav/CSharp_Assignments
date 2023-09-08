@@ -205,6 +205,14 @@ namespace Web_App.Controllers
             ViewBag.Des = description;
             Product product = _context.Products.FirstOrDefault(u => u.ProductID == id);
             return View(product);
-        } 
+        }
+
+        public IActionResult GetProductOrder(int id, string picturePath, string description)
+        {
+            ViewBag.pic = picturePath;
+            ViewBag.Des = description;
+            Product product = _context.Products.FirstOrDefault(u => u.ProductID == id);
+            return View(product);
+        }
     }
 }

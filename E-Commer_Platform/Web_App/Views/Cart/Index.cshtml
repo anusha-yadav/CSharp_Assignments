@@ -4,6 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
+<!DOCTYPE html>
+<html>
+<body>
+<script src="~/js/site.js">
+    var userid = @Model.UserId </script>
 <h2>Shopping Cart</h2>
 
 <table>
@@ -20,13 +25,25 @@
         {
             <tr>
                 <td>@item.Product.Name</td>
-                <td>@item.Quantity</td>
+                <td>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-subtract" type="button">-</button>
+                            </span>
+                            <input type="text" class="form-control no-padding text-center item-quantity" value="1">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-add" type="button">+</button>
+                            </span>
+                        </div>
+                </td>
                 <td>@item.Product.Price</td>
-                <td>@(item.Quantity * item.Product.Price)</td>
+                <td class="item-total">@(item.Quantity * item.Product.Price)</td>
             </tr>
         }
     </tbody>
 </table>
+</body>
+</html>
 
 
 <!-- Add checkout button and other cart-related actions here -->
