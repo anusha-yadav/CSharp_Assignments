@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!-- Cart/Index.cshtml -->
+@model E_Commerce_WebApplication.Models.Cart
+
+<div class="container">
+    <h1>Shopping Cart</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.Products.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>$@item.Products.Price</td>
+                    <td>$@(item.Quantity * item.Products.Price)</td>
+                    <td>
+                        <a asp-action="RemoveFromCart" asp-route-cartItemId="@item.CartItemId" class="btn btn-danger btn-sm">Remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-right">
+        <strong>Total: $@Model.TotalPrice</strong>
+    </div>
+    <div class="text-center">
+        <a asp-action="Checkout" class="btn btn-success">Proceed to Checkout</a>
+    </div>
+</div>
+

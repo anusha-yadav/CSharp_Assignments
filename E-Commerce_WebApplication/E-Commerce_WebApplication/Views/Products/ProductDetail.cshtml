@@ -1,0 +1,119 @@
+﻿@model E_Commerce_WebApplication.Models.Products
+
+@{
+    ViewData["Title"] = "ProductDetail";
+}
+
+<!-- ProductDetail.cshtml -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.ImageUrl" alt="@Model.ProductName" class="img-fluid" />
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.ProductName</h2>
+            <p>@Model.Description</p>
+            <p><b> $@Model.Price</b></p>
+        <div class="form-group">
+            <label for="quantity"><b>Quantity:</b></label>
+            <br />
+            <div class="input-group" style="width:120px;">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="quantity">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </span>
+                <input type="number" class="form-control input-number" id="quantity" name="quantity" min="1" value="1" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quantity">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <br />
+        <!-- Add to Cart and Buy Now buttons -->
+        <div class="btn-group">
+            <button class="btn btn-primary" id="addToCart" style="margin-right:20px;">Add to Cart</button>
+            
+            <button class="btn btn-success" id="buyNow">Buy Now</button>
+        </div>
+            <button onclick="addToCartClicked()">Add to Cart</button>
+            <a href="@Url.Action("AddToCart", "Cart", new { productId = Model.Id})" class="btn btn-primary">Buy Now</a>
+
+
+            <!-- Add this at the end of your HTML page -->
+            <div id="addToCartModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Product Added to Cart</h2>
+                    <p>Your item has been added to the cart.</p>
+                    <!-- Add "Go to Bag" button with an onclick event to close the modal -->
+                    <button onclick="closeModal()">Close</button>
+                    <a href="@Url.Action("AddToCart", "Cart", new {productId = Model.Id})" class="btn btn-primary">Go to Bag</a>
+                </div>
+            </div>
+
+            <script>
+                // Function to handle the "Add to Cart" button click
+                function addToCartClicked() {
+                    // You can perform any cart-related logic here
+                    // Show the modal when the item is added to the cart
+                    showModal();
+                }
+
+                // JavaScript for showing the modal
+                function showModal() {
+                    var modal = document.getElementById("addToCartModal");
+                    modal.style.display = "block";
+                }
+
+                // JavaScript for closing the modal
+                function closeModal() {
+                    var modal = document.getElementById("addToCartModal");
+                    modal.style.display = "none";
+                }
+            </script>
+    </div>
+</div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        // Initialize the quantity to 1
+        var quantity = 1;
+
+        $('.btn-number').click(function (e) {
+            e.preventDefault();
+
+            var fieldName = $(this).attr('data-field');
+            var type = $(this).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+
+            if (type === 'minus') {
+                if (quantity > 1) {
+                    quantity--;
+                }
+            } else if (type === 'plus') {
+                quantity++;
+            }
+
+            // Update the quantity input field
+            input.val(quantity);
+        });
+
+
+        $('#addToCart').click(function () {
+            console.log(@Model.Id)
+            console.log(quantity)
+            var productId = @Model.Id; // Replace with the actual product ID
+            // Send the quantity and product ID to your AddToCart action
+            $.Post('@Url.Action("AddToCart", "Cart")', { productId: productId}, function () {
+                // Handle success or update the cart UI as needed
+                alert('Product added to cart with quantity: ' + quantity);
+            });
+        });
+    });
+</script>
