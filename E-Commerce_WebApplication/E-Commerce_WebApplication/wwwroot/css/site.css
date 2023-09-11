@@ -1,0 +1,90 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.btn-primary{
+    color:white;
+    border-color:dimgray;
+}
+
+.navbar-custom {
+    background-color: grey;  Set your desired background color 
+    height: 50px;
+    width:auto; Set the desired height of the navbar 
+}
+
+.navbar-custom .navbar-toggler-icon {
+    color: black;  Set the color of the toggle icon 
+}
+
+.navbar-custom .nav-link {
+    color: black !important;  Set the color of the navigation links 
+}
+
+.navbar-custom .nav-link:hover {
+    color: black !important;  Set the color of the navigation links on hover 
+}
+
+.navbar-custom{
+    margin-bottom:20px;
+}
+
+
+.slider {
+    display: flex;
+    animation: slide 10s infinite;
+}
+
+.slide {
+    flex: 0 0 100%;
+    transition: transform 1s;
+}
+
+.slide img {
+        width: 100%;
+        height: auto;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+        opacity:0;
+    }
+
+    25% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(-200%);
+    }
+
+    75% {
+        transform: translateX(-300%);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity:1;
+    }
+}
+
+
+
+
+

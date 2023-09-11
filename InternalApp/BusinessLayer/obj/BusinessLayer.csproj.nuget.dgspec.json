@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj": {}
+    "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj": {
+    "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj",
+        "projectUniqueName": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessLayer\\obj\\",
+        "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessLayer\\BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Anusha Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,18 +22,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
-                "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj"
+              "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj"
               },
-              "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj": {
-                "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
+              "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
                 "privateAssets": "all"
               }
             }
@@ -74,25 +69,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
+    "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
+        "projectUniqueName": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
         "projectName": "BusinessModels",
-        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
-        "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\obj\\",
+        "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj",
+        "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Anusha Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +91,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -140,25 +130,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj": {
+    "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
-        "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataLayer\\obj\\",
+        "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataLayer\\DataLayer.csproj",
+        "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Anusha Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -166,18 +152,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
-                "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj"
+              "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\BusinessModels\\BusinessModels.csproj"
               },
-              "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj": {
-                "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj"
+              "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj": {
+                "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj"
               }
             }
           }
@@ -217,25 +202,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj": {
+    "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj",
+        "projectUniqueName": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj",
         "projectName": "DataModels",
-        "projectPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj",
-        "packagesPath": "C:\\Users\\Anusha Yadav\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\InternalApp\\DataModels\\obj\\",
+        "projectPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataModels\\DataModels.csproj",
+        "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
+        "outputPath": "\\\\wsl.localhost\\Debian\\home\\anusha\\CSharp_Assignments\\InternalApp\\DataModels\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Anusha Yadav\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -243,7 +224,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -283,7 +263,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

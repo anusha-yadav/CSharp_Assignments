@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BusinessModels
-build_property.ProjectDir = C:\Users\Anusha Yadav\CSharp_Assignments\InternalApp\BusinessModels\
+build_property.ProjectDir = \\wsl.localhost\Debian\home\anusha\CSharp_Assignments\InternalApp\BusinessModels\
