@@ -25,7 +25,7 @@ namespace E_Commerce_WebApplication.Controllers
 
         public IActionResult Index()
         {
-            int? userId = HttpContext.Session.GetInt32("userid"); // Replace with your actual user identification logic
+            int? userId = HttpContext.Session.GetInt32("userid");
 
             if (userId.HasValue)
             {
@@ -41,7 +41,7 @@ namespace E_Commerce_WebApplication.Controllers
 
         public IActionResult AddToCart(int productId,int quantity)
         {
-            int? userId = HttpContext.Session.GetInt32("userid"); // Replace with your actual user identification logic
+            int? userId = HttpContext.Session.GetInt32("userid"); 
 
             if (userId.HasValue)
             {
@@ -115,30 +115,43 @@ namespace E_Commerce_WebApplication.Controllers
             return cartItemsCount;
         }
 
-        /*
-        public IActionResult UpdateCartItem(int cartItemId, int quantity)
+        public IActionResult UpdateCartItem(int cartId, int quantity,int productid)
         {
-            // Get the currently logged-in user's ID
-            int userid = (int)TempData["userid"];
+            int? userId = HttpContext.Session.GetInt32("userid");
 
-
-            // Retrieve the user's cart from the database
-            Cart cart = _context.Carts.Include(c => c.Items).FirstOrDefault(c => c.Id == userid);
-
-            if (cart != null)
+            Debug.WriteLine("Cart id is " + cartId + " " + productid);
+            if (userId == null)
             {
-                // Find the cart item by its CartItemId
-                CartItem cartItemToUpdate = cart.Items.FirstOrDefault(item => item.Id == cartItemId);
-
-                if (cartItemToUpdate != null)
-                {
-                    cartItemToUpdate.Quantity = quantity;
-                    _context.SaveChanges();
-                }
+                // Handle the case where the user is not logged in
+                return Json(new { success = false, message = "User not logged in" });
             }
-            return RedirectToAction("Index");
+
+            Cart cart = _context.Carts.Include(c => c.CartItems).FirstOrDefault(c => c.UserId == userId);
+
+            if (cart == null)
+            {
+                // Handle the case where the user's cart is not found
+                return Json(new { success = false, message = "Cart not found" });
+            }
+
+            CartItem cartItemToUpdate = cart.CartItems.FirstOrDefault(item => item.CartID == cartId && item.ProductsId == productid);
+
+
+            if (cartItemToUpdate == null)
+            {
+                // Handle the case where the cart item is not found
+                return Json(new { success = false, message = "Cart item not found" });
+            }
+
+            // Update the cart item's quantity
+            cartItemToUpdate.Quantity = quantity;
+
+            // Save changes to the database
+            _context.SaveChanges();
+
+            return Json(new { success = true, message = "Quantity updated successfully" });
         }
-        */
+
 
     }
 }

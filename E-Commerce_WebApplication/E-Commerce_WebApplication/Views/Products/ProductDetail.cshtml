@@ -15,11 +15,7 @@
             <h2>@Model.ProductName</h2>
             <p>@Model.Description</p>
             <p><b>Price : &#x20b9; @Model.Price</b></p>
-        <div class="form-group">
-            <label for="quantity"><b>Quantity:</b></label>
-            <br />
-            <input type="number" id="quantityInput" min="1" value="1">
-        </div>
+        
         <br />
 @*        <button onclick="addToCartClicked()">Add to Cart</button>
 *@        <a href="@Url.Action("AddToCart", "Cart", new { productId = Model.Id,quantity=1})" class="btn btn-primary">Buy Now</a>
@@ -58,16 +54,14 @@
         // Function to handle the "Add to Cart" button click
         function addToCartClicked1() {
         // Get the selected quantity from the input element
-        var quantityInput = document.getElementById("quantityInput");
-        var quantity = parseInt(quantityInput.value); // Parse the value as an integer
-        console.log(quantity)
+        
         // You can now use the 'quantity' variable to perform your cart-related logic
         // For example, you can send an AJAX request to add the product to the cart
         // and update the cart UI.
         //window.location.href = "/Cart/AddToCart?productId=" + @Model.Id+" &quantity=" + quantity";
         // Here, we'll simply display an alert with the selected quantity as an example.
         //alert('Product added to cart with quantity: ' + quantity);
-        var url = "/Cart/AddToCart?productId=" + @Model.Id + "&quantity=" + quantity;
+        var url = "/Cart/AddToCart?productId=" + @Model.Id + "&quantity=" + 1;
 
         // Redirect to the constructed URL
         window.location.href = url;

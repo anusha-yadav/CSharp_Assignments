@@ -35,7 +35,7 @@ namespace E_Commerce_WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 // Check if the email is already registered
-                if (_context.Users.Any(u => u.Email == model.Email && u.Username == u.Username))
+                if (_context.Users.Any(user => user.Email == model.Email && user.Username == model.Username))
                 {
                     ModelState.AddModelError("Email", "Email is already in use.");
                     return View(model);

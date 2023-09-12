@@ -22,6 +22,14 @@ builder.Services.AddDbContext<ECommerceContext>(options =>
            .LogTo(Console.WriteLine, LogLevel.Information);
 });
 
+// In Startup.cs
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null; // If needed, customize JSON serialization options
+    });
+
+
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.

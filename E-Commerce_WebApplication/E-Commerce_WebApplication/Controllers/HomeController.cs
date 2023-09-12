@@ -22,7 +22,7 @@ namespace E_Commerce_WebApplication.Controllers
                 .Where(c => c.SubCategory.CategoryId == 1).ToList();
 
             var appliancesProducts = _context.Products
-                .Include(p => p.SubCategory).Where(c=>c.SubCategory.CategoryId==3).ToList();
+                .Include(p => p.SubCategory).Where(c=>c.SubCategory.CategoryId==2).ToList();
 
             var viewModel = new HomePageViewModel
             {
@@ -30,11 +30,6 @@ namespace E_Commerce_WebApplication.Controllers
                 AppliancesProducts = appliancesProducts
             };
             return View(viewModel);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
