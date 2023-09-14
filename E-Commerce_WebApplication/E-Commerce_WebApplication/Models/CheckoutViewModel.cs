@@ -1,4 +1,6 @@
-﻿namespace E_Commerce_WebApplication.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace E_Commerce_WebApplication.Models
 {
     public class CheckoutViewModel
     {
@@ -6,9 +8,15 @@
         public decimal TotalPrice { get; set; }
 
         // Shipping information
-        public Address Address { get; set; }
-
-        // Payment method
-        public PaymentMethod PaymentMethod { get; set; }
+        public Address ShippingAddress { get; set; }
+        public PaymentMethod SelectedPaymentOption { get; set; }
+        public List<SelectListItem> PaymentOptions
+        {
+            get; set;
+        }
+        public string CardNumber { get; set; }
+        public string ExpirationDate { get; set; }
+        public string CVV { get; set; }
+        public string PayPalEmail { get; set; }
     }
 }

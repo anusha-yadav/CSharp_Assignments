@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 
 
-function updateCartCount() {
+$function updateCartCount() {
             // Send an AJAX request to the server to fetch the cart items count
             $.get('/Cart/GetCartItemsCount', function (data) {
                 // Update the cart count in the navigation bar

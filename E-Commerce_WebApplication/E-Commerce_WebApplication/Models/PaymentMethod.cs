@@ -3,10 +3,7 @@
     public enum PaymentMethod
     {
         CreditCard,
-        DebitCard,
         PayPal,
-        CashOnDelivery,
-        GiftCard,
-        DigitalWallet
+        CashOnDelivery
     }
 }

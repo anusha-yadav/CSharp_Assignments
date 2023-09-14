@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zoom.js/2.3.2/zoom.min.js"></script>
 
 </head>
 <body>
@@ -29,7 +30,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-white text-dark" asp-area="" asp-controller="Home" asp-action="Index"><b>Home</b></a>
+                            <a class="nav-link text-white text-dark" asp-area="" asp-controller="Home" asp-action="Index"><b>ShopEase</b></a>
                         </li>
                     </ul>
                     <ul class="navbar-nav m-lg-auto">
@@ -37,6 +38,35 @@
                         {
                             <li class="nav-item">
                                 <span class="nav-link text-white text-dark">Hello, @Context.Session.GetString("user")!</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-dark" href="#">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-dark" href="@Url.Action("Index","Order")">My Orders
+                                <i class="fas fa-shopping-bag"></i>
+                                </a>
+                            </li>
+
+                            @*<li class="nav-item dropdown">
+                                <span class="nav-link text-white text-dark dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hello, @Context.Session.GetString("user")!
+                                </span>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <!-- Dropdown content goes here -->
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                    <a class="dropdown-item" href="#">My Orders</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Logout</a>
+                                </div>
+                            </li>*@
+
+                            
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-dark" href="@Url.Action("Index","Cart")">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Cart <span id="cartItemCount">0</span>
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark text-white btn btn-primary btn-sm" style="margin-right:10px;" asp-area="" asp-controller="Account" asp-action="Logout">Log out</a>
@@ -50,13 +80,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark text-white btn btn-primary btn-sm" style="margin-right:10px;" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-dark" href="#">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Cart <span id="cartItemCount">0</span>
+                                </a>
+                            </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-white text-dark" href="#">
-                                <i class="fas fa-shopping-cart"></i>
-                                Cart <span id="cartItemCount">0</span>
-                            </a>
-                        </li>
                         </ul>
                     </div>
                 </div>
@@ -68,14 +98,9 @@
             </main>
         </div>
 
-        @*<footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2023 - E_Commerce_WebApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>*@
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-                            @await RenderSectionAsync("Scripts", required: false)
-    </body>
-    </html>
+ <script src="~/lib/jquery/dist/jquery.min.js"></script>
+ <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="~/js/site.js" asp-append-version="true"></script>
+ @await RenderSectionAsync("Scripts", required: false)
+ </body>
+ </html>

@@ -29,7 +29,6 @@ namespace E_Commerce_WebApplication.Controllers
 
             if (userId.HasValue)
             {
-                // Retrieve the user's cart with CartItems
                 var userCart = _context.Carts
                     .Include(c => c.CartItems)
                     .ThenInclude(ci=>ci.Products)
@@ -41,7 +40,12 @@ namespace E_Commerce_WebApplication.Controllers
 
         public IActionResult AddToCart(int productId,int quantity)
         {
-            int? userId = HttpContext.Session.GetInt32("userid"); 
+            int? userId = HttpContext.Session.GetInt32("userid");
+
+            if (!userId.HasValue)
+            {
+                RedirectToAction("Login", "Account");
+            }
 
             if (userId.HasValue)
             {
@@ -106,13 +110,13 @@ namespace E_Commerce_WebApplication.Controllers
             return RedirectToAction("Index");
         }
 
-        public int GetCartItemsCount()
+        public IActionResult GetCartItemsCount()
         {
             int? userid = HttpContext.Session.GetInt32("UserId");
             int cartItemsCount = _context.Carts
                 .Where(user => user.UserId == userid)
                 .SelectMany(cart => cart.CartItems).Count(); // Implement this method to fetch the count from your database or shopping cart data
-            return cartItemsCount;
+            return Json(cartItemsCount); 
         }
 
         public IActionResult UpdateCartItem(int cartId, int quantity,int productid)

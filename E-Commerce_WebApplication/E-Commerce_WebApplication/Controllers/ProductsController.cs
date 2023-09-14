@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
-using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 
 namespace E_Commerce_WebApplication.Controllers
@@ -17,7 +12,7 @@ namespace E_Commerce_WebApplication.Controllers
         private readonly ECommerceContext _context;
         private readonly IWebHostEnvironment _environment;
 
-        public ProductsController(ECommerceContext context,IWebHostEnvironment environment)
+        public ProductsController(ECommerceContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _environment = environment;
@@ -65,29 +60,32 @@ namespace E_Commerce_WebApplication.Controllers
         {
             Debug.WriteLine("Hi");
             if (ImageFile != null)
+            {
+                Debug.WriteLine("Hi");
+                var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwRoot/uploads");
+                if (uploadDirectory == null)
                 {
-                    Debug.WriteLine("Hi");
-                    var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwRoot/uploads");
-                    if (uploadDirectory == null)
-                    {
-                        Directory.CreateDirectory(uploadDirectory);
-                    }
-                    //string _ImageFile = Path.Combine(_environment.WebRootPath, "uploads");
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + ImageFile.FileName;
-                    string filepath = Path.Combine(uploadDirectory, uniqueFileName);
+                    Directory.CreateDirectory(uploadDirectory);
+                }
+                //string _ImageFile = Path.Combine(_environment.WebRootPath, "uploads");
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + ImageFile.FileName;
+                string filepath = Path.Combine(uploadDirectory, uniqueFileName);
 
 
-                    using (var fileStream = new FileStream(filepath, FileMode.Create))
-                    {
-                        await ImageFile.CopyToAsync(fileStream);
-                    }
+                using (var fileStream = new FileStream(filepath, FileMode.Create))
+                {
+                    await ImageFile.CopyToAsync(fileStream);
+                }
 
-                    products.ImageUrl = "/uploads/" + uniqueFileName;
-                    _context.Products.Add(products);
-                    await _context.SaveChangesAsync();
-                    return PartialView("_Success");
+                products.ImageUrl = "/uploads/" + uniqueFileName;
+                _context.Products.Add(products);
+                await _context.SaveChangesAsync();
+                return PartialView("_Success");
+
             }
             ViewData["SubCategoryId"] = new SelectList(_context.SubCategories, "Id", "Id", products.SubCategoryId);
+            var subcategories = _context.SubCategories.Where(c => c.CategoryId == 1).ToList();
+            ViewData["SubCategoryName"] = new SelectList(subcategories, "Value", "Text", products.SubCategory.Name);
             return View(products);
         }
 
@@ -177,14 +175,14 @@ namespace E_Commerce_WebApplication.Controllers
             {
                 _context.Products.Remove(products);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductsExists(int id)
         {
-          return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         public IActionResult ProductDetail(int id)
@@ -196,5 +194,18 @@ namespace E_Commerce_WebApplication.Controllers
             }
             return View(product);
         }
+
+        public ActionResult SubCategoryDropdown()
+        {
+            var subcategories = _context.SubCategories.Where(c => c.CategoryId == 1).ToList();
+            var subcategoryListItems = subcategories.Select(c => new SelectListItem
+            {
+                Text = c.Name,
+                Value = c.Id.ToString()
+            });
+
+            return PartialView("_SubCategoryDropdown", subcategoryListItems);
+        }
+
     }
 }

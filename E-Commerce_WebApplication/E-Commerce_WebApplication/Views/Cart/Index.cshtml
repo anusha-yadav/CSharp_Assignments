@@ -4,9 +4,9 @@
 @{
 }
 <!-- Cart/Index.cshtml -->
-@model E_Commerce_WebApplication.Models.CartViewModel
+@model E_Commerce_WebApplication.Models.Cart
 
-<div class="container">
+@*<div class="container">
     <h2>Checkout</h2>
 
     <div class="shippingaddress">
@@ -57,8 +57,8 @@
             }
         }
     </div>
-</div>
-@*
+</div>*@
+
 <div class="container">
     <h1>Shopping Cart</h1>
     <table class="table">
@@ -127,10 +127,9 @@
     </div>
 
     <div class="text-center">
-        <a asp-action="Checkout" class="btn btn-success">Place Order</a>
+        <a asp-action="Checkout" asp-controller="Checkout" class="btn btn-success">Proceed to Checkout</a>
     </div>
 </div>
-*@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {

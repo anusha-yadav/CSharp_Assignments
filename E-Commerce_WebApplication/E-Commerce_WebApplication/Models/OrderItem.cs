@@ -1,12 +1,14 @@
-﻿namespace E_Commerce_WebApplication.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace E_Commerce_WebApplication.Models
 {
     public class OrderItem
     {
+        [Key]
         public int OrderItemId { get; set; }    
         public int ProductId { get; set; }
-        public string ProductName { get; set; }
-        public decimal SubTotal { get; set; }   
         public int OrderID { get; set; }
+        public int Quantity { get; set; }
         public virtual Order Order { get; set; }    
         public virtual Products Product { get; set; }
     }

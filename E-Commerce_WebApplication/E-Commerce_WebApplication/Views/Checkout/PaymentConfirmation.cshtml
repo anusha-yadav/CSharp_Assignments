@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Order
+
+<h2>Payment Confirmation</h2>
+
+<p>Thank you for your payment. Your order has been successfully processed.</p>
+
+<h3>Order Details</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Shipping Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.OrderId</td>
+            <td>@Model.OrderDate</td>
+            <td>@Model.ShippingAddress.RecipientName
+                <br />
+                @Model.ShippingAddress.ShippingAddress
+                <br />
+                @Model.ShippingAddress.City
+                <br />
+                @Model.ShippingAddress.State
+        </tr>
+    </tbody>
+</table>
+
+<h3>Order Items</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderItems)
+        {
+            <tr>
+                <td>@item.Product.ProductName</td>
+                <td>@item.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
