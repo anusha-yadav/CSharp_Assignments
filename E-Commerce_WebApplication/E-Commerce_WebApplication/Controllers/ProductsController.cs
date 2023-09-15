@@ -207,5 +207,10 @@ namespace E_Commerce_WebApplication.Controllers
             return PartialView("_SubCategoryDropdown", subcategoryListItems);
         }
 
+        public IActionResult Search(string searchItem)
+        {
+            var products = _context.Products.Where(product => product.ProductName.Contains(searchItem)).ToList();
+            return View(products);
+        }
     }
 }

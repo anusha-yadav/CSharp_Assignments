@@ -16,7 +16,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zoom.js/2.3.2/zoom.min.js"></script>
-
 </head>
 <body>
     <header>
@@ -33,20 +32,52 @@
                             <a class="nav-link text-white text-dark" asp-area="" asp-controller="Home" asp-action="Index"><b>ShopEase</b></a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                            <form action="@Url.Action("Search", "Products")" method="get" class="form-inline my-2 my-lg-0">
+                                <div class="input-group">
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="searchTerm" style="width:500px;">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-success" style="background-color:green;color:white;"type="submit">Search</button>
+                                    </div>
+                                </div>
+                    </form>
+                    </li>
+                    </ul>
                     <ul class="navbar-nav m-lg-auto">
                         @if(Context.Session.GetString("user") != null)
                         {
-                            <li class="nav-item">
-                                <span class="nav-link text-white text-dark">Hello, @Context.Session.GetString("user")!</span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white text-dark" href="#">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white text-dark" href="@Url.Action("Index","Order")">My Orders
-                                <i class="fas fa-shopping-bag"></i>
-                                </a>
-                            </li>
+                            @if (Context.Session.GetString("user") == "admin")
+                            {
+                                <li class="nav-item">
+                                    <span class="nav-link text-white text-dark">Hello, @Context.Session.GetString("user")!</span>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark text-white btn btn-primary btn-sm" style="margin-right:10px;" asp-area=" " asp-controller="Admin" asp-action="Dashboard">Admin</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <span class="nav-link text-white text-dark">Hello, @Context.Session.GetString("user")!</span>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white text-dark" href="@Url.Action("Profile","Account")">Profile
+                                        <i class="fas fa-user-circle"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white text-dark" href="@Url.Action("Index","Order")">My Orders
+                                        <i class="fas fa-shopping-bag"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white text-dark" href="@Url.Action("Index","Cart")">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Cart <span id="cartItemCount"></span>
+                                    </a>
+                                </li>
+                            }
 
                             @*<li class="nav-item dropdown">
                                 <span class="nav-link text-white text-dark dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,12 +94,6 @@
 
                             
                             <li class="nav-item">
-                                <a class="nav-link text-white text-dark" href="@Url.Action("Index","Cart")">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    Cart <span id="cartItemCount">0</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-dark text-white btn btn-primary btn-sm" style="margin-right:10px;" asp-area="" asp-controller="Account" asp-action="Logout">Log out</a>
                             </li>
                         }
@@ -83,7 +108,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white text-dark" href="#">
                                     <i class="fas fa-shopping-cart"></i>
-                                    Cart <span id="cartItemCount">0</span>
+                                    Cart <span id="cartItemCount"></span>
                                 </a>
                             </li>
                         }

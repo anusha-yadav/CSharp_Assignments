@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace E_Commerce_WebApplication.Controllers
 {
+    [TypeFilter(typeof(AdminAuthorizeAttribute))]
     public class CategoriesController : Controller
     {
         private readonly ECommerceContext _context;

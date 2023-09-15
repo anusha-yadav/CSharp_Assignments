@@ -1,3 +1,4 @@
+using E_Commerce_WebApplication;
 using E_Commerce_WebApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
@@ -8,12 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ECommerceContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDbContext")));
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(options =>
 {
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+/*builder.Services.AddMvc(options =>
+{
+    options.Filters.Add(typeof(AdminAuthorizeAttribute));
+});*/
+
 
 // Enable EF Core logging
 builder.Services.AddDbContext<ECommerceContext>(options =>
@@ -27,7 +34,9 @@ builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = null; // If needed, customize JSON serialization options
-    });
+});
+
+
 
 
 

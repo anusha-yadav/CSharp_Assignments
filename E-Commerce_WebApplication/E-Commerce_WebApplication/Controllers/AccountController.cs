@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
-using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Crypto.Generators;
-using BCrypt.Net;
 
 namespace E_Commerce_WebApplication.Controllers
 {
@@ -14,11 +11,6 @@ namespace E_Commerce_WebApplication.Controllers
         public AccountController(ECommerceContext context)
         {
             _context = context;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
         }
 
         // GET: /Account/Register
@@ -78,9 +70,9 @@ namespace E_Commerce_WebApplication.Controllers
             {
                 var user = _context.Users.FirstOrDefault(u => u.Username == model.Username);
 
-                var id = (from e in _context.Users
-                          where e.Username == model.Username
-                          select e.Id).FirstOrDefault();
+                var id = (from userObj in _context.Users
+                          where userObj.Username == model.Username
+                          select userObj.Id).FirstOrDefault();
 
                 if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
                 {
@@ -94,10 +86,19 @@ namespace E_Commerce_WebApplication.Controllers
             return View(model);
         }
 
+        // Logout
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("user");
             return RedirectToAction("Index", "Home");
+        }
+
+        // Profile
+        public IActionResult Profile()
+        {
+            int userid = (int)HttpContext.Session.GetInt32("userid");
+            var user = _context.Users.FirstOrDefault(user => user.Id == userid);
+            return View(user);
         }
     }
 }

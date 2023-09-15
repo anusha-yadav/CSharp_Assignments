@@ -6,59 +6,11 @@
 <!-- Cart/Index.cshtml -->
 @model E_Commerce_WebApplication.Models.Cart
 
-@*<div class="container">
-    <h2>Checkout</h2>
-
-    <div class="shippingaddress">
-        @if (Model.Address.ShippingAddress != null)
-        {
-            <h3>Deliver to : </h3>
-            <p>@Model.Address.RecipientName</p>
-            <p>@Model.Address.ShippingAddress</p>
-            <p>@Model.Address.City</p>
-            <p>@Model.Address.PostalCode</p>
-            <p>@Model.Address.State</p>
-        }
-        else
-        {
-            <h3>Create New Shipping Address</h3>
-            @using (Html.BeginForm("CreateAddress", "Checkout", FormMethod.Post))
-            {
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Address.RecipientName, "Recipient's Name")
-                    @Html.TextBoxFor(model => model.Address.RecipientName, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Address.RecipientName)
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Address.ShippingAddress)
-                    @Html.TextBoxFor(model => model.Address.ShippingAddress, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Address.ShippingAddress)
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Address.City)
-                    @Html.TextBoxFor(model => model.Address.City, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Address.City)
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Address.State)
-                    @Html.TextBoxFor(model => model.Address.State, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Address.State)
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Address.PostalCode)
-                    @Html.TextBoxFor(model => model.Address.PostalCode, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Address.PostalCode)
-                </div>
-                <button type="submit" class="btn btn-primary">Create Address</button>
-            }
-        }
-    </div>
-</div>*@
-
+<html>
+<header>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</header>
+<body>
 <div class="container">
     <h1>Shopping Cart</h1>
     <table class="table">
@@ -82,11 +34,11 @@
                         </div>
                     </td>
                     <td>
-                        <input type="hidden" id="cartId" data-cartid="@Model.CartId" />
-                        <input type="hidden" id="productId" data-productid="@item.ProductsId" />
+                       @* <input type="hidden" id="cartId" data-cartid="@Model.CartId" />
+                        <input type="hidden" id="productId" data-productid="@item.ProductsId" />*@
 
                         <div class="form-group">
-                            <input type="number" class="quantity-input" min="1" value="@item.Quantity" data-cartid= @Model.CartId>
+                             <input type="number" class="quantity-input" min="1" value="@item.Quantity" data-cartid="@Model.CartId" data-productid="@item.ProductsId" style="width:100px;height:20px;">
                         </div>
                     </td>
                     <td>&#x20b9; @item.Products.Price</td>
@@ -130,12 +82,15 @@
         <a asp-action="Checkout" asp-controller="Checkout" class="btn btn-success">Proceed to Checkout</a>
     </div>
 </div>
+</body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
         // Handle quantity input changes
         $('.quantity-input').on('input', function () {
             var quantity = parseInt($(this).val());
+            var cartId = $(this).data('cartid');
+            var productId = $(this).data('productid');
             var price = parseFloat($(this).closest('tr').find('td:eq(2)').text().replace('₹', ''));
             var subtotal = quantity * price;
             $(this).closest('tr').find('.subtotal').text('₹' + subtotal.toFixed(2));
@@ -146,6 +101,11 @@
             $('#quantityChangeMessage').text(productName + ' quantity changed to ' + quantity);
             $('#quantityChangeModal').modal('show');
             $('#okButton').data('updated-quantity', quantity);
+            $('#okButton').data('cartid', cartId); // Add this line to set cartId
+            $('#okButton').data('productid', productId);
+            console.log(updatedQuantity);
+            console.log(cartId);
+            console.log(productId);
         });
 
         // Function to recalculate the total price
@@ -161,10 +121,8 @@
 
         $('#okButton').on('click', function () {
             var updatedQuantity = $(this).data('updated-quantity');
-            var cartId = $('#cartId').data('cartid');
-            var productId = $('#productId').data('productid');
-
-
+            var cartId = $(this).data('cartid'); 
+            var productId = $(this).data('productid');
             console.log(updatedQuantity)
             console.log(cartId)
             console.log(productId)
@@ -190,6 +148,7 @@
         });
     });
 </script>
+</html>
 
 
 

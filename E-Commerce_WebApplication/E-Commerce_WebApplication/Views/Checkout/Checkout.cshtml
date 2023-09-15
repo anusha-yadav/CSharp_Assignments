@@ -12,9 +12,9 @@
             <div class="col-md-6">
                 <h3>Shipping Address</h3>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ShippingAddress.RecipientName)
-                    @Html.TextBoxFor(model => model.ShippingAddress.RecipientName, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ShippingAddress.RecipientName, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.ShippingAddress.Name)
+                    @Html.TextBoxFor(model => model.ShippingAddress.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddress.Name, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.ShippingAddress.ShippingAddress)
@@ -35,6 +35,16 @@
                     @Html.LabelFor(model => model.ShippingAddress.PostalCode)
                     @Html.TextBoxFor(model => model.ShippingAddress.PostalCode, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ShippingAddress.PostalCode, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddress.PhoneNumber)
+                    @Html.TextBoxFor(model => model.ShippingAddress.PhoneNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddress.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddress.Email)
+                    @Html.TextBoxFor(model => model.ShippingAddress.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddress.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-md-6">
@@ -75,3 +85,5 @@
         </div>
     </div>
 }
+
+

@@ -10,6 +10,7 @@ using E_Commerce_WebApplication.Models;
 
 namespace E_Commerce_WebApplication.Controllers
 {
+    [TypeFilter(typeof(AdminAuthorizeAttribute))]
     public class SubCategoriesController : Controller
     {
         private readonly ECommerceContext _context;

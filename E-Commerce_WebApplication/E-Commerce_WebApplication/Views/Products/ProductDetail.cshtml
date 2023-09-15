@@ -22,7 +22,7 @@
         
         <br />
 @*        <button onclick="addToCartClicked()">Add to Cart</button>
-*@        <a href="@Url.Action("AddToCart", "Cart", new { productId = Model.Id,quantity=1})" class="btn btn-primary">Buy Now</a>
+*@        <a href="@Url.Action("BuyNow", "Cart", new { productId = Model.Id})" class="btn btn-primary">Buy Now</a>
 
           <button id="addToCartButton" onclick="addToCartClicked1()" class="btn btn-primary">Add to Cart</button>
 
@@ -89,9 +89,6 @@
 </script>
 
 <script>
-
-    //Demo: https://www.codehim.com/demo/zoom-image-on-mouseover-using-javascript/
-
     let zoomer = function () {
 
         document.querySelector('#img-zoomer-box')

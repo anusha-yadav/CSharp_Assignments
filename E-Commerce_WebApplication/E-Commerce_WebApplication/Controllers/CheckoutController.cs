@@ -13,8 +13,9 @@ namespace E_Commerce_WebApplication.Controllers
         public CheckoutController(ECommerceContext context)
         {
             _context = context;
-
         }
+
+        // Index method of the checkout controller
         public IActionResult Index()
         {
             return View();
@@ -36,13 +37,6 @@ namespace E_Commerce_WebApplication.Controllers
                 ShippingAddress = new Address()
             };
             return View(viewModel);
-        }
-
-        [HttpPost]
-        public IActionResult PaymentDetails()
-        {
-            // Display the payment details form
-            return View("PaymentDetails");
         }
 
         /*     // POST : Checkout/ProcessOrder
@@ -89,6 +83,11 @@ namespace E_Commerce_WebApplication.Controllers
                  return RedirectToAction("ProcessPayment",viewModel);
              }*/
 
+        /// <summary>
+        /// Process Payment handles payment and orders of the cart
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult ProcessPayment(CheckoutViewModel viewModel)
         {
@@ -132,7 +131,7 @@ namespace E_Commerce_WebApplication.Controllers
 
                 _context.Orders.Add(order);
                 _context.SaveChanges();
-
+                
                 return View("PaymentConfirmation", order);
             }
             else
@@ -143,38 +142,51 @@ namespace E_Commerce_WebApplication.Controllers
             }
         }
 
-
-/*        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult ProcessPayment(CheckoutViewModel viewModel)
+       /* public IActionResult CreateOrder()
         {
-            PaymentService _paymentService = new PaymentService();
-            switch(viewModel.SelectedPaymentOption) 
-            {
-                case PaymentMethod.CreditCard:
-                    bool creditCardPaymentSuccess = _paymentService.ProcessCreditPayment(viewModel.CardNumber, viewModel.ExpirationDate, viewModel.CVV);
-                    if (!creditCardPaymentSuccess)
-                    {
-                        ModelState.AddModelError(string.Empty, "Credit card payment failed.");
-                        return View("Index", viewModel);
-                    }
-                    break;
-                case PaymentMethod.PayPal:
-                    bool paypalPaymentSuccess = _paymentService.ProcessPayPalPayment(viewModel.PayPalEmail);
-                    if (!paypalPaymentSuccess)
-                    {
-                        ModelState.AddModelError(string.Empty, "PayPal payment failed.");
-                        return View("Index", viewModel);
-                    }
-                    break;
-                case PaymentMethod.CashOnDelivery:
+            int userId = (int)HttpContext.Session.GetInt32("userid");
+            // Fetch the BuyNow items for the current user
+            var buyNowItems = _context.BuyNowItems
+                .Include(buyNowItem => buyNowItem.Product)
+                .Where(buyNowItem => buyNowItem.UserID == userId)
+                .ToList();
 
-                    break;
-                default:
-                    ModelState.AddModelError(string.Empty, "Invalid payment option selected.");
-                    return View("Index", viewModel);
+            // Calculate the total price for the items in the BuyNow list
+            decimal totalPrice = buyNowItems.Sum(buyNowItem => buyNowItem.Quantity * buyNowItem.ProductPrice);
+
+            // Create an order record in the database
+            var order = new Order
+            {
+                UserId = userId,
+                OrderDate = DateTime.Now,
+                Total = totalPrice,
+                ShippingAddress = new Address()
+            };
+
+            // Save the order to the database
+            _context.Orders.Add(order);
+            _context.BuyNowItems.RemoveRange(buyNowItems);
+            _context.SaveChanges();
+            return View("ProcessPayment",new {orderId = order.OrderId});
+        }
+
+        public IActionResult ProcessPaymentForBuyNow(int OrderId)
+        {
+            Payment payment = new Payment();
+            var paymentservice = new PaymentService();
+            var paymentResult = paymentservice.ProcessPayment(payment.CardNumber, payment.ExpiryYear, payment.CVV);
+            if (paymentResult.Success)
+            {
+                // Update the order status to "Paid" or handle payment success as needed
+                var order = _context.Orders.Find(OrderId);
+                _context.SaveChanges();
+                return RedirectToAction("OrderConfirmation", new { orderId = order.OrderId });
             }
-            return RedirectToAction("OrderConfirmed");
+            else
+            {
+                // Handle payment failure (e.g., display an error message)
+                return RedirectToAction("PaymentFailure");
+            }
         }*/
     }
 }

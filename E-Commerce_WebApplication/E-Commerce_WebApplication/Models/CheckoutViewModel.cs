@@ -17,6 +17,7 @@ namespace E_Commerce_WebApplication.Models
         public string CardNumber { get; set; }
         public string ExpirationDate { get; set; }
         public string CVV { get; set; }
-        public string PayPalEmail { get; set; }
+        public string UPIID { get; set; }
+        public bool IsCODSelected { get; set; }
     }
 }
