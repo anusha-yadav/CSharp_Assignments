@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_Commerce_WebApplication.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    [Migration("20230915021334_buynow1")]
-    partial class buynow1
+    [Migration("20230919093024_create")]
+    partial class create
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

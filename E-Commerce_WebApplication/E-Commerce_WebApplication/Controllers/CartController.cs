@@ -64,18 +64,22 @@ namespace E_Commerce_WebApplication.Controllers
 
             if (userId.HasValue)
             {
-                var userCart = _context.Carts
+                Cart userCart = _context.Carts
                     .Include(c => c.CartItems)
                     .FirstOrDefault(c => c.UserId == userId.Value);
 
                 if (userCart == null)
                 {
-                    userCart = new Cart
-                    {
-                        UserId = userId.Value,
-                        CartItems = new List<CartItem>()
-                    };
+                    userCart = new Cart();
+                    List<CartItem> cartitems = new List<CartItem>();
+                    userCart.UserId = userId.Value;
+                    userCart.CartItems = cartitems;
+
+                    Debug.WriteLine($"{ userCart.UserId} { userCart.CartItems}");
                     _context.Carts.Add(userCart);
+                    Debug.WriteLine("In User Cart is not saved yet");
+                    //_context.SaveChanges();
+                    //userCart.CartItems = new List<CartItem>();
                 }
 
                 var existingCartItem = userCart.CartItems.FirstOrDefault(ci => ci.ProductsId == productId);
@@ -84,7 +88,7 @@ namespace E_Commerce_WebApplication.Controllers
                 {
                     // If the product is already in the cart, update its quantity
                     existingCartItem.Quantity += quantity;
-                    _context.SaveChanges();
+                   
                 }
                 else
                 {
@@ -96,6 +100,7 @@ namespace E_Commerce_WebApplication.Controllers
                     };
                     userCart.CartItems.Add(newCartItem);
                     _context.SaveChanges();
+
                 }
 
                 _context.SaveChanges();

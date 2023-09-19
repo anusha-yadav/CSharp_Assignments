@@ -2,6 +2,7 @@ using E_Commerce_WebApplication;
 using E_Commerce_WebApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using E_Commerce_WebApplication.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,10 +17,9 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-/*builder.Services.AddMvc(options =>
-{
-    options.Filters.Add(typeof(AdminAuthorizeAttribute));
-});*/
+
+// Adding repository services
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 // Enable EF Core logging
@@ -29,7 +29,6 @@ builder.Services.AddDbContext<ECommerceContext>(options =>
            .LogTo(Console.WriteLine, LogLevel.Information);
 });
 
-// In Startup.cs
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
     {
@@ -37,10 +36,8 @@ builder.Services.AddControllersWithViews()
 });
 
 
-
-
-
 var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
+using E_Commerce_WebApplication.Repositories;
+using SQLitePCL;
 
 namespace E_Commerce_WebApplication.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly ECommerceContext _context;
+        private readonly IUserRepository _userRepository;
 
-        public AccountController(ECommerceContext context)
+        public AccountController(IUserRepository userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
 
         // GET: /Account/Register
@@ -19,7 +21,11 @@ namespace E_Commerce_WebApplication.Controllers
             return View();
         }
 
-        // POST: /Account/Register
+        /// <summary>
+        /// POST: /Account/Register
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Register(RegisterViewModel model)
@@ -27,9 +33,10 @@ namespace E_Commerce_WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 // Check if the email is already registered
-                if (_context.Users.Any(user => user.Email == model.Email && user.Username == model.Username))
+                var existingUser = _userRepository.GetUserByUsernameAndEmail(model.Username,model.Email);
+                if (existingUser!=null)
                 {
-                    ModelState.AddModelError("Email", "Email is already in use.");
+                    ModelState.AddModelError("Username", "Email is already in use and User alerady exists");
                     return View(model);
                 }
 
@@ -44,12 +51,10 @@ namespace E_Commerce_WebApplication.Controllers
                 };
 
                 // Hash the password and save the user to the database
-                user.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
-                _context.Users.Add(user);
-                _context.SaveChanges();
+                user.Password = _userRepository.Encrypt(model.Password);
+                _userRepository.AddUser(user);
 
                 // You may want to implement email confirmation here
-
                 return RedirectToAction("Login", "Account");
             }
             return View(model);
@@ -61,43 +66,48 @@ namespace E_Commerce_WebApplication.Controllers
             return View();
         }
 
-        // POST: /Account/Login
+        /// <summary>
+        /// POST: /Account/Login
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _context.Users.FirstOrDefault(u => u.Username == model.Username);
+                var user = _userRepository.GetUserByUsername(model.Username);
 
-                var id = (from userObj in _context.Users
-                          where userObj.Username == model.Username
-                          select userObj.Id).FirstOrDefault();
-
-                if (user != null && BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
+                if (user!=null && _userRepository.AuthenticateUser(user.Username,model.Password))
                 {
                     HttpContext.Session.SetString("user", model.Username);
-                    HttpContext.Session.SetInt32("userid", id);
-                    return RedirectToAction("Index", "Home"); // Redirect to a secure page
+                    HttpContext.Session.SetInt32("userid", user.Id);
+                    return RedirectToAction("Index", "Home"); 
                 }
-
                 ModelState.AddModelError("", "Invalid login attempt.");
             }
             return View(model);
         }
 
-        // Logout
+        /// <summary>
+        /// Session logout of particular user
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("user");
             return RedirectToAction("Index", "Home");
         }
 
-        // Profile
+        /// <summary>
+        /// Get profile of a particular user
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Profile()
         {
             int userid = (int)HttpContext.Session.GetInt32("userid");
-            var user = _context.Users.FirstOrDefault(user => user.Id == userid);
+            var user = _userRepository.GetUserById(userid);
             return View(user);
         }
     }
