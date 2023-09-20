@@ -39,6 +39,56 @@ namespace E_Commerce_WebApplication.Controllers
             return View(viewModel);
         }
 
+        public IActionResult BuyNowCheckout(int productId,int userid)
+        {
+            int? userId = HttpContext.Session.GetInt32("userid");
+            if (userId.Value == userid)
+            {
+                BuyNowViewModel buyNowItem = _context.BuyNowItems.Include(p=>p.Product).Where(u => u.UserID == userid && u.ProductID == productId).FirstOrDefault();
+
+                var model = new BuyNowCheckoutViewModel
+                {
+                    ShippingAddress = new Address(),
+                    BuyNowItem = buyNowItem,
+                };
+                return View(model);
+            }
+            return NotFound();
+        }
+
+        public IActionResult BuyNowPayment(Payment model)
+        {
+            return View(model);
+        }
+
+        public IActionResult BuyNowOrderConfirmation()
+        {
+            int? userid = HttpContext.Session.GetInt32("userid");
+            if(userid.HasValue)
+            {
+                BuyNowViewModel buyNowItem = _context.BuyNowItems.Where(p => p.UserID == userid.Value).FirstOrDefault();
+
+                if (buyNowItem != null)
+                {
+                    var order = new Order
+                    {
+                        UserId = userid.Value,
+                        OrderDate = DateTime.Now,
+                    };
+
+                    var orderItem = new OrderItem
+                    {
+                        OrderID = order.OrderId,
+                        ProductId = buyNowItem.ProductID,
+                        Quantity = buyNowItem.Quantity,
+                    };
+                    return View(order);
+                }
+            }
+            return NotFound();
+        }
+
+
         /*     // POST : Checkout/ProcessOrder
              [HttpPost]
              [ValidateAntiForgeryToken]

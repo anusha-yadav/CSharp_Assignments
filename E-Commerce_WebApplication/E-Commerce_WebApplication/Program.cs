@@ -20,6 +20,8 @@ builder.Services.AddSession(options =>
 
 // Adding repository services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+
 
 
 // Enable EF Core logging

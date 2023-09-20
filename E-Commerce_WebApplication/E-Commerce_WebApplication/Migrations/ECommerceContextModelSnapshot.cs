@@ -63,6 +63,29 @@ namespace E_Commerce_WebApplication.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("E_Commerce_WebApplication.Models.BuyNowCheckoutViewModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BuyNowItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShippingAddressAddressID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuyNowItemId");
+
+                    b.HasIndex("ShippingAddressAddressID");
+
+                    b.ToTable("BuyNowCheckout");
+                });
+
             modelBuilder.Entity("E_Commerce_WebApplication.Models.BuyNowViewModel", b =>
                 {
                     b.Property<int>("Id")
@@ -73,13 +96,6 @@ namespace E_Commerce_WebApplication.Migrations
 
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("ProductPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -302,6 +318,25 @@ namespace E_Commerce_WebApplication.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("E_Commerce_WebApplication.Models.BuyNowCheckoutViewModel", b =>
+                {
+                    b.HasOne("E_Commerce_WebApplication.Models.BuyNowViewModel", "BuyNowItem")
+                        .WithMany()
+                        .HasForeignKey("BuyNowItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce_WebApplication.Models.Address", "ShippingAddress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAddressAddressID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BuyNowItem");
+
+                    b.Navigation("ShippingAddress");
                 });
 
             modelBuilder.Entity("E_Commerce_WebApplication.Models.BuyNowViewModel", b =>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BEATDqs2tjfb58Tt1W7szXBWbFavPf9ZQE6alVObTpk=",
+  "Hash": "ZVMpJVFqT/EFj884eMPVPZmhsPnniLc1VXgs+PFE8cA=",
   "Source": "E-Commerce_WebApplication",
   "BasePath": "_content/E-Commerce_WebApplication",
   "Mode": "Default",
@@ -270,6 +270,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\smartdoorlock.png"
+    },
+    {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\speaker.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "images/speaker.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\speaker.png"
     },
     {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\ThermalBottle.png",
@@ -1783,6 +1800,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\f5c4cac9-3f27-496a-a0b8-78e1f00dcf25_led.png"
+    },
+    {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f5e86bd9-7a64-4f0f-9af2-d1c2b139a4de_speaker.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "uploads/f5e86bd9-7a64-4f0f-9af2-d1c2b139a4de_speaker.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\f5e86bd9-7a64-4f0f-9af2-d1c2b139a4de_speaker.png"
     },
     {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f66647cd-778e-4358-9edb-ff67e287e7d4_led.png",

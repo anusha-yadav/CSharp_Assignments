@@ -11,20 +11,6 @@
    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <style>
-
-.row {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
-}
-
-.col {
-    flex: 0 0 auto;
-    margin-right: 8px;
-}
-
 .navbar {
   background-color: antiquewhite;
 }
@@ -129,27 +115,12 @@
     <section class="featured-products">
         <div class="container">
             <h4 class="section-title">Best of Electronics</h4>
+             <div class="col-md-12 text-right" style="float:right;">
+                    <a href="@Url.Action("AllElectronicsProducts", "Home")">View All Electronics Products</a>
+             </div>
             <div class="row">
                 @foreach (var item in Model.ElectronicsProducts)
                 {
-                    @*<div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
-                        <div class="thumbnail product-item" style="height:300px">
-                            <div class="image">
-                            <a href="@Url.Action("ProductDetail", "Products",new { id = @item.Id})">
-                                <img class="img-responsive" title="Click to View Product detail"
-                                     style="cursor:pointer;height:100%;width:100%;object-fit:contain;"
-                                     src=@Html.DisplayFor(modelItem=> item.ImageUrl) alt="Image" />
-                            </a>
-                            </div>
-                            <div class="Samsung S23">
-                                <h5>@item.ProductName</h5>
-                                <p>&#x20b9; @item.Price</p>
-                                <p>Available</p>
-                                <div class="product-item-badge">New</div>
-                            </div>
-                        </div>
-                    </div>*@
-
                     <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom: 8px">
                         <div class="thumbnail product-item" style="height: 400px; padding: 15px;">
                             <div class="image" style="height: 250px; overflow: hidden;">
@@ -169,13 +140,15 @@
                             </div>
                         </div>
                     </div>
-
                 }
             </div>
             </div>
             <br />
             <div class="container">
             <h4 class="section-title">Best of Home Appliances</h4>
+            <div class="col-md-12 text-right" style="float:right;">
+                <a href="@Url.Action("AllAppliancesProducts", "Home")">View All Home Appliances Products</a>
+            </div>
             <div class="row">
                 @foreach (var item in Model.AppliancesProducts)
                 {
@@ -198,7 +171,6 @@
                             </div>
                         </div>
                     </div>
-
                 }
             </div>
         </div>

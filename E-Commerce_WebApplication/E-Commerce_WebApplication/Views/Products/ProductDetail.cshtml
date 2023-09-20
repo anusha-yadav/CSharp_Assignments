@@ -5,15 +5,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zoom.js/2.3.2/zoom.min.js"></script>
 }
 
-<!-- ProductDetail.cshtml -->
-
 <div class="container">
-    <div class="row">
+    <div class="row img-container">
         <div class="col-md-6">
             <div id ="img-zoomer-box">
-            <img src="@Model.ImageUrl" id="img-1" alt="@Model.ProductName" class="img-fluid" />
-            <div id="img-2" style="background-image:url(@Model.ImageUrl)"></div>
-            </div>
+                <img src="@Model.ImageUrl" id="img-1" alt="@Model.ProductName" class="img-fluid" />
+@*            <div id="img-2" style="background-image:url(@Model.ImageUrl)"></div>
+*@          </div>
         </div>
         <div class="col-md-6">
             <h2>@Model.ProductName</h2>
@@ -22,7 +20,7 @@
         
         <br />
 @*        <button onclick="addToCartClicked()">Add to Cart</button>
-*@        <a href="@Url.Action("BuyNow", "Cart", new { productId = Model.Id})" class="btn btn-primary">Buy Now</a>
+            *@        <a href="@Url.Action("BuyNow", "Cart", new { productId = Model.Id})" class="btn btn-primary">Buy Now</a>
 
           <button id="addToCartButton" onclick="addToCartClicked1()" class="btn btn-primary">Add to Cart</button>
 
@@ -89,68 +87,66 @@
 </script>
 
 <script>
+    var imageUrl = '@Model.ImageUrl';
+</script>
+
+<script>
     let zoomer = function () {
-
+        /*
         document.querySelector('#img-zoomer-box')
-
             .addEventListener('mousemove', function (e) {
-
-
-
-                let original = document.querySelector('#img-1'),
-
-                    magnified = document.querySelector('#img-2'),
-
+                let original = document.querySelector('#img-1');
+                let magnified = document.querySelector('#img-2'),
                     style = magnified.style,
-
                     x = e.pageX - this.offsetLeft,
-
                     y = e.pageY - this.offsetTop,
-
                     imgWidth = original.offsetWidth,
-
                     imgHeight = original.offsetHeight,
-
                     xperc = ((x / imgWidth) * 100),
-
                     yperc = ((y / imgHeight) * 100);
-
-
-
                 //lets user scroll past right edge of image
-
                 if (x > (.01 * imgWidth)) {
-
                     xperc += (.15 * xperc);
-
                 };
-
-
-
                 //lets user scroll past bottom edge of image
-
                 if (y >= (.01 * imgHeight)) {
-
                     yperc += (.15 * yperc);
-
                 };
-
-
-
                 style.backgroundPositionX = (xperc - 9) + '%';
-
                 style.backgroundPositionY = (yperc - 9) + '%';
-
-
-
                 style.left = (x - 180) + 'px';
-
                 style.top = (y - 180) + 'px';
 
+            }, false);
+            */
+        let original = document.querySelector('#img-1');
+        let magnified = document.createElement('div');
+        magnified.id = 'img-2';
+        
+        magnified.style.backgroundImage = `url(${imageUrl})`;
+        document.body.appendChild(magnified);
 
+        document.querySelector('#img-zoomer-box')
+            .addEventListener('mousemove', function (e) {
+                let style = magnified.style,
+                    x = e.pageX - this.offsetLeft,
+                    y = e.pageY - this.offsetTop,
+                    imgWidth = original.offsetWidth,
+                    imgHeight = original.offsetHeight,
+                    xperc = ((x / imgWidth) * 100),
+                    yperc = ((y / imgHeight) * 100);
 
+                // Check if the cursor is inside the image
+                if (x >= 0 && x <= imgWidth && y >= 0 && y <= imgHeight) {
+                    style.display = 'block';
+                    style.backgroundPositionX = (xperc - 9) + '%';
+                    style.backgroundPositionY = (yperc - 9) + '%';
+                    style.left = (x - 180) + 'px';
+                    style.top = (y - 180) + 'px';
+                } else {
+                    style.display = 'none';
+                }
             }, false);
 
     }();
-
 </script>

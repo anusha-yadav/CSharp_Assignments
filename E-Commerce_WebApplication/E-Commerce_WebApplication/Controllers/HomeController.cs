@@ -19,10 +19,10 @@ namespace E_Commerce_WebApplication.Controllers
         {
             var electronicsProduct = _context.Products
                 .Include(p => p.SubCategory)
-                .Where(c => c.SubCategory.CategoryId == 1).ToList();
+                .Where(c => c.SubCategory.CategoryId == 1).Take(4).ToList();
 
             var appliancesProducts = _context.Products
-                .Include(p => p.SubCategory).Where(c=>c.SubCategory.CategoryId==2).ToList();
+                .Include(p => p.SubCategory).Where(c=>c.SubCategory.CategoryId==2).Take(4).ToList();
 
             var viewModel = new HomePageViewModel
             {
@@ -36,6 +36,22 @@ namespace E_Commerce_WebApplication.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult AllElectronicsProducts()
+        {
+            var allElectronicsProducts = _context.Products
+                .Include(p=>p.SubCategory)
+                .Where(c=>c.SubCategory.CategoryId==1).ToList();
+            return View(allElectronicsProducts);
+        }
+
+        public IActionResult AllAppliancesProducts()
+        {
+            var allAppliancesProducts = _context.Products
+                .Include(p => p.SubCategory)
+                .Where(c => c.SubCategory.CategoryId == 2).ToList();
+            return View(allAppliancesProducts);
         }
     }
 }

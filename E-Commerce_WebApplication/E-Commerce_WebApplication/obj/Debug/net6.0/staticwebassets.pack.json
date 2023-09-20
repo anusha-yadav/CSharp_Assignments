@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets\\images\\smartdoorlock.png"
     },
     {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\speaker.png",
+      "PackagePath": "staticwebassets\\images\\speaker.png"
+    },
+    {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -411,6 +415,10 @@
     {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f5c4cac9-3f27-496a-a0b8-78e1f00dcf25_led.png",
       "PackagePath": "staticwebassets\\uploads\\f5c4cac9-3f27-496a-a0b8-78e1f00dcf25_led.png"
+    },
+    {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f5e86bd9-7a64-4f0f-9af2-d1c2b139a4de_speaker.png",
+      "PackagePath": "staticwebassets\\uploads\\f5e86bd9-7a64-4f0f-9af2-d1c2b139a4de_speaker.png"
     },
     {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f66647cd-778e-4358-9edb-ff67e287e7d4_led.png",

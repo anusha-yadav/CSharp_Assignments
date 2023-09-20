@@ -16,5 +16,6 @@ namespace E_Commerce_WebApplication.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem>OrderItems { get; set; }
         public DbSet<BuyNowViewModel>BuyNowItems { get; set; }
+        public DbSet<BuyNowCheckoutViewModel>BuyNowCheckout { get; set; }
     }
 }

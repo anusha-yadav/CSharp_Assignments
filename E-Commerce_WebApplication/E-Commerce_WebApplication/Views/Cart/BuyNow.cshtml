@@ -5,57 +5,75 @@
 }
 
 @model E_Commerce_WebApplication.Models.BuyNowViewModel
-<style>
-    /* Define a CSS class for a smaller input */
-    .small-input {
-        width: 50px; /* Adjust the width as per your preference */
-        -webkit-appearance: none; /* Remove default styling in WebKit browsers (e.g., Safari) */
-        appearance: none; /* Remove default styling in other browsers */
-        padding-right: 20px; /* Add some padding to the right to accommodate the arrow buttons */
-        background-image: url('path-to-your-arrow-icon.png'); /* Replace with the path to your arrow icon image */
-        background-repeat: no-repeat;
-        background-position: right center; /* Adjust the position of the arrow icon */
-    }
 
-</style>
-<h2>Buy Now</h2>
 <table class="table">
-    <tr>
-        <th>Product Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-    </tr>
-    <tr>
-        <td>@Model.ProductName</td>
-        <td>$@Model.ProductPrice</td>
-        <td>
-            @Html.HiddenFor(model => model.Product.ProductName)
-            @Html.HiddenFor(model => model.Product.Price)
-            <input type="number" class="form-control" id="Quantity" name="Quantity" value="1" min="1" width="50" />
-        </td>
-        <td>$<span id="Total">@Model.Product.Price</span></td>
-    </tr>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Product.ProductName</td>
+            <td>$@Model.Product.Price</td>
+            <td>
+                <div class="form-group">
+                    <input type="number" class="form-control" id="Quantity" name="Quantity" value="1" min="1"  data-product-id="@Model.ProductID"/>
+                </div>
+            </td>
+            <td>$<span id="Total">@Model.Product.Price</span></td>
+        </tr>
+    </tbody>
 </table>
 
-<form method="post" action="@Url.Action("Checkout", "Checkout")">
-    @Html.HiddenFor(model => model.ProductName)
-    @Html.HiddenFor(model => model.ProductPrice)
-    <input type="hidden" id="FinalQuantity" name="FinalQuantity" value="1" />
+<form method="post" action="@Url.Action("BuyNowCheckout", "Checkout")">
+    @Html.HiddenFor(model => model.UserID)
+    @Html.HiddenFor(model => model.ProductID)
 
-    <button type="submit" class="btn btn-primary">Confirm Purchase</button>
+    <input type="hidden" id="FinalQuantity" name="FinalQuantity" value="1" />
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">Confirm Purchase</button>
+    </div>
 </form>
 
 <script>
-    // JavaScript to update the total price when quantity changes
+        // JavaScript to update the total price when quantity changes
+        $(document).ready(function () {
+            $('#Quantity').on('input', function () {
+                var quantity = parseInt($(this).val());
+                var price = parseFloat('@Model.Product.Price');
+                var total = quantity * price;
+                $('#Total').text(total.toFixed(2));
+                $('#FinalQuantity').val(quantity);
+            });
+        });
+
+    // JavaScript to update the total price and reflect quantity in the database
     $(document).ready(function () {
         $('#Quantity').on('input', function () {
             var quantity = parseInt($(this).val());
-            var price = parseFloat('@Model.ProductPrice');
-            var total = quantity * price;
-            $('#Total').text(total.toFixed(2));
-            $('#FinalQuantity').val(quantity);
+            var productId = $(this).data('product-id'); // Get the product ID
+            // Make an AJAX request to update the quantity in the database
+            $.ajax({
+                type: 'POST',
+                url: '/Cart/UpdateQuantity', // Replace with the actual URL
+                data: { productId: productId, quantity: quantity },
+                success: function () {
+                    // Update the total price in the view
+                    var price = parseFloat('@Model.Product.Price');
+                    var total = quantity * price;
+                    $('#Total').text(total.toFixed(2));
+                },
+                error: function () {
+                    // Handle errors if necessary
+                }
+            });
         });
     });
+
 </script>
+
 
