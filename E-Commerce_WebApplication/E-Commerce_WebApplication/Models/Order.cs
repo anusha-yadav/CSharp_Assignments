@@ -8,7 +8,7 @@ namespace E_Commerce_WebApplication.Models
         public int OrderId { get; set; }    
         public int UserId { get; set; }
         public DateTime OrderDate { get; set; } 
-        public Address ShippingAddress { get;set; }
+        public virtual Address ShippingAddress { get;set; }
         public virtual Users User { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

@@ -49,40 +49,42 @@
                 </div>
             </div>
             <div class="col-md-6">
-                div class="buy-now-summary">
-                <h3>Buy Now Item Summary</h3>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>@Model.BuyNowItem.Product.ProductName</td>
-                            <td>$@Model.BuyNowItem.Product.Price</td>
-                            <td>@Model.BuyNowItem.Quantity</td>
-                            <td>$@(Model.BuyNowItem.Product.Price * Model.BuyNowItem.Quantity)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div class="buy-now-summary">
+                    <h3>Buy Now Item Summary</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.BuyNowItem.Product.ProductName</td>
+                                <td>$@Model.BuyNowItem.Product.Price</td>
+                                <td>@Model.BuyNowItem.Quantity</td>
+                                <td>&#x20b9; @(Model.BuyNowItem.Product.Price * Model.BuyNowItem.Quantity)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="total">
-                <h3>Total: $@(Model.BuyNowItem.Product.Price * Model.BuyNowItem.Quantity)</h3>
-            </div>
+                <div class="total">
+                    <h3>Total: &#x20b9; @(Model.BuyNowItem.Product.Price * Model.BuyNowItem.Quantity)</h3>
+                </div>
 
-            <div class="checkout-button">
-                <form method="post" action="@Url.Action("PlaceOrder", "Checkout")">
-                    @Html.AntiForgeryToken()
-                    @Html.HiddenFor(model => model.BuyNowItem.ProductID)
-                    @Html.HiddenFor(model => model.BuyNowItem.Quantity)
-                    <button type="submit" class="btn btn-primary">Place Order</button>
-                </form>
+                <div class="checkout-button">
+                    <form method="post" action="@Url.Action("PlaceOrder", "Checkout")">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.BuyNowItem.ProductID)
+                        @Html.HiddenFor(model => model.BuyNowItem.Quantity)
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </form>
+                </div>
             </div>
-            </div>
-            </div>
+          </div>
+       </div>
+
 }

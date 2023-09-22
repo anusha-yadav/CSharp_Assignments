@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\images\\asuslaptop.png"
     },
     {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\battery.png",
+      "PackagePath": "staticwebassets\\images\\battery.png"
+    },
+    {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\camera.png",
       "PackagePath": "staticwebassets\\images\\camera.png"
     },
@@ -393,6 +397,10 @@
       "PackagePath": "staticwebassets\\uploads\\bf5b5253-a52f-49de-b041-ae232abfbeb4_smartdoorlock.png"
     },
     {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\c06eeb04-2779-43a2-92c8-18f28c038534_battery.png",
+      "PackagePath": "staticwebassets\\uploads\\c06eeb04-2779-43a2-92c8-18f28c038534_battery.png"
+    },
+    {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\c191a4f0-c7e8-47df-9c33-db1f4b1c0ead_asuslaptop.png",
       "PackagePath": "staticwebassets\\uploads\\c191a4f0-c7e8-47df-9c33-db1f4b1c0ead_asuslaptop.png"
     },
@@ -407,6 +415,10 @@
     {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\df3ca360-5245-4546-9d61-7c1130f21aa2_BoatWave.png",
       "PackagePath": "staticwebassets\\uploads\\df3ca360-5245-4546-9d61-7c1130f21aa2_BoatWave.png"
+    },
+    {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f0b66409-2f94-4746-bd42-e1ea34dd6cfb_samsunga21s.png",
+      "PackagePath": "staticwebassets\\uploads\\f0b66409-2f94-4746-bd42-e1ea34dd6cfb_samsunga21s.png"
     },
     {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f2b5caf6-1d55-4b85-ade0-af0e7fc36daf_ThermalBottle.png",

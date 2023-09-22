@@ -1,28 +1,22 @@
-﻿using E_Commerce_WebApplication.Data;
-using E_Commerce_WebApplication.Models;
+﻿using E_Commerce_WebApplication.Models;
 using E_Commerce_WebApplication.Repositories;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Linq;
 
 namespace E_Commerce_WebApplication.Controllers
 {
     public class CartController : Controller
     {
         private readonly ICartRepository _cartRepository;
-        private readonly ECommerceContext _context;
 
         /// <summary>
         /// Constructor of Cart controller
         /// </summary>
         /// <param name="context"></param>
         /// <param name="cartRepository"></param>
-        public CartController(ICartRepository cartRepository,ECommerceContext context)
+        public CartController(ICartRepository cartRepository)
         {
             _cartRepository = cartRepository;
-            _context = context;
         }
 
 
@@ -37,6 +31,11 @@ namespace E_Commerce_WebApplication.Controllers
             if (userId.HasValue)
             {
                 var userCart = _cartRepository.GetCartFromCurrentUser(userId.Value);
+                int count = userCart.CartItems.Count();
+                if (count == 0)
+                {
+                    return View("EmptyCart");
+                }
                 return View(userCart);
             }
             return PartialView("Error");
@@ -140,16 +139,7 @@ namespace E_Commerce_WebApplication.Controllers
             }
             if (userid.HasValue)
             {
-                Products product = _context.Products.FirstOrDefault(p => p.Id == productid);
-                var viewModel = new BuyNowViewModel
-                {
-                    Quantity = 1,
-                    ProductID = productid,
-                    UserID = userid.Value,
-                    Product = product
-                };
-                _context.BuyNowItems.Add(viewModel);
-                _context.SaveChanges();
+                BuyNowViewModel viewModel = _cartRepository.AddItem(productid, userid.Value);
                 return View(viewModel);
             }
             return RedirectToAction("Login", "Account");
@@ -158,16 +148,14 @@ namespace E_Commerce_WebApplication.Controllers
         [HttpPost]
         public IActionResult UpdateQuantity(int productId, int quantity)
         {
-            // Retrieve the product from the database by productId
-            var product = _context.BuyNowItems.Where(p=>p.ProductID==productId).FirstOrDefault();
-            Debug.WriteLine($"{product.Quantity}");
+            var product = _cartRepository.GetItems(productId);
 
             if (product != null)
             {
                 try
                 {
                     product.Quantity = quantity;
-                    _context.SaveChanges();
+                    _cartRepository.SaveChanges();
                     return Ok(); // Return a success status code
                 }
                 catch(Exception ex) 
@@ -179,6 +167,5 @@ namespace E_Commerce_WebApplication.Controllers
 
             return NotFound(); // Return a not found status code if the product is not found
         }
-
     }
 }

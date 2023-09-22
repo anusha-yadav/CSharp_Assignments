@@ -9,7 +9,7 @@ namespace E_Commerce_WebApplication.Models
         public decimal Price { get; set; }
         public int SubCategoryId { get; set; }
         public string ImageUrl { get; set; }
-        public SubCategory SubCategory { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
         public string Description { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }

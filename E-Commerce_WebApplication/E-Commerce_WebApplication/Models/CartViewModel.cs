@@ -2,7 +2,7 @@
 {
     public class CartViewModel
     {
-        public Cart Cart { get; set; }
-        public Address Address { get; set; }    
+        public virtual Cart Cart { get; set; }
+        public virtual Address Address { get; set; }    
     }
 }

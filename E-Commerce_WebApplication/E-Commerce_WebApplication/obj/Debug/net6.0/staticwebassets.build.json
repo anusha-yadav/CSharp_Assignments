@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZVMpJVFqT/EFj884eMPVPZmhsPnniLc1VXgs+PFE8cA=",
+  "Hash": "Giiy+Viq1v79CWxazET4WAxS2lyB93jIOm9q4IWG8y4=",
   "Source": "E-Commerce_WebApplication",
   "BasePath": "_content/E-Commerce_WebApplication",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\asuslaptop.png"
+    },
+    {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\battery.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "images/battery.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\battery.png"
     },
     {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\BoatWave.png",
@@ -1700,6 +1717,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\bf5b5253-a52f-49de-b041-ae232abfbeb4_smartdoorlock.png"
     },
     {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\c06eeb04-2779-43a2-92c8-18f28c038534_battery.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "uploads/c06eeb04-2779-43a2-92c8-18f28c038534_battery.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\c06eeb04-2779-43a2-92c8-18f28c038534_battery.png"
+    },
+    {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\c191a4f0-c7e8-47df-9c33-db1f4b1c0ead_asuslaptop.png",
       "SourceId": "E-Commerce_WebApplication",
       "SourceType": "Discovered",
@@ -1766,6 +1800,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\df3ca360-5245-4546-9d61-7c1130f21aa2_BoatWave.png"
+    },
+    {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f0b66409-2f94-4746-bd42-e1ea34dd6cfb_samsunga21s.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "uploads/f0b66409-2f94-4746-bd42-e1ea34dd6cfb_samsunga21s.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\f0b66409-2f94-4746-bd42-e1ea34dd6cfb_samsunga21s.png"
     },
     {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\f2b5caf6-1d55-4b85-ade0-af0e7fc36daf_ThermalBottle.png",

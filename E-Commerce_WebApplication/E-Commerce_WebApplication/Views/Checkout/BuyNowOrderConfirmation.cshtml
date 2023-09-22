@@ -13,21 +13,12 @@
         <tr>
             <th>Order ID</th>
             <th>Order Date</th>
-            <th>Shipping Address</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>@Model.OrderId</td>
             <td>@Model.OrderDate</td>
-            <td>
-                @Model.ShippingAddress.Name
-                <br />
-                @Model.ShippingAddress.ShippingAddress
-                <br />
-                @Model.ShippingAddress.City
-                <br />
-                @Model.ShippingAddress.State
         </tr>
     </tbody>
 </table>
@@ -48,7 +39,7 @@
             <tr>
                 <td>@item.Product.ProductName</td>
                 <td>@item.Quantity</td>
-                <td>@item.Quantity * @item.Product.Price</td>
+                <td>&#x20b9; @((int)item.Quantity * (decimal)item.Product.Price)</td>
             </tr>
         }
     </tbody>

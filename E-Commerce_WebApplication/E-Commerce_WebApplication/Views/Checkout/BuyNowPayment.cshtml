@@ -64,14 +64,19 @@
         <input type="text" class="form-control" id="CardNumber" name="CardNumber" />
     </div>
 
-    <div class="form-group">
-        <label for="ExpiryMonth">Expiry Month:</label>
-        <input type="text" class="form-control" id="ExpiryMonth" name="ExpiryMonth" />
-    </div>
-
-    <div class="form-group">
-        <label for="ExpiryYear">Expiry Year:</label>
-        <input type="text" class="form-control" id="ExpiryYear" name="ExpiryYear" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="ExpiryMonth">Expiry Month:</label>
+                <input type="text" class="form-control" id="ExpiryMonth" name="ExpiryMonth" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="ExpiryYear">Expiry Year:</label>
+                <input type="text" class="form-control" id="ExpiryYear" name="ExpiryYear" />
+            </div>
+        </div>
     </div>
 
     <div class="form-group">
@@ -84,10 +89,9 @@
         <input type="text" class="form-control" id="UpiId" name="UpiId" />
     </div>
 
-    <form id="paymentForm" asp-controller="Checkout" asp-action="BuyNowOrderConfirmation">
-        <button type="submit" class="btn btn-primary" id="confirmPaymentBtn">Confirm Payment</button>
-    </form>
+    <button type="submit" class="btn btn-primary" id="confirmPaymentBtn">Confirm Payment</button>
 </form>
+
 
 <div id="paymentModal" class="modal">
     <div class="modal-content">

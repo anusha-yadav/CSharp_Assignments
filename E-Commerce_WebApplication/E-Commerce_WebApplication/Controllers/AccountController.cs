@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
 using E_Commerce_WebApplication.Repositories;
-using SQLitePCL;
 
 namespace E_Commerce_WebApplication.Controllers
 {

@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<SubCategory> Subcategories { get; set; }
+        public virtual ICollection<SubCategory> Subcategories { get; set; }
     }
 }

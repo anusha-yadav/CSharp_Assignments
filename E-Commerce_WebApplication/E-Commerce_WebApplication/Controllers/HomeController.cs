@@ -53,5 +53,10 @@ namespace E_Commerce_WebApplication.Controllers
                 .Where(c => c.SubCategory.CategoryId == 2).ToList();
             return View(allAppliancesProducts);
         }
+
+        public IActionResult UnAuthorized()
+        {
+            return View("~/Views/Home/Error.cshtml");
+        }
     }
 }

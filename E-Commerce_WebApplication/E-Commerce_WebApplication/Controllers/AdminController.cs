@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using E_Commerce_WebApplication.Filters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace E_Commerce_WebApplication.Controllers
 {

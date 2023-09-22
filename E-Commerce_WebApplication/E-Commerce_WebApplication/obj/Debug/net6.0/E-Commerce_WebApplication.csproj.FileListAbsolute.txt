@@ -545,3 +545,5 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\obj\Debug\net6.0\E-Commerce_WebApplication.pdb
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\obj\Debug\net6.0\E-Commerce_WebApplication.genruntimeconfig.cache
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\obj\Debug\net6.0\ref\E-Commerce_WebApplication.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

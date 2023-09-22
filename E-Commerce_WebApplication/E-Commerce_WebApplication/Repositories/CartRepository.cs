@@ -8,7 +8,7 @@ namespace E_Commerce_WebApplication.Repositories
     public class CartRepository : ICartRepository
     {
         private readonly ECommerceContext _context;
-
+        private readonly IUnitOfWork _unitOfWork;
         public CartRepository(ECommerceContext context)
         {
             _context = context;
@@ -98,6 +98,31 @@ namespace E_Commerce_WebApplication.Repositories
                 return true;
             }
             return false;
+        }
+
+        public BuyNowViewModel AddItem(int productid,int userid)
+        {
+            Products product = _context.Products.FirstOrDefault(p => p.Id == productid);
+            var viewModel = new BuyNowViewModel
+            {
+                Quantity = 1,
+                ProductID = productid,
+                UserID = userid,
+                Product = product
+            };
+            _context.BuyNowItems.Add(viewModel);
+            _context.SaveChanges();
+            return viewModel;
+        }
+
+        public BuyNowViewModel GetItems(int productId)
+        {
+            return _context.BuyNowItems.Where(p => p.ProductID == productId).FirstOrDefault();
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }

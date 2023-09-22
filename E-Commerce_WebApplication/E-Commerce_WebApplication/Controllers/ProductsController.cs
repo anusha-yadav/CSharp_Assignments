@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
 using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace E_Commerce_WebApplication.Controllers
 {
@@ -211,6 +212,74 @@ namespace E_Commerce_WebApplication.Controllers
         {
             var products = _context.Products.Where(product => product.ProductName.Contains(searchItem)).ToList();
             return View(products);
+        }
+
+        public IActionResult GiveRating(int productId)
+        {
+            int? userid = HttpContext.Session.GetInt32("userid");
+            var product = _context.Products.Find(productId);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the user is authenticated
+            if (!userid.HasValue)
+            {
+                return RedirectToAction("Login", "Account"); // Redirect to login if not authenticated
+            }
+
+            // Check if the user has already rated this product
+            var existingRating = _context.Ratings.SingleOrDefault(r => r.ProductId == productId && r.UserId == userid.Value);
+
+            if (existingRating != null)
+            {
+                TempData["ErrorMessage"] = "You have already rated this product.";
+                return RedirectToAction("Details", "Product", new { id = productId });
+            }
+
+            var model = new RatingViewModel
+            {
+                ProductId = productId,
+                ProductName = product.ProductName,
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public IActionResult GiveRating(RatingViewModel model)
+        {
+            // Check if the user is authenticated
+            int? userid = HttpContext.Session.GetInt32("userid");
+            if (!userid.HasValue)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (ModelState.IsValid)
+            {
+                // Save the rating to the database
+                var rating = new Rating
+                {
+                    UserId = userid.Value,
+                    ProductId = model.ProductId,
+                    Value = model.Value,
+                    DateRated = DateTime.Now
+                };
+
+                _context.Ratings.Add(rating);
+                _context.SaveChanges();
+
+                TempData["SuccessMessage"] = "Thank you for rating this product!";
+                return RedirectToAction("Details", "Product", new { id = model.ProductId });
+            }
+
+            // If there are validation errors, return the view with the model to display error messages
+            return View(model);
+
         }
     }
 }

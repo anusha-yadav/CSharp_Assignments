@@ -1,21 +1,24 @@
 ﻿using E_Commerce_WebApplication.Models;
 using Microsoft.AspNetCore.Mvc;
 using E_Commerce_WebApplication.Data;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using E_Commerce_WebApplication.Repositories;
 
 namespace E_Commerce_WebApplication.Controllers
 {
     public class CheckoutController : Controller
     {
         private readonly ECommerceContext _context;
+        private readonly ICheckoutRepository _checkoutRepository;
+        private readonly IOrderRepository _orderRepository;
 
-        public CheckoutController(ECommerceContext context)
+
+        public CheckoutController(ICheckoutRepository checkoutRepository,IOrderRepository orderRepository)
         {
-            _context = context;
+            _checkoutRepository = checkoutRepository;
+            _orderRepository = orderRepository;
         }
 
-        // Index method of the checkout controller
         public IActionResult Index()
         {
             return View();
@@ -25,10 +28,8 @@ namespace E_Commerce_WebApplication.Controllers
         public IActionResult Checkout()
         {
             int? userid = HttpContext.Session.GetInt32("userid");
-            var cart = _context.Carts
-                    .Include(c => c.CartItems)
-                    .ThenInclude(ci => ci.Products)
-                    .FirstOrDefault(c => c.UserId == userid.Value);
+         
+            Cart cart = _checkoutRepository.GetCart(userid.Value);
 
             var viewModel = new CheckoutViewModel
             {
@@ -43,14 +44,15 @@ namespace E_Commerce_WebApplication.Controllers
         {
             int? userId = HttpContext.Session.GetInt32("userid");
             if (userId.Value == userid)
-            {
-                BuyNowViewModel buyNowItem = _context.BuyNowItems.Include(p=>p.Product).Where(u => u.UserID == userid && u.ProductID == productId).FirstOrDefault();
-
+            {       
+                BuyNowViewModel buyNowItem = _checkoutRepository.GetBuyNowItemForCheckout(productId, userId.Value);
                 var model = new BuyNowCheckoutViewModel
                 {
                     ShippingAddress = new Address(),
                     BuyNowItem = buyNowItem,
                 };
+
+                //_context.SaveChanges();
                 return View(model);
             }
             return NotFound();
@@ -66,72 +68,17 @@ namespace E_Commerce_WebApplication.Controllers
             int? userid = HttpContext.Session.GetInt32("userid");
             if(userid.HasValue)
             {
-                BuyNowViewModel buyNowItem = _context.BuyNowItems.Where(p => p.UserID == userid.Value).FirstOrDefault();
+
+                BuyNowViewModel buyNowItem = _checkoutRepository.GetItemOfUser(userid.Value);
 
                 if (buyNowItem != null)
                 {
-                    var order = new Order
-                    {
-                        UserId = userid.Value,
-                        OrderDate = DateTime.Now,
-                    };
-
-                    var orderItem = new OrderItem
-                    {
-                        OrderID = order.OrderId,
-                        ProductId = buyNowItem.ProductID,
-                        Quantity = buyNowItem.Quantity,
-                    };
-                    return View(order);
+                    Order order = _orderRepository.CreateOrder(buyNowItem);
+                    return View(@"Views/Checkout/BuyNowOrderConfirmation.cshtml",order);
                 }
             }
             return NotFound();
         }
-
-
-        /*     // POST : Checkout/ProcessOrder
-             [HttpPost]
-             [ValidateAntiForgeryToken]
-             public IActionResult ProcessOrder(CheckoutViewModel viewModel)
-             {
-                 if (!ModelState.IsValid)
-                 {
-                     return View("Checkout", viewModel);
-                 }
-                 var order = new Order
-                 {
-                     UserId = (int)HttpContext.Session.GetInt32("userid"),
-                     OrderDate = DateTime.Now,
-                     ShippingAddress = viewModel.ShippingAddress
-                 };
-                 _context.Orders.Add(order);
-                 _context.SaveChanges();
-
-
-                 foreach(var cartItem in viewModel.Cart.CartItems)
-                 {
-                     var orderItem = new OrderItem
-                     {
-                         OrderID = order.OrderId,
-                         ProductId = cartItem.Products.Id,
-                         Quantity = (int)cartItem.Quantity,
-                     };
-                     _context.OrderItems.Add(orderItem);
-                 }
-
-                 _context.SaveChanges();
-
-                 int userid = (int)HttpContext.Session.GetInt32("userid");
-                 var cartItems = _context.Carts.Include(c=>c.CartItems)
-                     .SingleOrDefault(c=>c.UserId== userid);
-                 if (cartItems != null)
-                 {
-                     var userCartItems = cartItems.CartItems.ToList();
-                     _context.CartItems.RemoveRange(userCartItems);
-                     _context.SaveChanges();
-                 }
-                 return RedirectToAction("ProcessPayment",viewModel);
-             }*/
 
         /// <summary>
         /// Process Payment handles payment and orders of the cart
@@ -143,12 +90,8 @@ namespace E_Commerce_WebApplication.Controllers
         {
             // Process payment and update order status
             int userId = (int)HttpContext.Session.GetInt32("userid");
-            Debug.WriteLine(userId);
-            var userCart = _context.Carts
-                    .Include(c => c.CartItems)
-                    .ThenInclude(ci => ci.Products)
-                    .FirstOrDefault(c => c.UserId == userId);
-            Debug.WriteLine(userCart);
+          
+            Cart userCart = _checkoutRepository.GetCart(userId);
 
             // Example: Use a payment service to process the payment
             var paymentservice = new PaymentService();
@@ -156,32 +99,7 @@ namespace E_Commerce_WebApplication.Controllers
 
             if (paymentResult.Success)
             {
-                var order = new Order
-                {
-                    UserId = userId,
-                    OrderDate = DateTime.Now,
-                    ShippingAddress = viewModel.ShippingAddress,
-                    OrderItems = new List<OrderItem>()
-                };
-
-                _context.Orders.Add(order);
-
-                foreach (var cartItem in userCart.CartItems)
-                {
-                    Debug.WriteLine(cartItem);
-                    var orderItem = new OrderItem
-                    {
-                        ProductId = cartItem.ProductsId,
-                        Quantity = (int)cartItem.Quantity,
-                        OrderID = order.OrderId
-
-                    };
-                    order.OrderItems.Add(orderItem);
-                }
-
-                _context.Orders.Add(order);
-                _context.SaveChanges();
-                
+                Order order = _orderRepository.CreateOrderForAddCart(viewModel,userId,userCart);
                 return View("PaymentConfirmation", order);
             }
             else
@@ -191,52 +109,5 @@ namespace E_Commerce_WebApplication.Controllers
                 return View("Checkout", viewModel);
             }
         }
-
-       /* public IActionResult CreateOrder()
-        {
-            int userId = (int)HttpContext.Session.GetInt32("userid");
-            // Fetch the BuyNow items for the current user
-            var buyNowItems = _context.BuyNowItems
-                .Include(buyNowItem => buyNowItem.Product)
-                .Where(buyNowItem => buyNowItem.UserID == userId)
-                .ToList();
-
-            // Calculate the total price for the items in the BuyNow list
-            decimal totalPrice = buyNowItems.Sum(buyNowItem => buyNowItem.Quantity * buyNowItem.ProductPrice);
-
-            // Create an order record in the database
-            var order = new Order
-            {
-                UserId = userId,
-                OrderDate = DateTime.Now,
-                Total = totalPrice,
-                ShippingAddress = new Address()
-            };
-
-            // Save the order to the database
-            _context.Orders.Add(order);
-            _context.BuyNowItems.RemoveRange(buyNowItems);
-            _context.SaveChanges();
-            return View("ProcessPayment",new {orderId = order.OrderId});
-        }
-
-        public IActionResult ProcessPaymentForBuyNow(int OrderId)
-        {
-            Payment payment = new Payment();
-            var paymentservice = new PaymentService();
-            var paymentResult = paymentservice.ProcessPayment(payment.CardNumber, payment.ExpiryYear, payment.CVV);
-            if (paymentResult.Success)
-            {
-                // Update the order status to "Paid" or handle payment success as needed
-                var order = _context.Orders.Find(OrderId);
-                _context.SaveChanges();
-                return RedirectToAction("OrderConfirmation", new { orderId = order.OrderId });
-            }
-            else
-            {
-                // Handle payment failure (e.g., display an error message)
-                return RedirectToAction("PaymentFailure");
-            }
-        }*/
     }
 }

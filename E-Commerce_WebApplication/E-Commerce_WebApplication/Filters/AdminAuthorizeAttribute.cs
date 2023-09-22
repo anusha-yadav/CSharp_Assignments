@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace E_Commerce_WebApplication
+namespace E_Commerce_WebApplication.Filters
 {
-    public class AdminAuthorizeAttribute : IAuthorizationFilter
+    public class AdminAuthorizeAttribute : Attribute, IAuthorizationFilter
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         public AdminAuthorizeAttribute(IHttpContextAccessor httpContextAccessor)
@@ -16,7 +16,7 @@ namespace E_Commerce_WebApplication
             var session = _httpContextAccessor.HttpContext.Session;
             if (!IsUserAdmin(session.GetString("user")))
             {
-                context.Result = new RedirectToActionResult("Unauthorized", "Error", null);
+                context.Result = new RedirectToActionResult("Unauthorized", "Home",null);
             }
         }
 
@@ -30,4 +30,5 @@ namespace E_Commerce_WebApplication
             return roles.Contains(username);
         }
     }
+
 }

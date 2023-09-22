@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
+using E_Commerce_WebApplication.Filters;
 
 namespace E_Commerce_WebApplication.Controllers
 {
@@ -57,7 +54,6 @@ namespace E_Commerce_WebApplication.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SubCategory subCategory)
         {
             if (subCategory!=null)
@@ -91,7 +87,6 @@ namespace E_Commerce_WebApplication.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,CategoryId")] SubCategory subCategory)
         {
             if (id != subCategory.Id)
@@ -144,7 +139,6 @@ namespace E_Commerce_WebApplication.Controllers
 
         // POST: SubCategories/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.SubCategories == null)

@@ -18,6 +18,9 @@ namespace E_Commerce_WebApplication.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -83,7 +86,7 @@ namespace E_Commerce_WebApplication.Migrations
 
                     b.HasIndex("ShippingAddressAddressID");
 
-                    b.ToTable("BuyNowCheckout");
+                    b.ToTable("BuyNowCheckoutViews");
                 });
 
             modelBuilder.Entity("E_Commerce_WebApplication.Models.BuyNowViewModel", b =>
@@ -210,6 +213,9 @@ namespace E_Commerce_WebApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderItemId"));
 
+                    b.Property<bool>("HasRated")
+                        .HasColumnType("bit");
+
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
@@ -259,6 +265,65 @@ namespace E_Commerce_WebApplication.Migrations
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("E_Commerce_WebApplication.Models.Rating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateRated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ratings");
+                });
+
+            modelBuilder.Entity("E_Commerce_WebApplication.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("E_Commerce_WebApplication.Models.SubCategory", b =>
@@ -435,6 +500,44 @@ namespace E_Commerce_WebApplication.Migrations
                         .IsRequired();
 
                     b.Navigation("SubCategory");
+                });
+
+            modelBuilder.Entity("E_Commerce_WebApplication.Models.Rating", b =>
+                {
+                    b.HasOne("E_Commerce_WebApplication.Models.Products", "Products")
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce_WebApplication.Models.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("E_Commerce_WebApplication.Models.Review", b =>
+                {
+                    b.HasOne("E_Commerce_WebApplication.Models.Products", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("E_Commerce_WebApplication.Models.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("E_Commerce_WebApplication.Models.SubCategory", b =>

@@ -10,5 +10,8 @@ namespace E_Commerce_WebApplication.Repositories
         void RemoveCartItem(int cartId, int cartItemId);
         int GetCartItemsCountByUserId(int userid);
         bool UpdateCartItemQuantity(Cart cart, int cartId, int productId, int quantity);
+        BuyNowViewModel AddItem(int productid, int userid);
+        BuyNowViewModel GetItems(int productId);
+        void SaveChanges();
     }
 }

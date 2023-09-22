@@ -48,7 +48,7 @@
             <tr>
                 <td>@item.Product.ProductName</td>
                 <td>@item.Quantity</td>
-                <td>@item.Quantity*@item.Product.Price</td>
+                <td>&#x20b9; @((int)item.Quantity * (decimal)item.Product.Price)</td>
             </tr>
         }
     </tbody>

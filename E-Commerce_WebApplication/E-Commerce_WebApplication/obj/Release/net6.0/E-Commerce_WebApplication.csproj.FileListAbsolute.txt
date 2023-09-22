@@ -547,3 +547,5 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.Razor.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Castle.Core.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

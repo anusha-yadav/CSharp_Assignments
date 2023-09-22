@@ -6,7 +6,7 @@
         public int CartId { get; set; }
         public int UserId { get; set; }
         public virtual Users User { get; set; }
-        public ICollection<CartItem> CartItems { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
         public decimal? TotalPrice { get; set; }
     }
 }
