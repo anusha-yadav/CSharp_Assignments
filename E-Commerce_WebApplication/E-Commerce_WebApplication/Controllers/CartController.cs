@@ -1,5 +1,8 @@
-﻿using E_Commerce_WebApplication.Models;
+﻿using E_Commerce_WebApplication.Data;
+using E_Commerce_WebApplication.Models;
 using E_Commerce_WebApplication.Repositories;
+using E_Commerce_WebApplication.UnitOfWork;
+using E_Commerce_WebApplication.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,18 +10,19 @@ namespace E_Commerce_WebApplication.Controllers
 {
     public class CartController : Controller
     {
-        private readonly ICartRepository _cartRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly UserIdUtility _userIdUtility;
 
         /// <summary>
         /// Constructor of Cart controller
         /// </summary>
         /// <param name="context"></param>
         /// <param name="cartRepository"></param>
-        public CartController(ICartRepository cartRepository)
+        public CartController(IUnitOfWork unitOfWork, UserIdUtility userIdUtility)
         {
-            _cartRepository = cartRepository;
+            _unitOfWork = unitOfWork;
+            _userIdUtility = userIdUtility;
         }
-
 
         /// <summary>
         /// Index method of the controller
@@ -26,11 +30,11 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public IActionResult Index()
         {
-            int? userId = HttpContext.Session.GetInt32("userid");
+            int? userId = _userIdUtility.GetUserId();
 
             if (userId.HasValue)
             {
-                var userCart = _cartRepository.GetCartFromCurrentUser(userId.Value);
+                var userCart = _unitOfWork.cartRepository.GetCartFromCurrentUser(userId.Value);
                 int count = userCart.CartItems.Count();
                 if (count == 0)
                 {
@@ -49,17 +53,13 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public IActionResult AddToCart(int productId, int quantity)
         {
-            int? userId = HttpContext.Session.GetInt32("userid");
+            int? userId = _userIdUtility.GetUserId();
 
             if (!userId.HasValue)
             {
                 RedirectToAction("Login", "Account");
             }
-
-            if (userId.HasValue)
-            {
-                _cartRepository.AddOrUpdateCartItem(userId.Value, productId, quantity);
-            }
+            _unitOfWork.cartRepository.AddOrUpdateCartItem(userId.Value, productId, quantity);
             return RedirectToAction("Index");
         }
 
@@ -70,11 +70,11 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public IActionResult RemoveCartItem(int cartItemId)
         {
-            int? userId = HttpContext.Session.GetInt32("userid");
+            int? userId = _userIdUtility.GetUserId();
 
             if (userId.HasValue)
             {
-                _cartRepository.RemoveCartItem(userId.Value, cartItemId);
+                _unitOfWork.cartRepository.RemoveCartItem(userId.Value, cartItemId);
             }
 
             return RedirectToAction("Index");
@@ -86,8 +86,8 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public IActionResult GetCartItemsCount()
         {
-            int? userid = HttpContext.Session.GetInt32("UserId");
-            int cartItemsCount = _cartRepository.GetCartItemsCountByUserId(userid.Value);
+            int? userid = _userIdUtility.GetUserId();
+            int cartItemsCount = _unitOfWork.cartRepository.GetCartItemsCountByUserId(userid.Value);
             return Json(cartItemsCount);
         }
 
@@ -100,23 +100,21 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public IActionResult UpdateCartItem(int cartId, int quantity, int productid)
         {
-            int? userId = HttpContext.Session.GetInt32("userid");
-
-            Debug.WriteLine("Cart id is " + cartId + " " + productid + " "+quantity);
+            int? userId = _userIdUtility.GetUserId();
             if (userId == null)
             {
                 // Handle the case where the user is not logged in
                 return Json(new { success = false, message = "User not logged in" });
             }
 
-            Cart cart = _cartRepository.GetCartByUserId(userId.Value);
+            Cart cart = _unitOfWork.cartRepository.GetCartByUserId(userId.Value);
 
             if (cart == null)
             {
                 return Json(new { success = false, message = "Cart not found" });
             }
 
-            bool updateSuccess = _cartRepository.UpdateCartItemQuantity(cart,cartId, quantity, productid);
+            bool updateSuccess = _unitOfWork.cartRepository.UpdateCartItemQuantity(cart, cartId, quantity, productid);
             if (!updateSuccess)
             {
                 return Json(new { success = false, message = "Update failed" });
@@ -132,39 +130,44 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public IActionResult BuyNow(int productid)
         {
-            int? userid = HttpContext.Session.GetInt32("userid");
+            int? userid = _userIdUtility.GetUserId();
             if (!userid.HasValue)
             {
                 RedirectToAction("Login", "Account");
             }
             if (userid.HasValue)
             {
-                BuyNowViewModel viewModel = _cartRepository.AddItem(productid, userid.Value);
+                BuyNowViewModel viewModel = _unitOfWork.cartRepository.AddItem(productid, userid.Value);
                 return View(viewModel);
             }
             return RedirectToAction("Login", "Account");
         }
 
+        /// <summary>
+        /// UpdateQuantity of the product
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult UpdateQuantity(int productId, int quantity)
         {
-            var product = _cartRepository.GetItems(productId);
+            var product = _unitOfWork.cartRepository.GetItems(productId);
 
             if (product != null)
             {
                 try
                 {
                     product.Quantity = quantity;
-                    _cartRepository.SaveChanges();
+                    _unitOfWork.cartRepository.SaveChanges();
                     return Ok(); // Return a success status code
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                     return StatusCode(500, "Internal Server Error");
                 }
             }
-
             return NotFound(); // Return a not found status code if the product is not found
         }
     }

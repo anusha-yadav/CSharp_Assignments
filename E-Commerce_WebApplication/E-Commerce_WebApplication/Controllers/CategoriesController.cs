@@ -3,37 +3,57 @@ using Microsoft.EntityFrameworkCore;
 using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
 using E_Commerce_WebApplication.Filters;
+using System.Web.Razor;
+using E_Commerce_WebApplication.Repositories;
+using E_Commerce_WebApplication.Repositories.Interfaces;
 
 namespace E_Commerce_WebApplication.Controllers
 {
-    [TypeFilter(typeof(AdminAuthorizeAttribute))]
+    [Authorize("Admin")]
     public class CategoriesController : Controller
     {
-        private readonly ECommerceContext _context;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoriesController(ECommerceContext context)
+        /// <summary>
+        /// Intializing new instances
+        /// </summary>
+        /// <param name="categoryRepository"></param>
+        public CategoriesController(ICategoryRepository categoryRepository)
         {
-            _context = context;
+            _categoryRepository = categoryRepository;
         }
 
-        // GET: Categories
+        /// <summary>
+        /// GET : Categories
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-              return _context.Categories != null ? 
-                          View(await _context.Categories.ToListAsync()) :
-                          Problem("Entity set 'ECommerceContext.Categories'  is null.");
+            var categories = await _categoryRepository.GetCategoriesAsync();
+
+            if (categories != null)
+            {
+                return View(categories);
+            }
+            else
+            {
+                return Problem("Entity set 'ECommerceContext.Categories' is null.");
+            }
         }
 
-        // GET: Categories/Details/5
+        /// <summary>
+        /// GET: Categories/Details/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Categories == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var category = await _categoryRepository.GetCategoriesById(id);
             if (category == null)
             {
                 return NotFound();
@@ -42,119 +62,29 @@ namespace E_Commerce_WebApplication.Controllers
             return View(category);
         }
 
-        // GET: Categories/Create
+        /// <summary>
+        /// GET: Categories/Create
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// POST: Categories/Create
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category category)
         {
             if (category!=null)
             {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
+                await _categoryRepository.AddCategory(category);
                 return PartialView("_Success");
             }
             return View(category);
-        }
-
-        // GET: Categories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Categories == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return View(category);
-        }
-
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
-        {
-            if (id != category.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoryExists(category.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(category);
-        }
-
-        // GET: Categories/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Categories == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
-        }
-
-        // POST: Categories/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Categories == null)
-            {
-                return Problem("Entity set 'ECommerceContext.Categories'  is null.");
-            }
-            var category = await _context.Categories.FindAsync(id);
-            if (category != null)
-            {
-                _context.Categories.Remove(category);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CategoryExists(int id)
-        {
-          return (_context.Categories?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

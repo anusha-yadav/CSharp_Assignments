@@ -5,38 +5,54 @@ using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
+using E_Commerce_WebApplication.Repositories;
+using E_Commerce_WebApplication.FactoryPattern;
+using System.Data.Entity;
+using E_Commerce_WebApplication.Filters;
 
 namespace E_Commerce_WebApplication.Controllers
 {
+    [TypeFilter(typeof(ExceptionFilter))]
     public class ProductsController : Controller
     {
-        private readonly ECommerceContext _context;
         private readonly IWebHostEnvironment _environment;
+        private readonly IRepositoryFactory _repositoryFactory;
 
-        public ProductsController(ECommerceContext context, IWebHostEnvironment environment)
+        /// <summary>
+        /// Intializing new instances
+        /// </summary>
+        /// <param name="environment"></param>
+        /// <param name="repositoryFactory"></param>
+        public ProductsController(IWebHostEnvironment environment, IRepositoryFactory repositoryFactory)
         {
-            _context = context;
             _environment = environment;
+            _repositoryFactory = repositoryFactory;
         }
 
-        // GET: Products
+        /// <summary>
+        /// GET: Products
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var eCommerceContext = _context.Products.Include(p => p.SubCategory);
-            return View(await eCommerceContext.ToListAsync());
+            var eCommerceContext = _repositoryFactory.CreateProductRepository().GetSubCategory().ToListAsync();
+            return View(await eCommerceContext);  
         }
 
-        // GET: Products/Details/5
+        /// <summary>
+        /// GET: Products/Details/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Products
-                .Include(p => p.SubCategory)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var products = await _repositoryFactory.CreateProductRepository().GetProductById(id.Value);
+
             if (products == null)
             {
                 return NotFound();
@@ -45,21 +61,25 @@ namespace E_Commerce_WebApplication.Controllers
             return View(products);
         }
 
-        // GET: Products/Create
+        /// <summary>
+        ///  GET: Products/Create
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
-            ViewData["SubCategoryId"] = new SelectList(_context.SubCategories, "Id", "Id");
+            ViewData["SubCategoryId"] = _repositoryFactory.CreateProductRepository().CreateSubCategoryView();
             return View();
         }
 
-        // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// POST: Products/Create
+        /// </summary>
+        /// <param name="ImageFile"></param>
+        /// <param name="products"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormFile ImageFile, Products products)
         {
-            Debug.WriteLine("Hi");
             if (ImageFile != null)
             {
                 Debug.WriteLine("Hi");
@@ -68,10 +88,9 @@ namespace E_Commerce_WebApplication.Controllers
                 {
                     Directory.CreateDirectory(uploadDirectory);
                 }
-                //string _ImageFile = Path.Combine(_environment.WebRootPath, "uploads");
+
                 string uniqueFileName = Guid.NewGuid().ToString() + "_" + ImageFile.FileName;
                 string filepath = Path.Combine(uploadDirectory, uniqueFileName);
-
 
                 using (var fileStream = new FileStream(filepath, FileMode.Create))
                 {
@@ -79,39 +98,43 @@ namespace E_Commerce_WebApplication.Controllers
                 }
 
                 products.ImageUrl = "/uploads/" + uniqueFileName;
-                _context.Products.Add(products);
-                await _context.SaveChangesAsync();
+                _repositoryFactory.CreateProductRepository().CreateProduct(products);
                 return PartialView("_Success");
 
             }
-            ViewData["SubCategoryId"] = new SelectList(_context.SubCategories, "Id", "Id", products.SubCategoryId);
-            var subcategories = _context.SubCategories.Where(c => c.CategoryId == 1).ToList();
-            ViewData["SubCategoryName"] = new SelectList(subcategories, "Value", "Text", products.SubCategory.Name);
+            ViewData["SubCategoryId"] = _repositoryFactory.CreateProductRepository().CreateSubCategoryByObj(products);
             return View(products);
         }
 
-        // GET: Products/Edit/5
+        /// <summary>
+        /// GET: Products/Edit/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var products = await _context.Products.FindAsync(id);
+            var products = await _repositoryFactory.CreateProductRepository().GetProductById(id.Value);
             if (products == null)
             {
                 return NotFound();
             }
-            ViewData["SubCategoryId"] = new SelectList(_context.SubCategories, "Id", "Id", products.SubCategoryId);
+            ViewData["SubCategoryId"] = _repositoryFactory.CreateProductRepository().CreateSubCategoryView();
             return View(products);
         }
 
-        // POST: Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        /// <summary>
+        /// POST: Products/Edit/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="products"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProductName,Price,SubCategoryId,ImageUrl,Description")] Products products)
         {
             if (id != products.Id)
@@ -123,12 +146,11 @@ namespace E_Commerce_WebApplication.Controllers
             {
                 try
                 {
-                    _context.Update(products);
-                    await _context.SaveChangesAsync();
+                    await _repositoryFactory.CreateProductRepository().UpdateProduct(products);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductsExists(products.Id))
+                    if (!_repositoryFactory.CreateProductRepository().ProductsExists(products.Id))
                     {
                         return NotFound();
                     }
@@ -139,56 +161,18 @@ namespace E_Commerce_WebApplication.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SubCategoryId"] = new SelectList(_context.SubCategories, "Id", "Id", products.SubCategoryId);
+            ViewData["SubCategoryId"] = _repositoryFactory.CreateProductRepository().CreateSubCategoryView();
             return View(products);
         }
 
-        // GET: Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
-
-            var products = await _context.Products
-                .Include(p => p.SubCategory)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (products == null)
-            {
-                return NotFound();
-            }
-
-            return View(products);
-        }
-
-        // POST: Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Products == null)
-            {
-                return Problem("Entity set 'ECommerceContext.Products'  is null.");
-            }
-            var products = await _context.Products.FindAsync(id);
-            if (products != null)
-            {
-                _context.Products.Remove(products);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductsExists(int id)
-        {
-            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
+        /// <summary>
+        /// Product details page
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult ProductDetail(int id)
         {
-            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+            var product = _repositoryFactory.CreateProductRepository().GetProductById(id);
             if (product == null)
             {
                 return NotFound(); // Handle product not found
@@ -196,90 +180,52 @@ namespace E_Commerce_WebApplication.Controllers
             return View(product);
         }
 
-        public ActionResult SubCategoryDropdown()
+        /// <summary>
+        /// Search products method
+        /// </summary>
+        /// <param name="searchQuery"></param>
+        /// <returns></returns>
+        public IActionResult Search(string searchQuery)
         {
-            var subcategories = _context.SubCategories.Where(c => c.CategoryId == 1).ToList();
-            var subcategoryListItems = subcategories.Select(c => new SelectListItem
-            {
-                Text = c.Name,
-                Value = c.Id.ToString()
-            });
-
-            return PartialView("_SubCategoryDropdown", subcategoryListItems);
+            ViewData["SearchQuery"] = searchQuery;
+            return View();
         }
 
-        public IActionResult Search(string searchItem)
-        {
-            var products = _context.Products.Where(product => product.ProductName.Contains(searchItem)).ToList();
-            return View(products);
-        }
-
-        public IActionResult GiveRating(int productId)
-        {
-            int? userid = HttpContext.Session.GetInt32("userid");
-            var product = _context.Products.Find(productId);
-
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            // Check if the user is authenticated
-            if (!userid.HasValue)
-            {
-                return RedirectToAction("Login", "Account"); // Redirect to login if not authenticated
-            }
-
-            // Check if the user has already rated this product
-            var existingRating = _context.Ratings.SingleOrDefault(r => r.ProductId == productId && r.UserId == userid.Value);
-
-            if (existingRating != null)
-            {
-                TempData["ErrorMessage"] = "You have already rated this product.";
-                return RedirectToAction("Details", "Product", new { id = productId });
-            }
-
-            var model = new RatingViewModel
-            {
-                ProductId = productId,
-                ProductName = product.ProductName,
-            };
-
-            return View(model);
-        }
-
-
-        [HttpPost]
-        public IActionResult GiveRating(RatingViewModel model)
-        {
-            // Check if the user is authenticated
-            int? userid = HttpContext.Session.GetInt32("userid");
-            if (!userid.HasValue)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
-            if (ModelState.IsValid)
-            {
-                // Save the rating to the database
-                var rating = new Rating
+        /*
+                public IActionResult GiveRating(int productId)
                 {
-                    UserId = userid.Value,
-                    ProductId = model.ProductId,
-                    Value = model.Value,
-                    DateRated = DateTime.Now
-                };
+                    int? userid = HttpContext.Session.GetInt32("userid");
+                    var product = _context.Products.Find(productId);
 
-                _context.Ratings.Add(rating);
-                _context.SaveChanges();
+                    if (product == null)
+                    {
+                        return NotFound();
+                    }
 
-                TempData["SuccessMessage"] = "Thank you for rating this product!";
-                return RedirectToAction("Details", "Product", new { id = model.ProductId });
-            }
+                    // Check if the user is authenticated
+                    if (!userid.HasValue)
+                    {
+                        return RedirectToAction("Login", "Account"); // Redirect to login if not authenticated
+                    }
 
-            // If there are validation errors, return the view with the model to display error messages
-            return View(model);
+                    // Check if the user has already rated this product
+                    var existingRating = _context.Ratings.SingleOrDefault(r => r.ProductId == productId && r.UserId == userid.Value);
 
-        }
+                    if (existingRating != null)
+                    {
+                        TempData["ErrorMessage"] = "You have already rated this product.";
+                        return RedirectToAction("Details", "Product", new { id = productId });
+                    }
+
+                    var model = new RatingViewModel
+                    {
+                        ProductId = productId,
+                        ProductName = product.ProductName,
+                    };
+
+                    return View(model);
+                }
+        */
+
     }
 }

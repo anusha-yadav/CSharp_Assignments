@@ -280,9 +280,18 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Azure.Core.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Azure.Identity.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\BCrypt.Net-Next.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Castle.Core.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\EntityFramework.SqlServer.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\EntityFramework.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Humanizer.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\MessagePack.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\MessagePack.Annotations.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.Mvc.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.Razor.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.Helpers.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.Build.dll
@@ -303,6 +312,7 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
@@ -333,6 +343,7 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.Web.Infrastructure.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Mono.TextTemplating.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Newtonsoft.Json.dll
@@ -354,6 +365,7 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Composition.Runtime.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Composition.TypedParts.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Data.SqlClient.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Drawing.Common.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Memory.Data.dll
@@ -510,6 +522,11 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
@@ -540,12 +557,3 @@ C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_We
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\obj\Release\net6.0\E-Commerce_WebApplication.pdb
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\obj\Release\net6.0\E-Commerce_WebApplication.genruntimeconfig.cache
 C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\obj\Release\net6.0\ref\E-Commerce_WebApplication.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.Mvc.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.Razor.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.Helpers.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.Deployment.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.Razor.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\System.Web.WebPages.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.Web.Infrastructure.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Castle.Core.dll
-C:\Users\Anusha Yadav\CSharp_Assignments\E-Commerce_WebApplication\E-Commerce_WebApplication\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

@@ -1,4 +1,7 @@
 ﻿using E_Commerce_WebApplication.Data;
+using E_Commerce_WebApplication.FactoryPattern;
+using E_Commerce_WebApplication.Repositories;
+using E_Commerce_WebApplication.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,35 +9,30 @@ namespace E_Commerce_WebApplication.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly ECommerceContext _context;
+        private readonly UserIdUtility _userIdUtility;
+        private readonly IRepositoryFactory _repositoryFactory;
 
-        public OrderController(ECommerceContext context)
+        /// <summary>
+        /// Intializing new instances 
+        /// </summary>
+        /// <param name="userIdUtility"></param>
+        /// <param name="repositoryFactory"></param>
+        public OrderController(UserIdUtility userIdUtility, IRepositoryFactory repositoryFactory)
         {
-            _context = context;
+            _userIdUtility = userIdUtility;
+            _repositoryFactory = repositoryFactory;
         }
 
+        /// <summary>
+        /// Index Page of Orders
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
-            var orders = _context.Orders
-                .Include(o => o.OrderItems)
-                .ThenInclude(p=>p.Product)
-                .Where(o => o.UserId == (HttpContext.Session.GetInt32("userid"))).ToList();
-
-            foreach(var order in orders)
-            {
-                foreach(var orderItem in order.OrderItems)
-                {
-                    orderItem.HasRated = _context.Ratings.Any(r=>r.UserId== (HttpContext.Session.GetInt32("userid")) && r.ProductId== orderItem.ProductId);
-                }
-            }
-
+            int? userid = _userIdUtility.GetUserId();
+            var orders = _repositoryFactory.CreateOrderRepository().CreateOrderForMyOrders(userid.Value);
             return View(orders);
         }
 
-        public bool HasRated(int productId)
-        {
-            int userid = (int)HttpContext.Session.GetInt32("userid");
-            return _context.Ratings.Any(r=>r.UserId==userid && r.ProductId==productId);
-        }
     }
 }

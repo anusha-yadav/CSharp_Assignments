@@ -1,19 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using E_Commerce_WebApplication.Models;
 using E_Commerce_WebApplication.Repositories;
+using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using E_Commerce_WebApplication.Utilities;
+using E_Commerce_WebApplication.FactoryPattern;
 
 namespace E_Commerce_WebApplication.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IRepositoryFactory _repositoryFactory;
+        private readonly UserIdUtility _userIdUtility;
 
-        public AccountController(IUserRepository userRepository)
+        /// <summary>
+        /// Intializing a new instances for services
+        /// </summary>
+        /// <param name="repositoryFactory"></param>
+        /// <param name="userIdUtility"></param>
+        public AccountController(IRepositoryFactory repositoryFactory,UserIdUtility userIdUtility)
         {
-            _userRepository = userRepository;
+            _userIdUtility = userIdUtility;
+            _repositoryFactory = repositoryFactory;
         }
 
-        // GET: /Account/Register
+        /// <summary>
+        /// Account registration
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Register()
         {
             return View();
@@ -25,13 +39,12 @@ namespace E_Commerce_WebApplication.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 // Check if the email is already registered
-                var existingUser = _userRepository.GetUserByUsernameAndEmail(model.Username,model.Email);
+                var existingUser = _repositoryFactory.CreateUserRepository().GetUserByUsernameAndEmail(model.Username,model.Email);
                 if (existingUser!=null)
                 {
                     ModelState.AddModelError("Username", "Email is already in use and User alerady exists");
@@ -48,17 +61,27 @@ namespace E_Commerce_WebApplication.Controllers
                     PhoneNumber = model.PhoneNumber,
                 };
 
-                // Hash the password and save the user to the database
-                user.Password = _userRepository.Encrypt(model.Password);
-                _userRepository.AddUser(user);
+                if (IsUserAdmin(model.Email))
+                {
+                    user.Roles = Role.Admin;
+                }
+                else
+                {
+                    user.Roles = Role.User;
+                }
 
-                // You may want to implement email confirmation here
+                // Hash the password and save the user to the database
+                user.Password = _repositoryFactory.CreateUserRepository().Encrypt(model.Password);
+                _repositoryFactory.CreateUserRepository().AddUser(user);
                 return RedirectToAction("Login", "Account");
             }
             return View(model);
         }
 
-        // GET: /Account/Login
+        /// <summary>
+        /// GET: /Account/Login
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Login()
         {
             return View();
@@ -70,17 +93,17 @@ namespace E_Commerce_WebApplication.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _userRepository.GetUserByUsername(model.Username);
+                var user = _repositoryFactory.CreateUserRepository().GetUserByUsername(model.Username);
 
-                if (user!=null && _userRepository.AuthenticateUser(user.Username,model.Password))
+                if (user!=null && _repositoryFactory.CreateUserRepository().AuthenticateUser(user.Username,model.Password))
                 {
                     HttpContext.Session.SetString("user", model.Username);
                     HttpContext.Session.SetInt32("userid", user.Id);
+                    HttpContext.Session.SetString("usertype", user.Roles);
                     return RedirectToAction("Index", "Home"); 
                 }
                 ModelState.AddModelError("", "Invalid login attempt.");
@@ -104,9 +127,19 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public IActionResult Profile()
         {
-            int userid = (int)HttpContext.Session.GetInt32("userid");
-            var user = _userRepository.GetUserById(userid);
+            int? userid = _userIdUtility.GetUserId();
+            var user = _repositoryFactory.CreateUserRepository().GetUserById(userid.Value);
             return View(user);
+        }
+
+        /// <summary>
+        /// Checking for admin mail
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
+        private bool IsUserAdmin(string userEmail)
+        {
+            return userEmail.EndsWith("@cognine.com", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

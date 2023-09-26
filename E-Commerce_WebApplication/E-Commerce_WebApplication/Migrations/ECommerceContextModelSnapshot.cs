@@ -18,9 +18,6 @@ namespace E_Commerce_WebApplication.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.10")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -284,6 +281,9 @@ namespace E_Commerce_WebApplication.Migrations
                     b.Property<int>("ProductsId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RatingId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -293,6 +293,8 @@ namespace E_Commerce_WebApplication.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ProductsId");
+
+                    b.HasIndex("RatingId");
 
                     b.HasIndex("UserId");
 
@@ -372,6 +374,10 @@ namespace E_Commerce_WebApplication.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Roles")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -510,6 +516,10 @@ namespace E_Commerce_WebApplication.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("E_Commerce_WebApplication.Models.Rating", null)
+                        .WithMany("Ratings")
+                        .HasForeignKey("RatingId");
+
                     b.HasOne("E_Commerce_WebApplication.Models.Users", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -564,6 +574,11 @@ namespace E_Commerce_WebApplication.Migrations
             modelBuilder.Entity("E_Commerce_WebApplication.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("E_Commerce_WebApplication.Models.Rating", b =>
+                {
+                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

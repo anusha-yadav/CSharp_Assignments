@@ -3,32 +3,21 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace E_Commerce_WebApplication.Filters
 {
-    public class AdminAuthorizeAttribute : Attribute, IAuthorizationFilter
+    public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public AdminAuthorizeAttribute(IHttpContextAccessor httpContextAccessor)
+        private readonly string _requiredRole;
+        public AuthorizeAttribute(string requiredRole)
         {
-            _httpContextAccessor = httpContextAccessor;
+            _requiredRole = requiredRole;
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var session = _httpContextAccessor.HttpContext.Session;
-            if (!IsUserAdmin(session.GetString("user")))
+            string session = context.HttpContext.Session.GetString("usertype");
+            if (session != _requiredRole)
             {
                 context.Result = new RedirectToActionResult("Unauthorized", "Home",null);
             }
         }
-
-        private bool IsUserAdmin(string username)
-        {
-            List<string> roles = new List<string>
-            {
-                "admin",
-                "admin1"
-            };
-            return roles.Contains(username);
-        }
     }
-
 }

@@ -2,7 +2,7 @@
 
 namespace E_Commerce_WebApplication.Models
 {
-    public class Users
+    public class Users 
     {
         [Key]
         public int Id { get; set; }
@@ -35,6 +35,7 @@ namespace E_Commerce_WebApplication.Models
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be a 10-digit number.")]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+        public string Roles { get; set; }
 
     }
 }

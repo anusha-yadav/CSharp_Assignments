@@ -15,6 +15,10 @@ namespace E_Commerce_WebApplication.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Home index Page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Index()
         {
             var electronicsProduct = _context.Products
@@ -38,6 +42,10 @@ namespace E_Commerce_WebApplication.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        /// <summary>
+        /// Fetching Electronics products 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllElectronicsProducts()
         {
             var allElectronicsProducts = _context.Products
@@ -46,6 +54,10 @@ namespace E_Commerce_WebApplication.Controllers
             return View(allElectronicsProducts);
         }
 
+        /// <summary>
+        /// Fetching Home Appliances Products
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AllAppliancesProducts()
         {
             var allAppliancesProducts = _context.Products
@@ -54,6 +66,10 @@ namespace E_Commerce_WebApplication.Controllers
             return View(allAppliancesProducts);
         }
 
+        /// <summary>
+        /// Unauthorized Page
+        /// </summary>
+        /// <returns></returns>
         public IActionResult UnAuthorized()
         {
             return View("~/Views/Home/Error.cshtml");
