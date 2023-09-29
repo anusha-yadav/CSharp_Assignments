@@ -9,6 +9,7 @@ using E_Commerce_WebApplication.Repositories;
 using E_Commerce_WebApplication.FactoryPattern;
 using System.Data.Entity;
 using E_Commerce_WebApplication.Filters;
+using E_Commerce_WebApplication.Builder;
 
 namespace E_Commerce_WebApplication.Controllers
 {
@@ -35,8 +36,8 @@ namespace E_Commerce_WebApplication.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var eCommerceContext = _repositoryFactory.CreateProductRepository().GetSubCategory().ToListAsync();
-            return View(await eCommerceContext);  
+            var eCommerceContext = _repositoryFactory.CreateProductRepository().GetSubCategory();
+            return View(await eCommerceContext);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace E_Commerce_WebApplication.Controllers
                 return NotFound();
             }
 
-            var products = await _repositoryFactory.CreateProductRepository().GetProductById(id.Value);
+            var products = _repositoryFactory.CreateProductRepository().GetProductById(id.Value);
 
             if (products == null)
             {
@@ -98,9 +99,16 @@ namespace E_Commerce_WebApplication.Controllers
                 }
 
                 products.ImageUrl = "/uploads/" + uniqueFileName;
-                _repositoryFactory.CreateProductRepository().CreateProduct(products);
-                return PartialView("_Success");
 
+                products = new ProductsBuilder()
+                    .WithName(products.ProductName)
+                    .WithDescription(products.Description)
+                    .WithPrice(products.Price)
+                    .WithImageUrl("/uploads/" + uniqueFileName)
+                    .Build();
+
+                await _repositoryFactory.CreateProductRepository().CreateProduct(products);
+                return PartialView("_Success");
             }
             ViewData["SubCategoryId"] = _repositoryFactory.CreateProductRepository().CreateSubCategoryByObj(products);
             return View(products);
@@ -118,7 +126,7 @@ namespace E_Commerce_WebApplication.Controllers
                 return NotFound();
             }
 
-            var products = await _repositoryFactory.CreateProductRepository().GetProductById(id.Value);
+            var products = _repositoryFactory.CreateProductRepository().GetProductById(id.Value);
             if (products == null)
             {
                 return NotFound();

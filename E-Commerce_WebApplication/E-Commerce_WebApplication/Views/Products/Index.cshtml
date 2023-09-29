@@ -57,3 +57,7 @@
 }
     </tbody>
 </table>
+
+<div>
+    @await Component.InvokeAsync("ProductSearch", new { searchQuery = ViewData["SearchQuery"] })
+</div>

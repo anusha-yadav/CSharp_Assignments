@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\images\\ThermalBottle.png"
     },
     {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\airpods.png",
+      "PackagePath": "staticwebassets\\images\\airpods.png"
+    },
+    {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\asuslaptop.png",
       "PackagePath": "staticwebassets\\images\\asuslaptop.png"
     },
@@ -341,6 +345,10 @@
       "PackagePath": "staticwebassets\\uploads\\223a9b00-027f-40e0-8747-d7c9521744f6_BoatWave.png"
     },
     {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\6349f8ce-05b4-4787-a2e1-0bb8bb58f9e8_airpods.png",
+      "PackagePath": "staticwebassets\\uploads\\6349f8ce-05b4-4787-a2e1-0bb8bb58f9e8_airpods.png"
+    },
+    {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\63a283e6-2825-4b5d-bd99-dc2a00ac6e9b_asuslaptop.png",
       "PackagePath": "staticwebassets\\uploads\\63a283e6-2825-4b5d-bd99-dc2a00ac6e9b_asuslaptop.png"
     },
@@ -383,6 +391,10 @@
     {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\a92b7885-0861-4c0e-9948-3cea3cf9fe7c_TVUnits.png",
       "PackagePath": "staticwebassets\\uploads\\a92b7885-0861-4c0e-9948-3cea3cf9fe7c_TVUnits.png"
+    },
+    {
+      "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\ae15708c-1275-4bf6-84e9-05935e3bd20c_airpods.png",
+      "PackagePath": "staticwebassets\\uploads\\ae15708c-1275-4bf6-84e9-05935e3bd20c_airpods.png"
     },
     {
       "Id": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\b2e9a0ee-9ef8-46b5-b529-2497b0e825d2_TVUnits.png",

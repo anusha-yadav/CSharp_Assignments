@@ -1,9 +1,10 @@
 ﻿using E_Commerce_WebApplication.Data;
 using E_Commerce_WebApplication.Models;
+using E_Commerce_WebApplication.Repositories.Interfaces;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace E_Commerce_WebApplication.Repositories
+namespace E_Commerce_WebApplication.Repositories.Providers
 {
     public class UserRepository : IUserRepository
     {

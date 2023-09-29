@@ -1,6 +1,6 @@
 ﻿using E_Commerce_WebApplication.Models;
 
-namespace E_Commerce_WebApplication.Repositories
+namespace E_Commerce_WebApplication.Repositories.Interfaces
 {
     public interface IOrderRepository
     {

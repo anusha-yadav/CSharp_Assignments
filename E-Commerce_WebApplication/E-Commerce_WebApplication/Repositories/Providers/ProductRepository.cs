@@ -3,8 +3,9 @@ using E_Commerce_WebApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using E_Commerce_WebApplication.Repositories.Interfaces;
 
-namespace E_Commerce_WebApplication.Repositories
+namespace E_Commerce_WebApplication.Repositories.Providers
 {
     public class ProductRepository : IProductRepository
     {
@@ -15,16 +16,16 @@ namespace E_Commerce_WebApplication.Repositories
             _context = context;
         }
 
-        public IQueryable<Products> GetSubCategory()
+        public async Task<List<Products>> GetSubCategory()
         {
-            return _context.Products.Include(p => p.SubCategory);
+            return await _context.Products.Include(p => p.SubCategory).ToListAsync();
         }
 
-        public async Task<Products> GetProductById(int? id)
+        public Products GetProductById(int id)
         {
-            return await _context.Products
+            return  _context.Products
                 .Include(p => p.SubCategory)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefault(m => m.Id == id);
         }
 
         public async Task CreateProduct(Products product)
@@ -71,9 +72,11 @@ namespace E_Commerce_WebApplication.Repositories
 
         public async Task<List<Products>> SearchProductsAsync(string searchQuery)
         {
-            var products = await _context.Products
-               .Where(p => p.ProductName.Contains(searchQuery)).ToListAsync();
-            return products;
+            string[] searchWords = searchQuery.Split(' ');
+            var products = await _context.Products.
+                Where(product=>searchWords.Any(word=>product.ProductName.Contains(word))).ToListAsync();
+/*               .Where(p => p.ProductName.Contains(searchQuery)).ToListAsync();
+*/            return products;
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using E_Commerce_WebApplication.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace E_Commerce_WebApplication.Repositories
+namespace E_Commerce_WebApplication.Repositories.Interfaces
 {
     public interface IProductRepository
     {
-        IQueryable<Products> GetSubCategory();
-        Task<Products> GetProductById(int? id);
+        Task<List<Products>> GetSubCategory();
+        Products GetProductById(int id);
         Task CreateProduct(Products product);
         Task UpdateProduct(Products products);
         bool ProductsExists(int id);

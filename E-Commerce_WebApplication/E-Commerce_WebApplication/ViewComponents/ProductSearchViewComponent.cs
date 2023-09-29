@@ -14,7 +14,7 @@ namespace E_Commerce_WebApplication.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(string searchQuery)
         {
-            var products = await _repositoryFactory.CreateProductRepository().SearchProductsAsync(searchQuery); // Implement your product search logic
+            var products = await _repositoryFactory.CreateProductRepository().SearchProductsAsync(searchQuery); 
             return View(products);
         }
     }

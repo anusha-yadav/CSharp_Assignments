@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "B4pd0JjdXk75Bh3HQDP21HqT7bNq+g5Ta3NYHuLz+No=",
+  "Hash": "ehV+I8Blhza3Gem+ZTN3bQeqngyw+UyTms9qghqxKbQ=",
   "Source": "E-Commerce_WebApplication",
   "BasePath": "_content/E-Commerce_WebApplication",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\airpods.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "images/airpods.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\airpods.png"
     },
     {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\images\\asuslaptop.png",
@@ -1479,6 +1496,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\223a9b00-027f-40e0-8747-d7c9521744f6_BoatWave.png"
     },
     {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\6349f8ce-05b4-4787-a2e1-0bb8bb58f9e8_airpods.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "uploads/6349f8ce-05b4-4787-a2e1-0bb8bb58f9e8_airpods.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\6349f8ce-05b4-4787-a2e1-0bb8bb58f9e8_airpods.png"
+    },
+    {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\63a283e6-2825-4b5d-bd99-dc2a00ac6e9b_asuslaptop.png",
       "SourceId": "E-Commerce_WebApplication",
       "SourceType": "Discovered",
@@ -1664,6 +1698,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\a92b7885-0861-4c0e-9948-3cea3cf9fe7c_TVUnits.png"
+    },
+    {
+      "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\ae15708c-1275-4bf6-84e9-05935e3bd20c_airpods.png",
+      "SourceId": "E-Commerce_WebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\",
+      "BasePath": "_content/E-Commerce_WebApplication",
+      "RelativePath": "uploads/ae15708c-1275-4bf6-84e9-05935e3bd20c_airpods.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ae15708c-1275-4bf6-84e9-05935e3bd20c_airpods.png"
     },
     {
       "Identity": "C:\\Users\\Anusha Yadav\\CSharp_Assignments\\E-Commerce_WebApplication\\E-Commerce_WebApplication\\wwwroot\\uploads\\b2e9a0ee-9ef8-46b5-b529-2497b0e825d2_TVUnits.png",

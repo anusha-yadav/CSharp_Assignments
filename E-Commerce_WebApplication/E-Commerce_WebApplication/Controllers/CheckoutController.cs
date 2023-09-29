@@ -19,7 +19,7 @@ namespace E_Commerce_WebApplication.Controllers
         /// </summary>
         /// <param name="repositoryFactory"></param>
         /// <param name="userIdUtility"></param>
-        public CheckoutController(IRepositoryFactory repositoryFactory,UserIdUtility userIdUtility)
+        public CheckoutController(IRepositoryFactory repositoryFactory, UserIdUtility userIdUtility)
         {
             _repositoryFactory = repositoryFactory;
             _userIdUtility = userIdUtility;
@@ -62,7 +62,7 @@ namespace E_Commerce_WebApplication.Controllers
         /// <param name="productId"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public IActionResult BuyNowCheckout(int productId,int userid)
+        public IActionResult BuyNowCheckout(int productId, int userid)
         {
             int? userId = _userIdUtility.GetUserId();
 
@@ -70,7 +70,7 @@ namespace E_Commerce_WebApplication.Controllers
             IOrderRepository _orderRepository = _repositoryFactory.CreateOrderRepository();
 
             if (userId.Value == userid)
-            {       
+            {
                 BuyNowViewModel buyNowItem = _checkoutRepository.GetBuyNowItemForCheckout(productId, userId.Value);
                 var model = new BuyNowCheckoutViewModel
                 {
@@ -113,7 +113,7 @@ namespace E_Commerce_WebApplication.Controllers
                 if (buyNowItem != null)
                 {
                     Order order = _orderRepository.CreateOrder(buyNowItem);
-                    return View(@"Views/Checkout/BuyNowOrderConfirmation.cshtml",order);
+                    return View(@"Views/Checkout/BuyNowOrderConfirmation.cshtml", order);
                 }
             }
             return NotFound();
@@ -141,15 +141,11 @@ namespace E_Commerce_WebApplication.Controllers
 
             if (paymentResult.Success)
             {
-                Order order = _orderRepository.CreateOrderForAddCart(viewModel,userId,userCart);
+                Order order = _orderRepository.CreateOrderForAddCart(viewModel, userId, userCart);
                 return View("PaymentConfirmation", order);
             }
-            else
-            {
-                // Payment failed, handle the error and display a message to the user
-                ModelState.AddModelError(string.Empty, "Payment failed. Please check your payment information and try again.");
-                return View("Checkout", viewModel);
-            }
+            ModelState.AddModelError(string.Empty, "Payment failed. Please check your payment information and try again.");
+            return View("Checkout", viewModel);
         }
     }
 }
